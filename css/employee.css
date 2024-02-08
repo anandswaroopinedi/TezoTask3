@@ -74,7 +74,7 @@
     background-color: #FEF6F6;
     padding: 2%;
     border-radius: 5%;
-    margin:8% 5% 0% 0%;
+    margin:60% 5% 0% 0%;
 }
 @media only screen and (min-width: 1700px) {
     .new-versions{
@@ -324,6 +324,7 @@ label {
 .filter-div{
     display: flex;
     flex-direction: row;
+    height: 80px;
 }
 
 .filter-reset-apply{
