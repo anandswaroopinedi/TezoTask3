@@ -2,17 +2,26 @@ function dispShortNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
     let navBar=document.getElementsByClassName("left-bodysec");
     let rightBodySec=document.getElementsByClassName("right-bodysec");
+    var formButtons=document.getElementsByClassName("form-buttons");
     navBar[0].style.display="none";
     shortNavBar[0].style.display="flex";
     rightBodySec[0].style.width="90%";
+    // var style = formButtons[0].currentStyle;
+    // var margin=parseInt(style.marginLeft.slice(0,2))-3;
+    // console.log(margin);
+    // var k=String(margin)+"%";
+    // console.log(k);
+    // formButtons[0].style.marginLeft=k;
 }
 function expandNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
     let rightBodySec=document.getElementsByClassName("right-bodysec");
+    var formButtons=document.getElementsByClassName("form-buttons");
     shortNavBar[0].style.display="none";
     let navBar=document.getElementsByClassName("left-bodysec");
     navBar[0].style.display="";
     rightBodySec[0].style.width="83%";
+    // formButtons[0].style.marginLeft="53%";
 }
 document.getElementById('myButton').addEventListener('click', function(event) { 
     event.preventDefault(); 
@@ -113,7 +122,8 @@ document.getElementById('myButton').addEventListener('click', function(event) {
                 empInf[0].style.marginTop="0%";
                 edit[0].style.display="";
                 temp=1;
-                newVersion[0].style.margin="57% 5% 0% 0%"
+                formButtons[0].style.marginLeft="53%";
+                newVersion[0].style.margin="120% 5% 0% 0%"
                 break;
             }
         }
@@ -123,44 +133,70 @@ document.getElementById('myButton').addEventListener('click', function(event) {
             errMsg[0].style.display="flex";
             empInf[0].style.marginTop="4%";
             edit[0].style.display="none";
-            formButtons[0].style.position="relative";
-            formButtons[0].style.left="42%";
+            formButtons[0].style.marginLeft="90%";
             newVersion[0].style.margin="160% 5% 0% 0%"
         }
     }
   });
+  var input=document.getElementsByClassName("form-input");
+  var input1=document.getElementsByClassName("form-input-large");
   document.getElementById("email").onfocus= function(){
-    var input=document.getElementsByClassName("form-input");
     var errMsg=document.getElementsByClassName("text-danger-email");
     input[4].style.border="3px solid #5FA5FF";
     input[4].style.outline="none";
     errMsg[0].style.display="none";
 };
+document.getElementById("email").onblur= function(){
+    var errMsg=document.getElementsByClassName("text-danger-email");
+    input[4].style.border="1px solid black";
+    input[4].style.outline="none";
+    errMsg[0].style.display="none";
+};
   document.getElementById("first-name").onfocus= function(){
-    var input=document.getElementsByClassName("form-input");
     var errMsg=document.getElementsByClassName("text-danger-fname");
     input[1].style.border="3px solid #5FA5FF";
     input[1].style.outline="none";
     errMsg[0].style.display="none";
 };
+document.getElementById("first-name").onblur= function(){
+    var errMsg=document.getElementsByClassName("text-danger-fname");
+    input[1].style.border="1px solid black";
+    input[1].style.outline="none";
+    errMsg[0].style.display="none";
+};
 document.getElementById("last-name").onfocus= function(){
-    var input=document.getElementsByClassName("form-input");
     var errMsg=document.getElementsByClassName("text-danger-lname");
     input[2].style.border="3px solid #5FA5FF";
     input[2].style.outline="none";
     errMsg[0].style.display="none";
 };
+document.getElementById("last-name").onblur= function(){
+    var errMsg=document.getElementsByClassName("text-danger-lname");
+    input[2].style.border="1px solid black";
+    input[2].style.outline="none";
+    errMsg[0].style.display="none";
+};
 document.getElementById("employee-no").onfocus= function(){
-    var input=document.getElementsByClassName("form-input");
     var errMsg=document.getElementsByClassName("text-danger-empno");
     input[0].style.border="3px solid #5FA5FF";
     input[0].style.outline="none";
     errMsg[0].style.display="none";
 };
+document.getElementById("employee-no").onblur= function(){
+    var errMsg=document.getElementsByClassName("text-danger-empno");
+    input[0].style.border="1px solid black";
+    input[0].style.outline="none";
+    errMsg[0].style.display="none";
+};
 document.getElementById("joining-date").onfocus= function(){
-    var input1=document.getElementsByClassName("form-input-large");
     var errMsgJnDate=document.getElementsByClassName("text-danger-jndate");
+    errMsgJnDate[0].style.display="none";
     input1[0].style.border="3px solid #5FA5FF";
     input1[0].style.outline="none";
+};
+document.getElementById("joining-date").onblur= function(){
+    var errMsgJnDate=document.getElementsByClassName("text-danger-jndate");
     errMsgJnDate[0].style.display="none";
+    input1[0].style.border="1px solid black";
+    input1[0].style.outline="none";
 };

@@ -213,7 +213,6 @@
 .text-danger-img{
     display:none;
     margin-left: 8%;
-    margin-top: 0%;
     flex-direction: row;
 }
 .text-danger-jndate{
@@ -335,6 +334,14 @@
     border: 3px solid #5FA5FF;
 }
 .form-input:focus{
+    border:3px solid #5FA5FF ;
+    outline: none;
+}
+.selection:focus{
+    border:3px solid #5FA5FF ;
+    outline: none;
+}
+.selection1:focus{
     border:3px solid #5FA5FF ;
     outline: none;
 }

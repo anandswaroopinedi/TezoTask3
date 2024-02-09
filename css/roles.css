@@ -298,3 +298,8 @@ span {
     background-position-x: 158px;
     background-position-y: 6px;
 }
+.stacked-icon{
+    width: 7vw;
+    margin-top: 2%;
+    margin-right: -3%;
+}

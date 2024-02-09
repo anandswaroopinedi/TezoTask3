@@ -120,17 +120,36 @@
                             </select>
                         </div>
                         <div class="role-item">
-                            <label for="assign-emp">Assign Employees</label>
-                            <select name="assign-emp" id="assign-emp" class="selection">
-                                <option value="" selected disabled hidden>Search for an employee</option>
-                                <option value="Jennifer Desousa">
-                                    <!-- <div class="emp-profile">
-                                        <img src="Assets/Anand.jpg" class="profile-img">
-                                        <h4>Jennifer Desousa</h4>
-                                        <input type="checkbox" id="emp-names" name="emp-names" value="employee">
-                                    </div> -->
-                                </option>
-                            </select>
+                            <div class="multiselect">
+                                <label for="assign-emp">Assign Employees</label>
+                                <div class="selectBox" >
+                                    <input type="text" name="assign-emp" id="assign-emp" class="selection1" placeholder="Search for an employee" onclick="showCheckboxes()">
+                                    <p class="icon-select">&lt;</p>
+                                </div>
+                                <div id="checkboxes">
+                                    <div class="item1">
+                                        <div class="inner-item1">
+                                        <img src="Assets/Anand.jpg" class="profile-pic">
+                                        <h4 class="item-name">Jennifer Dsousa</h4>
+                                        </div>
+                                        <input type="checkbox"  id="checkbox-1" value="Jennifer Dsousa" />
+                                    </div>
+                                    <div class="item1">
+                                        <div class="inner-item1">
+                                        <img src="Assets/Anand.jpg" class="profile-pic">
+                                        <h4 class="item-name">Jennifer Dsousa</h4>
+                                        </div>
+                                        <input type="checkbox"  id="checkbox-1" value="Jennifer Dsousa" />
+                                    </div>
+                                    <div class="item1">
+                                        <div class="inner-item1">
+                                        <img src="Assets/Anand.jpg" class="profile-pic">
+                                        <h4 class="item-name">Jennifer Dsousa</h4>
+                                        </div>
+                                        <input type="checkbox"  id="checkbox-1" value="Jennifer Dsousa" />
+                                    </div>
+                                  </div>
+                            </div>
                         </div>
                         <div class="role-item">
                             <div>

@@ -328,20 +328,20 @@ label {
 }
 
 .filter-reset-apply{
-    display: flex;
+    display: none;
     flex-direction: row;
     margin-left: 55%;
 }
 @media only screen and (max-width: 1430px) {
     .filter-reset-apply{
-        display: flex;
+        display: none;
         flex-direction: row;
         margin-left: 45%;
     }
 }
 @media only screen and (max-width: 1200px) {
     .filter-reset-apply{
-        display: flex;
+        display: none;
         flex-direction: row;
         margin-left: 35%;
     }
@@ -350,8 +350,7 @@ label {
     color: #FF858E;
     background-color: #FFFFFF;
     border: 1px solid #FF858E;
-    margin-left:-10%;
-    margin-top: 8%;
+    margin:8% 0% 0% -10%;
     padding: 20% 30%;
     border-radius: 6px;
     cursor: pointer;
@@ -361,8 +360,7 @@ label {
     background-color: #F44848;
     color: white;
     border-style: none ;
-    margin-top: 9%;
-    margin-left: 80%;
+    margin: 9% 0% 0% 80%;
     padding: 23% 30%;
     border-radius: 6px;
     cursor: pointer;
@@ -416,8 +414,6 @@ label {
 .angl-img{
     width: 10px;
     height: 15px;
-    margin-top: 24px;
-    margin-left: 2%;
     margin: 24px 0% 0% 2%; 
 }
 table {
@@ -447,10 +443,8 @@ tr:hover{
     margin-top:-1%
 }
 .check-box {
-    margin-left: 1vw;
     width: 20px;
     height: 1.1vw;
-    margin-top: 4vh;
     margin:4vh 0vh 0vh 1vw;
 }
 .head-check-box{
@@ -470,4 +464,54 @@ tbody{
 }
 .more-info{
     margin-right: 1vw;
+}
+.angular-brackets{
+    display: flex;
+    flex-direction: column;
+}
+.less-than{
+    transform: rotate(90deg);
+    margin-left: 0.3vw;
+    cursor: pointer;
+}
+.greater-than{
+    transform: rotate(90deg);
+    margin: -4vh 0vh 0vh 0.3vw;
+    cursor: pointer;
+}
+@media only screen and (max-width: 991px) {
+    .greater-than{
+        transform: rotate(90deg);
+        margin: -28% 0% 0% 0.3vw;
+        cursor: pointer;
+    }
+}
+.ellipsis-menu {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.menu-options {
+    position: absolute;
+    top: 100%;
+    left: -50%;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(215, 15, 15, 0.1);
+    display: none;
+    z-index: 100;
+}
+
+.menu-option {
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border: 1px solid black;
+}
+.menu-option:hover{
+    background-color: #7A859B;
+    color: white;
+}
+.ellipsis-charc{
+    margin-right: 2vw;
 }

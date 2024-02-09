@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="css\employee.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-        <script src="employee.js"></script>
     </head>
     <body>
         <div class="hamburger"><a><i class="fa fa-bars"></i></a></div>
@@ -101,7 +100,7 @@
                 </div>
                 <div class="button-group">
                     <div class="Vector-area">
-                        <img src="Assets/Vector.png" class="vector-image">
+                        <img src="Assets/filter-black.svg" class="vector-image">
                     </div>
                     <div>
                         <button class="vector-element" onclick="segregateData('A')">A</button>
@@ -187,24 +186,24 @@
                         <pre class="filter-name">Filter</pre>
                         <div class="filter-status-div">
                             <select class="filter-status">
-                                <option>Status</option>
-                                <option>All</option>
-                                <option>Active</option>
-                                <option>In Active</option>
+                                <option value="" selected disabled hidden>Status</option>
+                                <option value="all">All</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">In Active</option>
                             </select>
                         </div>
                         <div class="filter-location-div">
                             <select class="filter-location">
-                                <option>Location</option>
-                                <option>Hyderabad</option>
-                                <option>Chennai</option>
+                                <option value="" selected disabled hidden>Location</option>
+                                <option value="hyderabad">Hyderabad</option>
+                                <option value="chennai">Chennai</option>
                             </select>
                         </div>
                         <div class="filter-department-div">
                             <select class="filter-department">
-                                <option>Department</option>
-                                <option>Product Engg.</option>
-                                <option>QA</option>
+                                <option value="" selected disabled hidden>Department</option>
+                                <option value="Product Engg">Product Engg</option>
+                                <option value="QA">QA</option>
                             </select>
                         </div>
                         <div class="filter-reset-apply">
@@ -234,48 +233,74 @@
                                 <th>
                                     <div class="table-header">
                                         <h4 class="emp-head">USER</h4>
-                                        <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                        <div class="angular-brackets">
+                                            <p class="less-than" onclick="sortTable(0,0)">&lt;</p>
+                                            <p class="greater-than" onclick="sortTable(0,1)">&gt;</p>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
                                     <div class="table-header">
                                         <h4 class="emp-head">LOCATION</h4>
-                                        <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                        <div class="angular-brackets">
+                                            <p class="less-than" onclick="sortTable(1,0)">&lt;</p>
+                                            <p class="greater-than" onclick="sortTable(1,1)">&gt;</p>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
                                     <div class="table-header">
-                                        <h4 class="emp-head">DEPARTMENT</h4>
-                                        <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                        <h4 class="emp-head" >DEPARTMENT</h4>
+                                        <div class="angular-brackets">
+                                            <p class="less-than" onclick="sortTable(2,0)">&lt;</p>
+                                            <p class="greater-than" onclick="sortTable(2,1)">&gt;</p>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
                                     <div class="table-header">
                                         <h4 class="emp-head">ROLE</h4>
-                                        <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                        <div class="angular-brackets">
+                                            <p class="less-than" onclick="sortTable(3,0)">&lt;</p>
+                                            <p class="greater-than" onclick="sortTable(3,1)">&gt;</p>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
                                         <div class="table-header">
                                             <h4 class="emp-head">EMPNO</h4>
-                                            <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                            <div class="angular-brackets">
+                                                <p class="less-than" onclick="sortTable(4,0)">&lt;</p>
+                                                <p class="greater-than" onclick="sortTable(4,1)">&gt;</p>
+                                            </div>
                                         </div>
                                 </th>
                                 <th>
                                     <div class="table-header">
                                         <h4 class="emp-head">STATUS</h4>
-                                        <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                        <div class="angular-brackets">
+                                            <p class="less-than">&lt;</p>
+                                            <p class="greater-than">&gt;</p>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
                                     <div class="table-header">
                                         <h4 class="emp-head">JOIN DT</h4>
-                                        <img class="angl-img" src="Assets/angle-brackets.jpg">
+                                        <div class="angular-brackets">
+                                            <p class="less-than" onclick="sortTable(6,0)">&lt;</p>
+                                            <p class="greater-than" onclick="sortTable(6,1)">&gt;</p>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
-                                    <div class="table-header">
-                                        <h4 class="emp-head more-info">...</h4>
+                                    <div class="ellipsis-menu" onclick="toggleMenu(this)">
+                                        <i class="fa fa-ellipsis-h ellipsis-charc"></i>
+                                        <div class="menu-options">
+                                            <div class="menu-option" onclick="viewDetails()">View Details</div>
+                                            <div class="menu-option" onclick="edit()">Edit</div>
+                                            <div class="menu-option" onclick="deleteItem()">Delete</div>
+                                        </div>
                                     </div>
                                 </th>
                             </tr>
@@ -284,6 +309,7 @@
                 </div>
             </div>
         </div> 
+        <script src="employee.js"></script>
     </body>
 </html>
 

@@ -81,7 +81,7 @@
     background-color: #FEF6F6;
     padding: 2%;
     border-radius: 5%;
-    margin:90% 5% 0% 0%;
+    margin:170% 5% 0% 0%;
 }
 @media only screen and (min-width: 1700px) {
     .new-versions{
@@ -167,8 +167,7 @@
 .role-item{
     display: flex;
     flex-direction: column;
-    margin-bottom: 3%;
-    margin-right: 3%;
+    margin: 0% 3% 3% 0%;
 }
 .form-input{
     height: 40px;
@@ -183,7 +182,7 @@
     border: 2px solid rgb(229, 225, 225);
 }
 .selection{
-    width: 20vw;
+    width: 25vw;
     height: 5vh;
     background-color: #F4F5F7;
     font-size: 15px;
@@ -251,6 +250,77 @@ textarea{
     font-size: 15px;
 }
 textarea:focus{
+    border:3px solid #5FA5FF ;
+    outline: none;
+}
+.multiselect {
+    width: 200px;
+  }
+  
+  .selectBox {
+    position: relative;
+    width: 20vw;
+  }
+  .selectBox select {
+    width: 110%;
+    margin-top: 2%;
+  }
+  .icon-select{
+    position:absolute;
+    top: -50%;
+    left: 120%;
+    transform: rotate(270deg);
+    font-size: 20px;
+  }
+  
+  
+  #checkboxes {
+    display: none;
+    width: 25vw;
+    height:10%;
+  }
+  
+  
+  #checkboxes label:hover {
+    background-color: #1e90ff;
+  }
+  .item1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin:2% 0% 0% 0%;
+    border: 1px #dadada solid;
+  }
+  .inner-item1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin:-2% 0% 0% 2%;
+  }
+  .profile-pic{
+    width: 38px;
+    height: 30px;
+    padding-right: 4%;
+    border-radius: 50%;
+  }
+  #checkbox-1{
+    width: 15px;
+    accent-color: #e74c3c;
+  }
+  .selection1{
+    width: 25vw;
+    height: 5vh;
+    font-size: 15px;
+    padding-left: 1%;
+    color: #050505;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #F4F5F7;
+  }
+  .selection1:focus{
     border:3px solid #5FA5FF ;
     outline: none;
 }

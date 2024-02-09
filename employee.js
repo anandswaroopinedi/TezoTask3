@@ -105,6 +105,7 @@ function segregateData(char){
     var check_char=document.getElementsByClassName("emp-name");
     let childclass=document.getElementsByClassName("emp-details");
     let button=document.getElementsByClassName("vector-element");
+    let filter=document.getElementsByClassName("vector-image");
     const result = char.charCodeAt(0);
     if(button[result-65].style.backgroundColor=== "rgb(244, 72, 72)")
     {
@@ -113,9 +114,11 @@ function segregateData(char){
             childclass[i].style.display="";
     }
     button[result-65].style.backgroundColor="#F0F0F0";
+    filter[0].src="Assets/filter-black.svg";
     }
     else
     {
+        filter[0].src="Assets/filter.svg";
     for(var i=0;i<check_char.length;i++)
     {
         if(check_char[i].innerHTML[0].toLowerCase()!=char.toLowerCase())
@@ -147,9 +150,6 @@ window.onclick = function(event) {
       modal[0].style.display = "none";
     }
   }
-// span.onclick = function() {
-//     modal.style.display = "none";
-//   }
 function saveFormData() {
     const formData = {
     profileImage: document.getElementById('profile-image').value,
@@ -166,10 +166,37 @@ function saveFormData() {
 fetch('employees.json')
 .then(response => response.json())
 .then(data => {
-    createTableData(data); // JSON data
+    createTableData(data); 
 })
 .catch(error => {
     console.error('Error fetching JSON file:', error);
+});
+document.getElementsByClassName("filter-status")[0].addEventListener('click',()=>{
+    var statusVal=document.getElementsByClassName('filter-status')[0].value;
+    var buttons=document.getElementsByClassName("filter-reset-apply");
+    if(statusVal)
+    {
+        buttons[0].style.display="flex";
+    }
+
+});
+document.getElementsByClassName("filter-location")[0].addEventListener('click',()=>{
+    var statusVal=document.getElementsByClassName("filter-location")[0].value;
+    var buttons=document.getElementsByClassName("filter-reset-apply");
+    if(statusVal)
+    {
+        buttons[0].style.display="flex";
+    }
+
+});
+document.getElementsByClassName("filter-department")[0].addEventListener('click',()=>{
+    var statusVal=document.getElementsByClassName('filter-department')[0].value;
+    var buttons=document.getElementsByClassName("filter-reset-apply");
+    if(statusVal)
+    {
+        buttons[0].style.display="flex";
+    }
+
 });
 function createTableData(data)
 {
@@ -180,7 +207,6 @@ function createTableData(data)
         var row=document.createElement("tr");
         console.log(emp);
         row.classList.add("emp-details");
-        // let vals=Object.values(emp);
         let checkBox=document.createElement("input");
         checkBox.type="checkbox";
         checkBox.addEventListener("click",selectOne);
@@ -242,13 +268,114 @@ function createTableData(data)
         tdata7.innerText=emp.joinDt;
         row.appendChild(tdata7);
 
-        let tdata8=document.createElement("td");
-        tdata8.innerText="...";
-        row.appendChild(tdata8);
+        let tdata8=document.createElement("div");
+        tdata8.classList.add("ellipsis-menu");
+        tdata8.setAttribute("onclick","toggleMenu(this);");
+        let p8=document.createElement("i");
+        p8.classList.add("fa");
+        p8.classList.add("fa-ellipsis-h");
+        tdata8.appendChild(p8);
+        let innerdiv8=document.createElement("div");
+        innerdiv8.classList.add("menu-options");
+        tdata8.appendChild(innerdiv8);
+        let option1=document.createElement("div");
+        option1.classList.add("menu-option");
+        option1.innerText="View Details";
+        let option2=document.createElement("div");
+        option2.classList.add("menu-option");
+        option2.innerText="Edit";
+        let td8=document.createElement("td");
+        let option3=document.createElement("div");
+        option3.classList.add("menu-option");
+        option3.innerText="Delete";
+        innerdiv8.appendChild(option1);
+        innerdiv8.appendChild(option2);
+        innerdiv8.appendChild(option3);
+        td8.appendChild(tdata8);
+        row.appendChild(td8);
         table.appendChild(row);
     });
 }
-
+function sortTable(n,k) 
+{
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("employeeDataTable");
+    switching = true;
+    if(k==0)
+        dir = "asc"; 
+    else{
+        dir="desc";
+    }
+    while (switching) 
+    {
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length - 1); i++) 
+        {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            if (dir == "asc") 
+            {
+                if(n==6)
+                {
+                    x = new Date(x.innerHTML.split('/').reverse().join(', '));
+                    y = new Date(y.innerHTML.split('/').reverse().join(', '));
+                    if (x>y) {
+                        shouldSwitch= true;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch= true;
+                        console.log("anand");
+                        break;
+                    }
+                }
+            } 
+            else if (dir == "desc") 
+            {
+                if(n==6)
+                {
+                    x = new Date(x.innerHTML.split('/').reverse().join(', '));
+                    y = new Date(y.innerHTML.split('/').reverse().join(', '));
+                    if (x<y) {
+                        shouldSwitch= true;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase())
+                    {
+                        shouldSwitch = true;
+                        console.log("anand1");
+                        break;
+                    }
+                }
+            }
+        }
+      if (shouldSwitch) 
+      {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        switchcount ++;      
+      } 
+      else
+       {
+            if (switchcount == 0 && dir == "asc") {
+            dir = "desc";
+            switching = true;
+            }
+        }
+    }
+}
+function toggleMenu(ellipsisMenu) {
+    const menuOptions = ellipsisMenu.querySelector('.menu-options');
+    menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
+}
 
 
 

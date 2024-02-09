@@ -14,3 +14,15 @@ function expandNav(){
     navBar[0].style.display="";
     rightBodySec[0].style.width="83%";
 }
+var expanded = false;
+
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}

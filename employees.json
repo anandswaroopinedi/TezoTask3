@@ -4,88 +4,88 @@
     "location":"Hyderabad",
     "department":"Product Engg",
     "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "empNo":"TZ002340",
+    "joinDt":"1/07/2023"
 },
 {
     "employeeName":"Anand Swaroop",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
+    "location":"Guntur",
+    "department":"Sales",
     "role":"Full-stack Developer",
     "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "joinDt":"10/07/2023"
 },
 {
     "employeeName":"Jagadeesh",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "location":"Vijayawada",
+    "department":"UX",
+    "role":"Architect",
+    "empNo":"TZ002342",
+    "joinDt":"12/03/2026"
 },
 {
     "employeeName":"Rahul",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "location":"Ongole",
+    "department":"HR",
+    "role":"Data Scientist",
+    "empNo":"TZ002343",
+    "joinDt":"12/03/2024"
 },
 {
     "employeeName":"Ram",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "location":"Bengaluru",
+    "department":"Project department",
+    "role":"DevOps Engineer",
+    "empNo":"TZ002344",
+    "joinDt":"10/09/2023"
 },
 {
     "employeeName":"Nithin kumar",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "location":"Chennai",
+    "department":"Administration",
+    "role":"Backend Engineer",
+    "empNo":"TZ002346",
+    "joinDt":"1/12/2023"
 },
 {
     "employeeName":"Sri Lakshmi",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "location":"Delhi",
+    "department":"Programming",
+    "role":"Project Manager",
+    "empNo":"TZ002347",
+    "joinDt":"12/05/2023"
 },
 {
     "employeeName":"Bhaskara Rao",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "location":"Kochi",
+    "department":"Accounts and finance",
+    "role":"JavaScript Engineer",
+    "empNo":"TZ002348",
+    "joinDt":"11/03/2023"
 },
 {
     "employeeName":"krishna teja",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
+    "location":"Amaravati",
     "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
+    "role":"Software Architect",
+    "empNo":"TZ002349",
     "joinDt":"12/03/2023"
 },
 {
     "employeeName":"prem sagar",
     "employeeEmail":"edgar@tezo.com",
     "location":"Hyderabad",
-    "department":"Product Engg",
-    "role":"Full-stack Developer",
-    "empNo":"TZ002341",
-    "joinDt":"12/03/2023"
+    "department":"Sales",
+    "role":"Web Developer",
+    "empNo":"TZ002350",
+    "joinDt":"12/04/2023"
 }
 ]
