@@ -11,13 +11,30 @@
     <body>
         <div class="hamburger"><a><i class="fa fa-bars"></i></a></div>
         <div class="body-sec">
+            <div class="vertical-shview">
+                    <div class="nav-handlersh">
+                        <img class="nav-handlersh-img" src="Assets\handle.png" onclick="expandNav()">
+                    </div>
+                    <div class="dashboard-img">
+                        <img  src="Assets/Dashboard.svg">
+                    </div>
+                    <div class="employee-img">
+                        <img src="Assets/Employees.svg">
+                    </div>
+                    <div class="roles-img">
+                        <img src="Assets/Roles.svg">
+                    </div>
+                    <div class="access-rtsimg">
+                        <img src="Assets/assign user.svg">
+                    </div>
+            </div>
             <div class="left-bodysec">
                 <div class="nav-top">
                     <div class="logo">
                         <img src="Assets\TezoLogo.png">
                     </div>
                     <div class="nav-handler">
-                        <img src="Assets\handle.png">
+                        <img src="Assets\handle.png" onclick="dispShortNav()">
                     </div>
                 </div>
                 <p class="nav-head">ALL</p>
@@ -288,6 +305,7 @@
                 </div>
             </div>
         </div> 
+        <script src="roles.js"></script>
     </body>
 </html>
 

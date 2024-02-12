@@ -5,6 +5,7 @@
     "department":"Product Engg",
     "role":"Full-stack Developer",
     "empNo":"TZ002340",
+    "status":"Active",
     "joinDt":"1/07/2023"
 },
 {
@@ -14,78 +15,87 @@
     "department":"Sales",
     "role":"Full-stack Developer",
     "empNo":"TZ002341",
+    "status":"Active",
     "joinDt":"10/07/2023"
 },
 {
     "employeeName":"Jagadeesh",
     "employeeEmail":"edgar@tezo.com",
     "location":"Vijayawada",
-    "department":"UX",
+    "department":"HR",
     "role":"Architect",
     "empNo":"TZ002342",
+    "status":"Active",
     "joinDt":"12/03/2026"
 },
 {
     "employeeName":"Rahul",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Ongole",
+    "location":"Guntur",
     "department":"HR",
-    "role":"Data Scientist",
+    "role":"Sales",
     "empNo":"TZ002343",
+    "status":"In Active",
     "joinDt":"12/03/2024"
 },
 {
     "employeeName":"Ram",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Bengaluru",
-    "department":"Project department",
-    "role":"DevOps Engineer",
+    "location":"Chennai",
+    "department":"Programming",
+    "role":"Programming",
     "empNo":"TZ002344",
+    "status":"Active",
     "joinDt":"10/09/2023"
 },
 {
     "employeeName":"Nithin kumar",
     "employeeEmail":"edgar@tezo.com",
     "location":"Chennai",
-    "department":"Administration",
-    "role":"Backend Engineer",
+    "department":"Product Engg",
+    "role":"Programming",
     "empNo":"TZ002346",
+    "status":"In Active",
     "joinDt":"1/12/2023"
 },
 {
     "employeeName":"Sri Lakshmi",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Delhi",
+    "location":"Vijayawada",
     "department":"Programming",
     "role":"Project Manager",
     "empNo":"TZ002347",
+    "status":"Active",
     "joinDt":"12/05/2023"
 },
 {
     "employeeName":"Bhaskara Rao",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Kochi",
-    "department":"Accounts and finance",
+    "location":"Hyderabad",
+    "department":"Sales",
     "role":"JavaScript Engineer",
     "empNo":"TZ002348",
+    "status":"Active",
     "joinDt":"11/03/2023"
 },
 {
     "employeeName":"krishna teja",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Amaravati",
+    "location":"Guntur",
     "department":"Product Engg",
     "role":"Software Architect",
     "empNo":"TZ002349",
+    "status":"Active",
     "joinDt":"12/03/2023"
 },
 {
     "employeeName":"prem sagar",
     "employeeEmail":"edgar@tezo.com",
-    "location":"Hyderabad",
+    "location":"Vijayawada",
     "department":"Sales",
     "role":"Web Developer",
     "empNo":"TZ002350",
+    "status":"In Active",
     "joinDt":"12/04/2023"
 }
 ]

@@ -95,7 +95,7 @@
                                 <div class="profile-info">
                                     <img src="Assets/profile.png" alt="profile" class="profile-pic">
                                     <button class="edit-button" onclick="document.getElementById('profileImg').click()">Edit</button>
-                                    <input type='file' id="profileImg" accept=".jpg,.png,.bmp" >
+                                    <input type='file' id="profileImg" accept=".jpg,.png,.bmp"  onchange="checkImage()">
                                 </div>
                                 <div class="text-danger-img">
                                     <button class="text-danger-imgbtn" onclick="document.getElementById('profileImg').click()">Upload Profile Picture</button>
@@ -224,6 +224,7 @@
                         </div>
                     </form>
                 </div>
+                <div id="snackbar">Data Submitted successfully..</div>
             </div>
         </div>
         <script src="addemployee.js"></script>

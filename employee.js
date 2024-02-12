@@ -2,17 +2,22 @@ function dispShortNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
     let navBar=document.getElementsByClassName("left-bodysec");
     let rightBodySec=document.getElementsByClassName("right-bodysec");
+    let bodySec=document.getElementsByClassName("body-sec");
     navBar[0].style.display="none";
     shortNavBar[0].style.display="flex";
     rightBodySec[0].style.width="90%";
+    bodySec[0].style.marginRight="0%";
+
 }
 function expandNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
     let rightBodySec=document.getElementsByClassName("right-bodysec");
     shortNavBar[0].style.display="none";
     let navBar=document.getElementsByClassName("left-bodysec");
+    let bodySec=document.getElementsByClassName("body-sec");
     navBar[0].style.display="";
     rightBodySec[0].style.width="83%";
+    bodySec[0].style.marginRight="2%";
 }
 function selectAll()
 {
@@ -86,7 +91,6 @@ function delete_rows(){
         {
             childclass[i].style.display="none";
         }
-        console.log("ANAND");
         headBox[0].checked =0;
         alert(headBox[0].checked);
     }
@@ -163,6 +167,20 @@ function saveFormData() {
     };
     alert(empData.length);
 }
+
+// function 
+// {
+//     fetch('employees.json')
+// .then(response => response.json())
+// .then(data => {
+//     GenerateXlSX(data); 
+// })
+// }
+function export_data(){
+    var table2excel = new Table2Excel();
+    table2excel.export(document.getElementById("employeeDataTable"));
+}
+
 fetch('employees.json')
 .then(response => response.json())
 .then(data => {
@@ -171,14 +189,29 @@ fetch('employees.json')
 .catch(error => {
     console.error('Error fetching JSON file:', error);
 });
+var cnt=0;
+var arr=[0,0,0];
+var count=document.getElementsByClassName("count")[0];
+var filterName=document.getElementsByClassName("filter-name")[0];
 document.getElementsByClassName("filter-status")[0].addEventListener('click',()=>{
     var statusVal=document.getElementsByClassName('filter-status')[0].value;
     var buttons=document.getElementsByClassName("filter-reset-apply");
+    
     if(statusVal)
     {
         buttons[0].style.display="flex";
+        if(arr[0]<1)
+        {
+            arr[0]+=1;
+            cnt+=1;
+            console.log(arr[0]);
+        }
     }
-
+    count.innerHTML=cnt;
+    if(cnt>1)
+    {
+        filterName.innerHTML="Filters";
+    }
 });
 document.getElementsByClassName("filter-location")[0].addEventListener('click',()=>{
     var statusVal=document.getElementsByClassName("filter-location")[0].value;
@@ -186,8 +219,17 @@ document.getElementsByClassName("filter-location")[0].addEventListener('click',(
     if(statusVal)
     {
         buttons[0].style.display="flex";
+        if(arr[1]<1)
+        {
+            arr[1]+=1;
+            cnt+=1;
+        }
     }
-
+    count.innerHTML=cnt;
+    if(cnt>1)
+    {
+        filterName.innerHTML="Filters";
+    }
 });
 document.getElementsByClassName("filter-department")[0].addEventListener('click',()=>{
     var statusVal=document.getElementsByClassName('filter-department')[0].value;
@@ -195,8 +237,17 @@ document.getElementsByClassName("filter-department")[0].addEventListener('click'
     if(statusVal)
     {
         buttons[0].style.display="flex";
+        if(arr[2]<1)
+        {
+            arr[2]+=1;
+            cnt+=1;
+        }
     }
-
+    count.innerHTML=cnt;
+    if(cnt>1)
+    {
+        filterName.innerHTML="Filters";
+    }
 });
 function createTableData(data)
 {
@@ -243,10 +294,12 @@ function createTableData(data)
 
         let tdata2=document.createElement("td");
         tdata2.innerText=emp.location;
+        tdata2.classList.add("emp-location");
         row.appendChild(tdata2);
 
         let tdata3=document.createElement("td");
         tdata3.innerText=emp.department;
+        tdata3.classList.add("emp-department");
         row.appendChild(tdata3);
 
         let tdata4=document.createElement("td");
@@ -259,7 +312,7 @@ function createTableData(data)
 
         let tdata6=document.createElement("td");
         let status=document.createElement("button");
-        status.innerText="Active";
+        status.innerText=emp.status;
         status.classList.add("active-status");
         tdata6.appendChild(status);
         row.appendChild(tdata6);
@@ -330,7 +383,7 @@ function sortTable(n,k)
                 {
                     if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                         shouldSwitch= true;
-                        console.log("anand");
+                        console.log(x.innerHTML.toLowerCase());
                         break;
                     }
                 }
@@ -373,10 +426,60 @@ function sortTable(n,k)
     }
 }
 function toggleMenu(ellipsisMenu) {
+    const allOptions=document.querySelectorAll('.menu-options');
+    for(var i=0;i<allOptions.length;i++)
+    {
+        allOptions[i].style.display='none';
+    }
     const menuOptions = ellipsisMenu.querySelector('.menu-options');
+
     menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
 }
+function filterByUserInputs(){
+    var inpStatus=document.getElementsByClassName("filter-status")[0];
+    var inpLocation=document.getElementsByClassName("filter-location")[0];
+    var inpDepartment=document.getElementsByClassName("filter-department")[0];
+    var status=document.getElementsByClassName("active-status");
+    var location=document.getElementsByClassName("emp-location");
+    var department=document.getElementsByClassName("emp-department");
+    let empRow=document.getElementsByClassName("emp-details");
+    console.log(status.length);
+    for (i = 0; i < status.length ; i++) 
+        {
+            var flag=0;
+            console.log(status[i].innerText);
+            if(inpStatus.value)
+            {
+                console.log(inpStatus.value.toLowerCase());
+                console.log(status[i].innerText.toLowerCase());
+                if(status[i].innerText.toLowerCase()!=inpStatus.value.toLowerCase())
+                {
+                    flag=1;
+                }
+            }
+            if(inpLocation.value)
+            {
+                if(location[i].innerHTML.toLowerCase()!=inpLocation.value.toLowerCase())
+                {
+                    flag=1;
+                }
+            }
+            if(inpDepartment.value)
+            {
+                if(department[i].innerHTML.toLowerCase()!=inpDepartment.value.toLowerCase()){
+                    flag=1;
+                }
+            }
+            if(flag==1)
+            {
+                empRow[i].style.display="none";
+            }
+            else{
+                empRow[i].style.display="";
+            }
+        }
 
+}
 
 
 

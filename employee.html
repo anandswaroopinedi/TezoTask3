@@ -93,7 +93,7 @@
                         <p class="page-heading-desc">Find all of your company's employee accounts and their associated roles.</p>
                     </div>
                     <div class="accessing-buttons">
-                        <button class="export-button">EXPORT</button>
+                        <button class="export-button" onclick="export_data()">EXPORT</button>
                         <span>&#10010;</span>
                         <button onclick="window.location.href = 'addemployee.html';"  class="add-button">  ADD EMPLOYEE</button>
                     </div>
@@ -184,12 +184,12 @@
                 <div class="filter-div">
                     <div class="filter">
                         <pre class="filter-name">Filter</pre>
+                        <p class="count">0</p>
                         <div class="filter-status-div">
                             <select class="filter-status">
                                 <option value="" selected disabled hidden>Status</option>
-                                <option value="all">All</option>
                                 <option value="active">Active</option>
-                                <option value="inactive">In Active</option>
+                                <option value="in active">In Active</option>
                             </select>
                         </div>
                         <div class="filter-location-div">
@@ -197,21 +197,25 @@
                                 <option value="" selected disabled hidden>Location</option>
                                 <option value="hyderabad">Hyderabad</option>
                                 <option value="chennai">Chennai</option>
+                                <option value="guntur">Guntur</option>
+                                <option value="vijayawada">Vijayawada</option>
                             </select>
                         </div>
                         <div class="filter-department-div">
                             <select class="filter-department">
                                 <option value="" selected disabled hidden>Department</option>
                                 <option value="Product Engg">Product Engg</option>
-                                <option value="QA">QA</option>
+                                <option value="HR">HR</option>
+                                <option value="sales">Sales</option>
+                                <option value="Programming">Programming</option>
                             </select>
                         </div>
                         <div class="filter-reset-apply">
                             <div>
-                                <button class="reset">Reset</button>
+                                <button class="reset" onclick="window.location.reload();">Reset</button>
                             </div>
                             <div>
-                                <button class="apply">Apply</button>
+                                <button class="apply" onclick="filterByUserInputs()">Apply</button>
                             </div>
                         </div>
                     </div>
@@ -279,8 +283,8 @@
                                     <div class="table-header">
                                         <h4 class="emp-head">STATUS</h4>
                                         <div class="angular-brackets">
-                                            <p class="less-than">&lt;</p>
-                                            <p class="greater-than">&gt;</p>
+                                            <p class="less-than" onclick="sortTable(5,0)">&lt;</p>
+                                            <p class="greater-than" onclick="sortTable(5,1)">&gt;</p>
                                         </div>
                                     </div>
                                 </th>
@@ -294,7 +298,7 @@
                                     </div>
                                 </th>
                                 <th>
-                                    <div class="ellipsis-menu" onclick="toggleMenu(this)">
+                                    <div class="ellipsis-menu-header">
                                         <i class="fa fa-ellipsis-h ellipsis-charc"></i>
                                         <div class="menu-options">
                                             <div class="menu-option" onclick="viewDetails()">View Details</div>
@@ -310,6 +314,7 @@
             </div>
         </div> 
         <script src="employee.js"></script>
+        <script src="table2excel.js"></script>
     </body>
 </html>
 

@@ -5,13 +5,14 @@ function dispShortNav(){
     var formButtons=document.getElementsByClassName("form-buttons");
     navBar[0].style.display="none";
     shortNavBar[0].style.display="flex";
-    rightBodySec[0].style.width="90%";
-    // var style = formButtons[0].currentStyle;
+    rightBodySec[0].style.width="92%";
+    var style = formButtons[0].currentStyle;
     // var margin=parseInt(style.marginLeft.slice(0,2))-3;
     // console.log(margin);
     // var k=String(margin)+"%";
     // console.log(k);
     // formButtons[0].style.marginLeft=k;
+    formButtons[0].style.marginLeft="47%";
 }
 function expandNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
@@ -21,7 +22,7 @@ function expandNav(){
     let navBar=document.getElementsByClassName("left-bodysec");
     navBar[0].style.display="";
     rightBodySec[0].style.width="83%";
-    // formButtons[0].style.marginLeft="53%";
+    formButtons[0].style.marginLeft="53%";
 }
 document.getElementById('myButton').addEventListener('click', function(event) { 
     event.preventDefault(); 
@@ -99,7 +100,7 @@ document.getElementById('myButton').addEventListener('click', function(event) {
     var newVersion=document.getElementsByClassName("new-versions");
     console.log(fileName);
     console.log("swaroop");
-    if(fileName==undefined)
+    if(fileName===undefined)
     {   console.log("Anand");
         container[0].style.flexDirection="column";
         errMsg[0].style.display="flex";
@@ -108,6 +109,7 @@ document.getElementById('myButton').addEventListener('click', function(event) {
         formButtons[0].style.position="relative";
         formButtons[0].style.left="50%";
         console.log("swa");
+        flag=1;
     }
     else{
         var file_extension = fileName.split('.').pop(); 
@@ -123,7 +125,7 @@ document.getElementById('myButton').addEventListener('click', function(event) {
                 edit[0].style.display="";
                 temp=1;
                 formButtons[0].style.marginLeft="53%";
-                newVersion[0].style.margin="120% 5% 0% 0%"
+                newVersion[0].style.margin="120% 5% 0% 0%";
                 break;
             }
         }
@@ -135,9 +137,33 @@ document.getElementById('myButton').addEventListener('click', function(event) {
             edit[0].style.display="none";
             formButtons[0].style.marginLeft="90%";
             newVersion[0].style.margin="160% 5% 0% 0%"
+            flag=1;
         }
     }
+    if(flag==0)
+    {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        setTimeout(function(){ window.location.reload();}, 1000);
+    }
+    else{
+        console.log("Unsuccesfull attempt");
+    }
+    
   });
+  function checkImage(){
+    var profileImg=document.getElementsByClassName('profile-pic');
+    var fileName = document.getElementById("profileImg").value;
+    var fileCrctName = "Assets/"+fileName.split('\\').pop(); 
+    console.log("Anand");
+    console.log(fileCrctName);
+    if(fileCrctName)
+    {
+        profileImg[0].src=fileCrctName;
+        console.log(profileImg[0].src);
+    }
+  }
   var input=document.getElementsByClassName("form-input");
   var input1=document.getElementsByClassName("form-input-large");
   document.getElementById("email").onfocus= function(){

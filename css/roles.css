@@ -92,6 +92,7 @@
     font-family: 'Poppins';
     width: 100%;
     padding-right: 1%;
+    margin-right: 2%;
 }
 @media all and (max-width: 1000px) {
     .body-sec{
