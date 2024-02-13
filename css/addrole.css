@@ -1,38 +1,11 @@
-.vertical-shview{
-    display: none;
-    margin:1% 2% 2% 1%;
-    width: 5%;
-    flex-direction: column;
-}
 .right-bodysec{
     background-color: rgb(251,251,251);
     width: 83%;
 }
-.nav-handlersh-img{
-    transform: rotate(180deg);
-}
-.dashboard-img{
-    margin: 3vh 0vh 0vh 1vh;
-}
-
-.access-rtsimg
-{
-    margin: 3vh 0vh 0vh 1vh;
-} 
-.roles-img
-{
-    margin: 3vh 0vh 0vh 1vh;
-}
- .employee-img{
-    margin: 3vh 0vh 0vh 1vh;
-}
-.nav-handlersh-img{
-    cursor: pointer;
-}
 .right-header{
     display: flex;
     width: 100%;
-    background-image: url(../Assets/bx-search.png);
+    background-image: url(../Assets/bxSearch.png);
     background-repeat: no-repeat;
     background-position-y: 22px;
     background-position-x: 2%;
@@ -47,7 +20,7 @@
     .right-header{
         display: flex;
         width: 100%;
-        background-image: url(../Assets/bx-search.png);
+        background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
         background-position-y: 22px;
         background-position-x: 1%;
@@ -129,7 +102,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     font-family: 'Poppins';
-    margin-right: 2%;
+    width: 100%;
 }
 @media all and (max-width: 1100px) {
     .body-sec{

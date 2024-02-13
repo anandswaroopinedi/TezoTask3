@@ -1,3 +1,4 @@
+//Displaying the shortest nav bar
 function dispShortNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
     let navBar=document.getElementsByClassName("left-bodysec");
@@ -7,13 +8,9 @@ function dispShortNav(){
     shortNavBar[0].style.display="flex";
     rightBodySec[0].style.width="92%";
     var style = formButtons[0].currentStyle;
-    // var margin=parseInt(style.marginLeft.slice(0,2))-3;
-    // console.log(margin);
-    // var k=String(margin)+"%";
-    // console.log(k);
-    // formButtons[0].style.marginLeft=k;
     formButtons[0].style.marginLeft="47%";
 }
+//Displaying the expanded nav bar
 function expandNav(){
     let shortNavBar=document.getElementsByClassName("vertical-shview");
     let rightBodySec=document.getElementsByClassName("right-bodysec");
@@ -24,6 +21,7 @@ function expandNav(){
     rightBodySec[0].style.width="83%";
     formButtons[0].style.marginLeft="53%";
 }
+//Validating the form 
 document.getElementById('myButton').addEventListener('click', function(event) { 
     event.preventDefault(); 
     var flag=0;
@@ -152,10 +150,12 @@ document.getElementById('myButton').addEventListener('click', function(event) {
     }
     
   });
+
+  //To check the image when user fills it and display it to user.
   function checkImage(){
     var profileImg=document.getElementsByClassName('profile-pic');
     var fileName = document.getElementById("profileImg").value;
-    var fileCrctName = "Assets/"+fileName.split('\\').pop(); 
+    var fileCrctName = "../Assets/"+fileName.split('\\').pop(); 
     console.log("Anand");
     console.log(fileCrctName);
     if(fileCrctName)

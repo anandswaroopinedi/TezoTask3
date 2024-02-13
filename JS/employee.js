@@ -1,24 +1,4 @@
-function dispShortNav(){
-    let shortNavBar=document.getElementsByClassName("vertical-shview");
-    let navBar=document.getElementsByClassName("left-bodysec");
-    let rightBodySec=document.getElementsByClassName("right-bodysec");
-    let bodySec=document.getElementsByClassName("body-sec");
-    navBar[0].style.display="none";
-    shortNavBar[0].style.display="flex";
-    rightBodySec[0].style.width="90%";
-    bodySec[0].style.marginRight="0%";
-
-}
-function expandNav(){
-    let shortNavBar=document.getElementsByClassName("vertical-shview");
-    let rightBodySec=document.getElementsByClassName("right-bodysec");
-    shortNavBar[0].style.display="none";
-    let navBar=document.getElementsByClassName("left-bodysec");
-    let bodySec=document.getElementsByClassName("body-sec");
-    navBar[0].style.display="";
-    rightBodySec[0].style.width="83%";
-    bodySec[0].style.marginRight="2%";
-}
+//When user selects header checkbox all the child checkboxes in the table should be selected
 function selectAll()
 {
     let headBox=document.getElementsByClassName("head-check-box");
@@ -47,6 +27,7 @@ function selectAll()
         dltBtn[0].style.cursor="default"
     }
 }
+//Selecting a single checkbox includes wheather head check box is unchecked or not and delete button should be enabled 
 function selectOne()
 {
     let headBox=document.getElementsByClassName("head-check-box");
@@ -81,18 +62,18 @@ function selectOne()
         dltBtn[0].style.cursor="pointer";
     }
 }
-function delete_rows(){
+//To delete the employee information in the table
+function deleteRows(){
     let headBox=document.getElementsByClassName("head-check-box");
     let childBoxes=document.getElementsByClassName("check-box");
     let childclass=document.getElementsByClassName("emp-details");
     let dltBtn=document.getElementsByClassName("delete");
-    if(headBox.checked==1){
+    if(headBox[0].checked==1){
         for(var i=0;i<childclass.length;i++)
         {
             childclass[i].style.display="none";
         }
         headBox[0].checked =0;
-        alert(headBox[0].checked);
     }
     else{
         for(var i=0;i<childclass.length;i++)
@@ -100,11 +81,13 @@ function delete_rows(){
             if(childBoxes[i].checked==1)
                 childclass[i].style.display="none";
         }
+
     }
     dltBtn[0].style.background="#F89191";
     dltBtn[0].style.cursor="default";
 }
-function segregateData(char){
+//Filtering the employee data through starting alphabets
+function filterDataByAlphabet(char){
     localStorage.setItem("key", char);
     var check_char=document.getElementsByClassName("emp-name");
     let childclass=document.getElementsByClassName("emp-details");
@@ -118,11 +101,11 @@ function segregateData(char){
             childclass[i].style.display="";
     }
     button[result-65].style.backgroundColor="#F0F0F0";
-    filter[0].src="Assets/filter-black.svg";
+    filter[0].src="../Assets/filterBlack.svg";
     }
     else
     {
-        filter[0].src="Assets/filter.svg";
+        filter[0].src="../Assets/filter.svg";
     for(var i=0;i<check_char.length;i++)
     {
         if(check_char[i].innerHTML[0].toLowerCase()!=char.toLowerCase())
@@ -139,49 +122,45 @@ function segregateData(char){
     }
 
 }
-
-function addEmployee(){
-    var modal=document.getElementsByClassName("modal");
-    modal[0].style.display="block";
-}
-function addClose(){
-    var modal=document.getElementsByClassName("modal");
-    modal[0].style.display="none";
-}
-window.onclick = function(event) {
-    var modal=document.getElementsByClassName("modal");
-    if (event.target == modal[0]) {
-      modal[0].style.display = "none";
+//Exporting Jsondata to Excel file and making it download to user machine.
+function exportData() {
+    const table = document.getElementById("employeeDataTable");
+    var rows=document.getElementsByClassName("emp-details");
+    var empHead=document.getElementsByClassName("emp-head");
+    var empName=document.getElementsByClassName("emp-name");
+    var empEmail=document.getElementsByClassName("emp-mail");
+    const csvData=[];
+    const row=[],cols=rows[0].querySelectorAll("td,th");
+    console.log(empHead.length)
+    for(var j=0;j<empHead.length;j++)
+        {
+            row.push(empHead[j].innerText);
+            if(j==0)
+            {
+                row.push("EMAIL")
+            }           
+        }
+        csvData.push(row.join(","));
+    for (var i = 0; i < rows.length; i++)
+    {
+        const row=[],cols=rows[i].querySelectorAll("td,th");
+        console.log(cols.length);
+        row.push(empName[i].innerText);
+        row.push(empEmail[i].innerText);
+        for(var j=1;j<cols.length;j++)
+        {
+            row.push(cols[j].innerText);
+        }
+        csvData.push(row.join(","));
     }
+    const blob=new Blob([csvData.join("\n")],{type:"text/csv"});
+    const link=document.createElement("a");
+    link.href=window.URL.createObjectURL(blob);
+    link.download="data.csv";
+    link.click();
   }
-function saveFormData() {
-    const formData = {
-    profileImage: document.getElementById('profile-image').value,
-    employeeName: document.getElementById('employee-name').value,
-    employeeEmail: document.getElementById('employee-email').value,
-    employeeLocation: document.getElementById('employee-location').value,
-    employeeDepartment: document.getElementById('employee-department').value,
-    employeeRole: document.getElementById('employee-role').value,
-    employeeID: document.getElementById('employee-no').value,
-    employmentDate: document.getElementById('joining-date').value
-    };
-    alert(empData.length);
-}
 
-// function 
-// {
-//     fetch('employees.json')
-// .then(response => response.json())
-// .then(data => {
-//     GenerateXlSX(data); 
-// })
-// }
-function export_data(){
-    var table2excel = new Table2Excel();
-    table2excel.export(document.getElementById("employeeDataTable"));
-}
-
-fetch('employees.json')
+fetch('../JSON/employees.json')
 .then(response => response.json())
 .then(data => {
     createTableData(data); 
@@ -193,35 +172,18 @@ var cnt=0;
 var arr=[0,0,0];
 var count=document.getElementsByClassName("count")[0];
 var filterName=document.getElementsByClassName("filter-name")[0];
-document.getElementsByClassName("filter-status")[0].addEventListener('click',()=>{
-    var statusVal=document.getElementsByClassName('filter-status')[0].value;
-    var buttons=document.getElementsByClassName("filter-reset-apply");
-    
-    if(statusVal)
-    {
-        buttons[0].style.display="flex";
-        if(arr[0]<1)
-        {
-            arr[0]+=1;
-            cnt+=1;
-            console.log(arr[0]);
-        }
-    }
-    count.innerHTML=cnt;
-    if(cnt>1)
-    {
-        filterName.innerHTML="Filters";
-    }
-});
-document.getElementsByClassName("filter-location")[0].addEventListener('click',()=>{
-    var statusVal=document.getElementsByClassName("filter-location")[0].value;
+
+//Displaying operation buttons like reset and apply when user selects any 1 of the filter option.
+function dispButtons(index)
+{
+    var statusVal=document.getElementsByClassName("filter-select")[index].value;
     var buttons=document.getElementsByClassName("filter-reset-apply");
     if(statusVal)
     {
         buttons[0].style.display="flex";
-        if(arr[1]<1)
+        if(arr[index]<1)
         {
-            arr[1]+=1;
+            arr[index]+=1;
             cnt+=1;
         }
     }
@@ -230,30 +192,12 @@ document.getElementsByClassName("filter-location")[0].addEventListener('click',(
     {
         filterName.innerHTML="Filters";
     }
-});
-document.getElementsByClassName("filter-department")[0].addEventListener('click',()=>{
-    var statusVal=document.getElementsByClassName('filter-department')[0].value;
-    var buttons=document.getElementsByClassName("filter-reset-apply");
-    if(statusVal)
-    {
-        buttons[0].style.display="flex";
-        if(arr[2]<1)
-        {
-            arr[2]+=1;
-            cnt+=1;
-        }
-    }
-    count.innerHTML=cnt;
-    if(cnt>1)
-    {
-        filterName.innerHTML="Filters";
-    }
-});
+}
+//Creating table through json
 function createTableData(data)
 {
-    
-    
-    data.forEach((emp) => {
+    data.forEach((emp) => 
+    {
         var table=document.getElementById("employeeDataTable");
         var row=document.createElement("tr");
         console.log(emp);
@@ -269,7 +213,7 @@ function createTableData(data)
         empImgDiv.classList.add("emp-image");
         let innerDiv=document.createElement("div");
         let img=document.createElement("img");
-        img.src="Assets/Anand.jpg";
+        img.src="../Assets/Anand.jpg";
         img.classList.add("user-img");
         innerDiv.appendChild(img);
         empImgDiv.appendChild(innerDiv);
@@ -314,6 +258,11 @@ function createTableData(data)
         let status=document.createElement("button");
         status.innerText=emp.status;
         status.classList.add("active-status");
+        if(emp.status=="In Active")
+        {
+            status.style.backgroundColor="#F89191";
+            status.style.color="white";
+        }
         tdata6.appendChild(status);
         row.appendChild(tdata6);
 
@@ -323,10 +272,10 @@ function createTableData(data)
 
         let tdata8=document.createElement("div");
         tdata8.classList.add("ellipsis-menu");
-        tdata8.setAttribute("onclick","toggleMenu(this);");
         let p8=document.createElement("i");
         p8.classList.add("fa");
         p8.classList.add("fa-ellipsis-h");
+        p8.classList.add("ellipsis-charc");
         tdata8.appendChild(p8);
         let innerdiv8=document.createElement("div");
         innerdiv8.classList.add("menu-options");
@@ -349,6 +298,7 @@ function createTableData(data)
         table.appendChild(row);
     });
 }
+//sorting the employee table based on the user condition either asc or desc.
 function sortTable(n,k) 
 {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -425,17 +375,22 @@ function sortTable(n,k)
         }
     }
 }
-function toggleMenu(ellipsisMenu) {
-    const allOptions=document.querySelectorAll('.menu-options');
-    for(var i=0;i<allOptions.length;i++)
-    {
-        allOptions[i].style.display='none';
+//To display menu-options when user clicks on ellipsis present in each row of employee table.
+document.addEventListener('click', function(event) {
+    const ellipsisMenu = document.getElementsByClassName('ellipsis-menu');
+    const menuOptions=document.querySelectorAll('.menu-options');
+    console.log("anand");
+    console.log(event.target);
+    for(var i=0;i<ellipsisMenu.length;i++)
+    if (!ellipsisMenu[i].contains(event.target)) {
+      menuOptions[i].style.display = 'none';
     }
-    const menuOptions = ellipsisMenu.querySelector('.menu-options');
-
-    menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
-}
-function filterByUserInputs(){
+    else{
+        menuOptions[i].style.display = 'block';
+    }
+  });
+  //Filtering the employee table based on the user inputs like department,location,status.
+  function filterByUserInputs(){
     var inpStatus=document.getElementsByClassName("filter-status")[0];
     var inpLocation=document.getElementsByClassName("filter-location")[0];
     var inpDepartment=document.getElementsByClassName("filter-department")[0];
@@ -480,48 +435,3 @@ function filterByUserInputs(){
         }
 
 }
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     displayStoredData();
-// });
-// function displayStoredData(){
-//     var tabBody=document.querySelector('#employeeDataTable tbody');
-//     tabBody.innerHTML='';
-//     alert("klm")
-//     var existingData = [];
-//     alert("an");
-//     try {
-//             var fileContent = localStorage.getItem('formData.json');
-//             alert("anand");
-//             if (fileContent)
-//             {
-//                existingData = JSON.parse(fileContent);
-//                alert("swaroop");
-//             }
-//         }
-//     catch (error)
-//     {
-//         console.error("Error reading existing data:", error);
-//     }
-
-//     existingData.forEach(item => {
-//         var row = tabBody.insertRow();
-//         alert(anand);
-
-//         // Create cells and populate them with data
-//         Object.values(item).forEach(value => {
-//             var cell = row.insertCell();
-//             cell.textContent = value;
-//             alert(value);
-//         });
-//     });
-//     var existingDataString = JSON.stringify(existingData, null, 2);
-
-//     // Display the string in an alert
-//     alert(existingDataString)
-    
-// }
-

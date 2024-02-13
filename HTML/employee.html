@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>Employee Task3</title>
-        <link rel="stylesheet" href="css\vertical_nav.css">
-        <link rel="stylesheet" href="css\horizontal_nav.css">
-        <link rel="stylesheet" href="css\employee.css">
+        <link rel="stylesheet" href="../css/verticalNav.css">
+        <link rel="stylesheet" href="../css/horizontalNav.css">
+        <link rel="stylesheet" href="../css/employee.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     </head>
@@ -13,28 +13,29 @@
         <div class="body-sec">
             <div class="vertical-shview">
                     <div class="nav-handlersh">
-                        <img class="nav-handlersh-img" src="Assets\handle.png" onclick="expandNav()">
+                        <img class="tezo-shortimg" src="../Assets/logoShort.png" onclick="window.location.href = 'employee.html';">
+                        <img class="nav-handlersh-img" src="../Assets/handle.png" onclick="expandNav()">
                     </div>
                     <div class="dashboard-img">
-                        <img  src="Assets/Dashboard.svg">
+                        <img  src="../Assets/Dashboard.svg">
                     </div>
                     <div class="employee-img">
-                        <img src="Assets/Employees.svg">
+                        <img src="../Assets/Employees.svg" onclick="window.location.href = 'employee.html';" >
                     </div>
                     <div class="roles-img">
-                        <img src="Assets/Roles.svg">
+                        <img src="../Assets/Roles.svg" onclick="window.location.href = 'roles.html';">
                     </div>
                     <div class="access-rtsimg">
-                        <img src="Assets/assign user.svg">
+                        <img src="../Assets/assignUser.svg">
                     </div>
             </div>
             <div class="left-bodysec">
                 <div class="nav-top">
                     <div class="logo">
-                        <img src="Assets\TezoLogo.png">
+                        <img src="../Assets/TezoLogo.png">
                     </div>
                     <div class="nav-handler">
-                        <img class="nav-handler-img" src="Assets\handle.png" onclick="dispShortNav()">
+                        <img class="nav-handler-img" src="../Assets\handle.png" onclick="dispShortNav()">
                     </div>
                 </div>
                 <h3 class="nav-head">ALL</h3>
@@ -73,17 +74,20 @@
                         <input type="search" placeholder="Search" class="input-search">
                          </div>
                         <div class="logo-img">
-                            <div><img src="Assets/language.png"></div>
-                            <div><img src="Assets/widget.png"></div>
-                            <div><img src="Assets/mode.png"></div>
-                            <div><img src="Assets/notification.png"></div>
-                            <div><img src="Assets/Anand.jpg" class="person-icon"></div>
+                            <div><img src="../Assets/language.png"></div>
+                            <div><img src="../Assets/widget.png"></div>
+                            <div><img src="../Assets/mode.png"></div>
+                            <div><img src="../Assets/notification.png"></div>
+                            <div class="user-img"><img src="../Assets/Anand.jpg" class="person-icon">
+                            <div class="active-symbol"> 
+                            </div>
+                            </div>
                             <div class="admin-details">
                             <pre class="admin-name">Jhon Abraham</pre>
                             <pre class="admin-role">Admin</pre>
                         </div>
                         <div class="down-arrow">
-                            <img src="Assets\down-arrow.jpg">
+                            <img src="../Assets\downArrow.jpg">
                         </div>
                         </div>
                     </div>
@@ -93,92 +97,92 @@
                         <p class="page-heading-desc">Find all of your company's employee accounts and their associated roles.</p>
                     </div>
                     <div class="accessing-buttons">
-                        <button class="export-button" onclick="export_data()">EXPORT</button>
+                        <button class="export-button" onclick="exportData()">EXPORT</button>
                         <span>&#10010;</span>
                         <button onclick="window.location.href = 'addemployee.html';"  class="add-button">  ADD EMPLOYEE</button>
                     </div>
                 </div>
                 <div class="button-group">
                     <div class="Vector-area">
-                        <img src="Assets/filter-black.svg" class="vector-image">
+                        <img src="../Assets/filterBlack.svg" class="vector-image">
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('A')">A</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('A')">A</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('B')">B</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('B')">B</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('C')">C</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('C')">C</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('D')">D</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('D')">D</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('E')">E</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('E')">E</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('F')">F</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('F')">F</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('G')">G</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('G')">G</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('H')">H</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('H')">H</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('I')">I</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('I')">I</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('J')">J</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('J')">J</button>
                     </div>
                     <div>
-                        <button class="vector-element"onclick="segregateData('K')">K</button>
+                        <button class="vector-element"onclick="filterDataByAlphabet('K')">K</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('L')">L</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('L')">L</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('M')">M</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('M')">M</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('N')">N</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('N')">N</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('O')">O</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('O')">O</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('P')">P</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('P')">P</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('Q')">Q</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('Q')">Q</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('R')">R</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('R')">R</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('S')">S</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('S')">S</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('T')">T</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('T')">T</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('U')">U</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('U')">U</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('V')">V</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('V')">V</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('W')">W</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('W')">W</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('X')">X</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('X')">X</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('Y')">Y</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('Y')">Y</button>
                     </div>
                     <div>
-                        <button class="vector-element" onclick="segregateData('Z')">Z</button>
+                        <button class="vector-element" onclick="filterDataByAlphabet('Z')">Z</button>
                     </div>
                 </div>
                 <div class="filter-div">
@@ -186,14 +190,14 @@
                         <pre class="filter-name">Filter</pre>
                         <p class="count">0</p>
                         <div class="filter-status-div">
-                            <select class="filter-status">
+                            <select class="filter-status filter-select" onclick="dispButtons(0)">
                                 <option value="" selected disabled hidden>Status</option>
                                 <option value="active">Active</option>
                                 <option value="in active">In Active</option>
                             </select>
                         </div>
                         <div class="filter-location-div">
-                            <select class="filter-location">
+                            <select class="filter-location filter-select" onclick="dispButtons(1)">
                                 <option value="" selected disabled hidden>Location</option>
                                 <option value="hyderabad">Hyderabad</option>
                                 <option value="chennai">Chennai</option>
@@ -202,7 +206,7 @@
                             </select>
                         </div>
                         <div class="filter-department-div">
-                            <select class="filter-department">
+                            <select class="filter-department filter-select" onclick="dispButtons(2)">
                                 <option value="" selected disabled hidden>Department</option>
                                 <option value="Product Engg">Product Engg</option>
                                 <option value="HR">HR</option>
@@ -223,16 +227,16 @@
                 <div class="employee-info">
                     <div class="emp-table-icons">
                         <div class="icons-left">
-                            <img src="Assets/arrow-turn left -down.png" class="arrow-image">
-                            <button class="delete" onclick="delete_rows()">Delete</button>
+                            <img src="../Assets/arrowTurnLeftDown.png" class="arrow-image">
+                            <button class="delete" onclick="deleteRows()">Delete</button>
                         </div>
                         <div class="icons-right">
-                            <img src="Assets/table-add.png" class="table-img">
+                            <img src="../Assets/tableAdd.png" class="table-img">
                         </div>
                     </div>
                     <table id="employeeDataTable">
                         <thead>
-                            <tr>
+                            <tr class="emp-details-head">
                                 <th><input type="checkbox" onclick="selectAll()" class="head-check-box"></th>
                                 <th>
                                     <div class="table-header">
@@ -298,14 +302,7 @@
                                     </div>
                                 </th>
                                 <th>
-                                    <div class="ellipsis-menu-header">
                                         <i class="fa fa-ellipsis-h ellipsis-charc"></i>
-                                        <div class="menu-options">
-                                            <div class="menu-option" onclick="viewDetails()">View Details</div>
-                                            <div class="menu-option" onclick="edit()">Edit</div>
-                                            <div class="menu-option" onclick="deleteItem()">Delete</div>
-                                        </div>
-                                    </div>
                                 </th>
                             </tr>
                         </thead>
@@ -313,8 +310,8 @@
                 </div>
             </div>
         </div> 
-        <script src="employee.js"></script>
-        <script src="table2excel.js"></script>
+        <script src="../JS/employee.js"></script>
+        <script src="../JS\navhandler.js"></script>
     </body>
 </html>
 

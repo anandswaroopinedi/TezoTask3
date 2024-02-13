@@ -16,25 +16,40 @@
     width: 5%;
     flex-direction: column;
 }
+.tezo-shortimg{
+    width: 40px;
+    margin-left: -5%;
+}
+.nav-handlersh{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .nav-handlersh-img{
     transform: rotate(180deg);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-left: 30%;
+    margin-top: 7%;
 }
 .dashboard-img{
     margin: 3vh 0vh 0vh 1vh;
+    cursor: pointer;
 }
 
 .access-rtsimg
 {
     margin: 3vh 0vh 0vh 1vh;
+    cursor: pointer;
 } 
 .roles-img
 {
     margin: 3vh 0vh 0vh 1vh;
+    cursor: pointer;
 }
  .employee-img{
     margin: 3vh 0vh 0vh 1vh;
-}
-.nav-handlersh-img{
     cursor: pointer;
 }
 .hamburger{
@@ -113,7 +128,7 @@
     flex-direction: row;
     justify-content: space-between;
     color: #818282;
-    background-image: url(../Assets/assign\ user.svg);
+    background-image: url(../Assets/assignUser.svg);
     padding-left: 20px;
     background-repeat: no-repeat;
     background-size: 20px;

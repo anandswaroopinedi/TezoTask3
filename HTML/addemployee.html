@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>Add Employee</title>
-        <link rel="stylesheet" href="css\vertical_nav.css">
-        <link rel="stylesheet" href="css\horizontal_nav.css">
-        <link rel="stylesheet" href="css\addemployee.css">
+        <link rel="stylesheet" href="../css\verticalNav.css">
+        <link rel="stylesheet" href="../css\horizontalNav.css">
+        <link rel="stylesheet" href="../css\addemployee.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     </head>
@@ -13,28 +13,29 @@
         <div class="body-sec">
             <div class="vertical-shview">
                     <div class="nav-handlersh">
-                        <img class="nav-handlersh-img" src="Assets\handle.png" onclick="expandNav()">
+                        <img class="tezo-shortimg" src="../Assets/logoShort.png" onclick="window.location.href = 'employee.html';">
+                        <img class="nav-handlersh-img" src="../Assets\handle.png" onclick="expandNav()">
                     </div>
                     <div class="dashboard-img">
-                        <img  src="Assets/Dashboard.svg">
+                        <img  src="../Assets/Dashboard.svg">
                     </div>
                     <div class="employee-img">
-                        <img src="Assets/Employees.svg">
+                        <img src="../Assets/Employees.svg" onclick="window.location.href = 'employee.html';">
                     </div>
                     <div class="roles-img">
-                        <img src="Assets/Roles.svg">
+                        <img src="../Assets/Roles.svg" onclick="window.location.href = 'roles.html';">
                     </div>
                     <div class="access-rtsimg">
-                        <img src="Assets/assign user.svg">
+                        <img src="../Assets/assignUser.svg">
                     </div>
             </div>
             <div class="left-bodysec">
                 <div class="nav-top">
                     <div class="logo">
-                        <img src="Assets\TezoLogo.png">
+                        <img src="../Assets\TezoLogo.png">
                     </div>
                     <div class="nav-handler">
-                        <img class="nav-handler-img" src="Assets\handle.png" onclick="dispShortNav()">
+                        <img class="nav-handler-img" src="../Assets\handle.png" onclick="dispShortNav()">
                     </div>
                 </div>
                 <h3 class="nav-head">ALL</h3>
@@ -73,17 +74,20 @@
                         <input type="search" placeholder="Search" class="input-search">
                     </div>
                     <div class="logo-img">
-                        <div><img src="Assets/language.png"></div>
-                        <div><img src="Assets/widget.png"></div>
-                        <div><img src="Assets/mode.png"></div>
-                        <div><img src="Assets/notification.png"></div>
-                        <div><img src="Assets/Anand.jpg" class="person-icon"></div>
+                        <div><img src="../Assets/language.png"></div>
+                        <div><img src="../Assets/widget.png"></div>
+                        <div><img src="../Assets/mode.png"></div>
+                        <div><img src="../Assets/notification.png"></div>
+                        <div class="user-img"><img src="../Assets/Anand.jpg" class="person-icon">
+                            <div class="active-symbol"> 
+                            </div>
+                        </div>
                         <div class="admin-details">
                             <pre class="admin-name">Jhon Abraham</pre>
                             <pre class="admin-role">Admin</pre>
                         </div>
                         <div class="down-arrow">
-                            <img src="Assets\down-arrow.jpg">
+                            <img src="../Assets\downArrow.jpg">
                         </div>
                     </div>
                 </div>
@@ -93,7 +97,7 @@
                         <div class="emp-container">
                             <div class="profile">
                                 <div class="profile-info">
-                                    <img src="Assets/profile.png" alt="profile" class="profile-pic">
+                                    <img src="../Assets/profile.png" alt="profile" class="profile-pic">
                                     <button class="edit-button" onclick="document.getElementById('profileImg').click()">Edit</button>
                                     <input type='file' id="profileImg" accept=".jpg,.png,.bmp"  onchange="checkImage()">
                                 </div>
@@ -108,9 +112,9 @@
                                 <div class="sub-sec">
                                     <div class="inner-sub-sec">
                                         <label for="employee-no">Emp No</label>
-                                        <input type="text" name="employee-no" id="employee-no"  class="form-input" placeholder="Text" >
+                                        <input type="text" name="employee-no" id="employee-no"  class="form-input input-required" placeholder="Text" >
                                         <div class="text-danger-empno">
-                                            <img src="Assets/invalid.png" class="inavalid">
+                                            <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
                                         </div>
                                     </div>
@@ -118,17 +122,17 @@
                                 <div class="sub-sec">
                                     <div class="inner-sub-sec">
                                         <label for="first-name">First Name</label>
-                                        <input type="text" name="first-name" id="first-name" class="form-input" placeholder="Text" >
+                                        <input type="text" name="first-name" id="first-name" class="form-input input-required" placeholder="Text" >
                                         <div class="text-danger-fname">
-                                            <img src="Assets/invalid.png" class="inavalid">
+                                            <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
                                         </div>
                                     </div>
                                     <div class="inner-sub-sec">
                                         <label for="last-name">Last Name</label>
-                                        <input type="text" name="last-name" id="last-name" class="form-input" placeholder="Text" >
+                                        <input type="text" name="last-name" id="last-name" class="form-input input-required" placeholder="Text" >
                                         <div class="text-danger-lname">
-                                            <img src="Assets/invalid.png" class="inavalid">
+                                            <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
                                         </div>
                                     </div>
@@ -140,9 +144,9 @@
                                 <div class="sub-sec1">
                                     <div class="inner-sub-sec1">
                                         <label for="email">Email Id</label>
-                                        <input type="email" name="email" id="email" class="form-input" placeholder="Joe.i@technovert.com" >
+                                        <input type="email" name="email" id="email" class="form-input input-required" placeholder="Joe.i@technovert.com" >
                                         <div class="text-danger-email">
-                                            <img src="Assets/invalid.png" class="inavalid">
+                                            <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
                                         </div>
                                     </div>
@@ -150,7 +154,7 @@
                                         <label for="mob-no">Mobile Number</label>
                                         <input type="tel" name="mob-no" id="mob-no" class="form-input" placeholder="0000000000">
                                         <div class="text-danger-mobno">
-                                            <img src="Assets/invalid.png" class="inavalid">
+                                            <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
                                         </div>
                                     </div>
@@ -161,9 +165,9 @@
                                 <div class="sub-sec">
                                     <div class="inner-sub-sec1">
                                         <label for="joining-date">Joining Date</label>
-                                        <input type="text" name="joining-date" id="joining-date" class="form-input-large" placeholder="12/08/2023" >
+                                        <input type="text" name="joining-date" id="joining-date" class="form-input-large input-required" placeholder="12/08/2023" >
                                         <div class="text-danger-jndate">
-                                            <img src="Assets/invalid.png" class="inavalid1">
+                                            <img src="../Assets/invalid.png" class="inavalid1">
                                             <p class="danger-msg">This field is required</p>
                                         </div>
                                     </div>
@@ -216,7 +220,7 @@
                                 </div>
                                 <div class="sub-sec">
                                     <div class="form-buttons">
-                                        <button class="cancel">Cancel</button>
+                                        <button class="cancel" onclick="window.location.href = 'employee.html';" >Cancel</button>
                                         <button id="myButton" class="add-Employee-button">Add Employee</button>
                                     </div>
                                 </div>
@@ -227,6 +231,6 @@
                 <div id="snackbar">Data Submitted successfully..</div>
             </div>
         </div>
-        <script src="addemployee.js"></script>
+        <script src="../JS\addemployee.js"></script>
     </body>
 </html>

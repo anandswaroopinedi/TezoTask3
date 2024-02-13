@@ -1,38 +1,11 @@
-.vertical-shview{
-    display: none;
-    margin:1% 2% 2% 1%;
-    width: 5%;
-    flex-direction: column;
-}
 .right-bodysec{
     width: 83%;
     background-color: rgb(251,251,251);
 }
-.nav-handlersh-img{
-    transform: rotate(180deg);
-}
-.dashboard-img{
-    margin: 3vh 0vh 0vh 1vh;
-}
-
-.access-rtsimg
-{
-    margin: 3vh 0vh 0vh 1vh;
-} 
-.roles-img
-{
-    margin: 3vh 0vh 0vh 1vh;
-}
- .employee-img{
-    margin: 3vh 0vh 0vh 1vh;
-}
-.nav-handlersh-img{
-    cursor: pointer;
-}
 .right-header{
     display: flex;
     width: 100%;
-    background-image: url(../Assets/bx-search.png);
+    background-image: url(../Assets/bxSearch.png);
     background-repeat: no-repeat;
     background-position-y: 22px;
     background-position-x: 2%;
@@ -47,7 +20,7 @@
     .right-header{
         display: flex;
         width: 100%;
-        background-image: url(../Assets/bx-search.png);
+        background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
         background-position-y: 22px;
         background-position-x: 1%;
@@ -78,7 +51,7 @@
     background-color: #FEF6F6;
     padding: 2%;
     border-radius: 5%;
-    margin:60% 5% 0% 0%;
+    margin:70% 5% 0% 0%;
 }
 @media only screen and (min-width: 1700px) {
     .new-versions{
@@ -127,6 +100,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     font-family: 'Poppins';
+    width: 100%;
     margin-right: 2%;
 }
 @media all and (max-width: 1100px) {
@@ -347,17 +321,17 @@
 }
 #snackbar {
     visibility: hidden;
-    min-width: 250px;
+    max-width: 350px;
     margin-left: -125px;
-    background-color: #333;
-    color: #fff;
+    color: #10e65e;
     text-align: center;
     border-radius: 2px;
     padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
+    position: relative;
+    z-index: 100;
+    top: -70%;
+    left: 80%;
+    /* top: -30%; */
     font-size: 17px;
   }
   
@@ -386,3 +360,11 @@
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
   }
+.input-required{
+    background-image: url("../Assets/asterisk.webp");
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position-x:95%;
+    background-position-y: 50% ;
+    padding-right: 14%;
+}

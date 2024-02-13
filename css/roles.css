@@ -1,7 +1,7 @@
 .right-header{
     display: flex;
     width: 100%;
-    background-image: url(../Assets/bx-search.png);
+    background-image: url(../Assets/bxSearch.png);
     background-repeat: no-repeat;
     background-position-y: 17px;
     background-position-x: 2%;
@@ -16,7 +16,7 @@
     .right-header{
         display: flex;
         width: 100%;
-        background-image: url(../Assets/bx-search.png);
+        background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
         background-position-y: 34px;
         background-position-x: 1%;
@@ -303,4 +303,8 @@ span {
     width: 7vw;
     margin-top: 2%;
     margin-right: -3%;
+}
+.edit-changes{
+    width: 30px;
+    margin-right: -2%;
 }

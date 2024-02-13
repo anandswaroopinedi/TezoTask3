@@ -1,6 +1,7 @@
 .right-bodysec{
     margin-top: -0.1%;
     width: 83%;
+    padding-right: 1%;
 }
 @media only screen and (max-width: 1100px) 
 {
@@ -12,9 +13,15 @@
 .input-search{
     margin-left: 28%;
     border-style: none;
-    color: #f3f4f4;;
+    color: #131414;;
     font-size: 1vw;
-    margin-top: -1%;
+    margin-top: 5%;
+    padding: 3%;
+    border: none;
+    background-color: #ffffff;
+}
+.input-search:focus{
+    outline: none;
 }
 .logo-img{
     display: flex;
@@ -40,8 +47,20 @@
     margin-left: 15%;
 }
 .person-icon{
-    height: 25px;
-    margin-top: 30%;
+    height: 35px;
+    margin-top: 18%;
     border-radius: 50%;
     margin-left: 20%;
+}
+.user-img{
+    position: relative;
+}
+.active-symbol{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgb(62, 195, 62);
+    top:60%;
+    left:90%;
 }

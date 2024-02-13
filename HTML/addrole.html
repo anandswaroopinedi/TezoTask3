@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>Add New Role</title>
-        <link rel="stylesheet" href="css\vertical_nav.css">
-        <link rel="stylesheet" href="css\horizontal_nav.css">
-        <link rel="stylesheet" href="css\addrole.css">
+        <link rel="stylesheet" href="../css\verticalNav.css">
+        <link rel="stylesheet" href="../css\horizontalNav.css">
+        <link rel="stylesheet" href="../css\addrole.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     </head>
@@ -13,28 +13,29 @@
         <div class="body-sec">
             <div class="vertical-shview">
                     <div class="nav-handlersh">
-                        <img class="nav-handlersh-img" src="Assets\handle.png" onclick="expandNav()">
+                        <img class="tezo-shortimg" src="../Assets/logoShort.png" onclick="window.location.href = 'employee.html';">
+                        <img class="nav-handlersh-img" src="../Assets\handle.png" onclick="expandNav()">
                     </div>
                     <div class="dashboard-img">
-                        <img  src="Assets/Dashboard.svg">
+                        <img  src="../Assets/Dashboard.svg">
                     </div>
                     <div class="employee-img">
-                        <img src="Assets/Employees.svg">
+                        <img src="../Assets/Employees.svg" onclick="window.location.href = 'employee.html';">
                     </div>
                     <div class="roles-img">
-                        <img src="Assets/Roles.svg">
+                        <img src="../Assets/Roles.svg" onclick="window.location.href = 'roles.html';">
                     </div>
                     <div class="access-rtsimg">
-                        <img src="Assets/assign user.svg">
+                        <img src="../Assets/assignUser.svg">
                     </div>
             </div>
             <div class="left-bodysec">
                 <div class="nav-top">
                     <div class="logo">
-                        <img src="Assets\TezoLogo.png" >
+                        <img src="../Assets\TezoLogo.png" >
                     </div>
                     <div class="nav-handler">
-                        <img src="Assets\handle.png" onclick="dispShortNav()">
+                        <img src="../Assets\handle.png" onclick="dispShortNav()">
                     </div>
                 </div>
                 <p class="nav-head">ALL</p>
@@ -73,17 +74,20 @@
                         <input type="search" placeholder="Search" class="input-search">
                     </div>
                     <div class="logo-img">
-                        <div><img src="Assets/language.png"></div>
-                        <div><img src="Assets/widget.png"></div>
-                        <div><img src="Assets/mode.png"></div>
-                        <div><img src="Assets/notification.png"></div>
-                        <div><img src="Assets/Anand.jpg" class="person-icon"></div>
+                        <div><img src="../Assets/language.png"></div>
+                        <div><img src="../Assets/widget.png"></div>
+                        <div><img src="../Assets/mode.png"></div>
+                        <div><img src="../Assets/notification.png"></div>
+                        <div class="user-img"><img src="../Assets/Anand.jpg" class="person-icon">
+                            <div class="active-symbol"> 
+                            </div>
+                        </div>
                         <div class="admin-details">
                             <pre class="admin-name">Jhon Abraham</pre>
                             <pre class="admin-role">Admin</pre>
                         </div>
                         <div class="down-arrow">
-                            <img src="Assets\down-arrow.jpg">
+                            <img src="../Assets\downArrow.jpg">
                         </div>
                     </div>
                 </div>
@@ -129,21 +133,21 @@
                                 <div id="checkboxes">
                                     <div class="item1">
                                         <div class="inner-item1">
-                                        <img src="Assets/Anand.jpg" class="profile-pic">
+                                        <img src="../Assets/Anand.jpg" class="profile-pic">
                                         <h4 class="item-name">Jennifer Dsousa</h4>
                                         </div>
                                         <input type="checkbox"  id="checkbox-1" value="Jennifer Dsousa" />
                                     </div>
                                     <div class="item1">
                                         <div class="inner-item1">
-                                        <img src="Assets/Anand.jpg" class="profile-pic">
+                                        <img src="../Assets/Anand.jpg" class="profile-pic">
                                         <h4 class="item-name">Jennifer Dsousa</h4>
                                         </div>
                                         <input type="checkbox"  id="checkbox-1" value="Jennifer Dsousa" />
                                     </div>
                                     <div class="item1">
                                         <div class="inner-item1">
-                                        <img src="Assets/Anand.jpg" class="profile-pic">
+                                        <img src="../Assets/Anand.jpg" class="profile-pic">
                                         <h4 class="item-name">Jennifer Dsousa</h4>
                                         </div>
                                         <input type="checkbox"  id="checkbox-1" value="Jennifer Dsousa" />
@@ -154,7 +158,7 @@
                         <div class="role-item">
                             <div>
                                 <div class="form-buttons">
-                                    <button class="cancel">Cancel</button>
+                                    <button class="cancel" onclick="window.location.href = 'roles.html';" >Cancel</button>
                                     <button id="myButton" class="add-role-button">Add Role</button>
                                 </div>
                             </div>
@@ -163,6 +167,7 @@
                 </div>
             </div>
         </div>
-        <script src="addrole.js"></script>
+        <script src="../JS\addrole.js"></script>
+        <script src="../JS\navhandler.js"></script>
     </body>
 </html>
