@@ -12,27 +12,27 @@
     padding-right: 1%;
     height: 8%;
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1200px) {
     .right-header{
         display: flex;
         width: 100%;
         background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
-        background-position-y: 34px;
+        background-position-y: 20px;
         background-position-x: 1%;
         box-shadow: 1px 2px 5px rgb(219, 217, 217),-1px -1px 1px rgb(219, 217, 217);
         border-radius: 8px;
         align-items: center;
         justify-content: space-between;
         padding-right: 1%;
-        height: 8%;
+        height: auto;
     }
 }
 .nav-roles{
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
-    background-image: url(../Assets/Roles.svg);
+    background-image: url(../Assets/RolesIcon.svg);
     background-repeat: no-repeat;
     background-size: 18px;
     margin-left: 1px;
@@ -44,6 +44,7 @@
     border-radius: 2%;
     color: #fa5a5a;
     padding: 0% 50% 5% 19%;
+    cursor: pointer;
 }
 .new-versions{
     background-color: #FEF6F6;
@@ -63,7 +64,7 @@
     flex-direction: row;
     justify-content: space-between;
     color: #111112;
-    background-image: url(../Assets/Employees.svg);
+    background-image: url(../Assets/EmployeesIcon.svg);
     padding-left: 20px;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -72,6 +73,7 @@
     background-position-y:18px ;
     border-style: none;
     align-items: center;
+    cursor: pointer;
 }
 .nav-item-roles{
     display: flex;
@@ -94,15 +96,15 @@
     padding-right: 1%;
     margin-right: 2%;
 }
-@media all and (max-width: 1000px) {
+@media all and (max-width: 1200px) {
     .body-sec{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         font-family: 'Poppins';
         width: 100%;
-        padding-right: 8%;
-        margin: 0% 6% 0% 6%;
+        padding-right: 3%;
+        margin: 0% 0% 0% 0%;
     }
 }
 .right-bodysec-header{
@@ -130,6 +132,7 @@ span {
     color:white;
     position: relative;
     left: 33%;
+    cursor: pointer;
   }
 .add-button{
     background-color: #F44848;

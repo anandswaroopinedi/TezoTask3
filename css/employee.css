@@ -42,13 +42,14 @@
     border-radius: 2%;
     color: #fa5a5a;
     padding: 0% 30% 0% 18%;
+    cursor: pointer;
 }
 
 .new-versions{
     background-color: #FEF6F6;
     padding: 2%;
     border-radius: 5%;
-    margin:265% 5% 0% 0%;
+    margin:70% 5% 0% 0%;
 }
 @media only screen and (min-width: 1700px) {
     .new-versions{
@@ -85,13 +86,15 @@
     background-position-y:15px ;
     border-style: none;
     align-items: center;
-
+    cursor: pointer;
 }
 
 .details{
     padding-right: 50%;
 }
-
+body{
+    height: auto;
+}
 .body-sec{
     display: flex;
     flex-direction: row;
@@ -106,7 +109,8 @@
         flex-direction: row;
         flex-wrap: wrap;
         font-family: 'Poppins';
-        margin: 0% 6% 0% 6%;
+        margin: 0% 0% 0% 0%;
+        width: 100%;
     }
 }
 .right-bodysec-header{
@@ -145,6 +149,7 @@ span {
     color:white;
     position: relative;
     left: 17%;
+    cursor: pointer;
   }
 .add-button{
     background-color: #F44848;
@@ -176,50 +181,6 @@ span {
     text-decoration: none;
     cursor: pointer;
   }
-form {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-label {
-    display: block;
-    margin-bottom: 8px;
-}
-
-.form-input{
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
-.form-emp-image{
-    display: flex;
-    align-items: center;
-}
-.form-emp-image img{
-    border-radius: 50%;
-    margin-right: 15px;
-}
-.form-user-details {
-    flex-grow: 1;
-}
-#joining-date{
-    cursor: pointer;
-}
-#profile-image{
-    cursor: pointer;
-}
-.submit{
-    background-color: green;
-    cursor: pointer;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-}
 .button-group{
     display: flex;
     flex-direction: row;
@@ -350,7 +311,6 @@ label {
 .employee-info{
     display: flex;
     flex-direction: column;
-    height: 77%;
     width: 100%;
     box-shadow: 1px 2px 5px rgb(171, 169, 169);
     border-radius: 7px;
@@ -481,7 +441,7 @@ tbody{
 .menu-options {
     position: absolute;
     top: 2vw;
-    left: -2vw;
+    left: -2.2vw;
     background-color: #fff;
     box-shadow: 5px 5px 10px rgba(215, 15, 15, 0.1);
     display: none;

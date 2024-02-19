@@ -6,7 +6,7 @@ function dispShortNav(){
     var formButtons=document.getElementsByClassName("form-buttons");
     navBar[0].style.display="none";
     shortNavBar[0].style.display="flex";
-    rightBodySec[0].style.width="92%";
+    rightBodySec[0].style.width="93%";
     var style = formButtons[0].currentStyle;
     formButtons[0].style.marginLeft="47%";
 }
@@ -22,22 +22,10 @@ function expandNav(){
     formButtons[0].style.marginLeft="53%";
 }
 //Validating the form 
-document.getElementById('myButton').addEventListener('click', function(event) { 
-    event.preventDefault(); 
-    var flag=0;
-    var errMsg=document.getElementsByClassName("text-danger-empno");
-    var input=document.getElementsByClassName("form-input");
-    var empid=document.getElementById("employee-no").value;
-    if(empid=="")
-    {
-        errMsg[0].style.display="flex";
-        input[0].style.border="3px solid red";
-        flag=1;
-    }
-    else{
-        errMsg[0].style.display="none";
-        input[0].style.border="1px solid black";
-    }
+var flag=0;
+var input=document.getElementsByClassName("form-input");
+function checkFname(k)
+{
     var errMsg=document.getElementsByClassName("text-danger-fname");
     var fname=document.getElementById("first-name").value;
     if(fname=="")
@@ -45,11 +33,37 @@ document.getElementById('myButton').addEventListener('click', function(event) {
         errMsg[0].style.display="flex";
         input[1].style.border="3px solid red";
         flag=1;
+        let text=document.getElementsByClassName("danger-msg")[1];
+            text.innerText="This field is required";
     }
     else{
-        errMsg[0].style.display="none";
-        input[1].style.border="1px solid black";
+        var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
+        if(!regName.test(fname))
+        {
+            let text=document.getElementsByClassName("danger-msg")[1];
+            text.innerText="Use only alphabets";
+            errMsg[0].style.display="flex";
+            input[1].style.border="3px solid red";
+            flag=1;
+        }
+        else{
+            flag=0;
+            if(k==0)
+            {
+                errMsg[0].style.display="none";
+                input[1].style.border="3px solid #5FA5FF";
+                input[1].style.outline="none";
+                
+            }
+            else{
+                errMsg[0].style.display="none";
+                input[1].style.border="1px solid black";
+            }
+        }
     }
+}
+function checkLname(k)
+{
     var errMsg=document.getElementsByClassName("text-danger-lname");
     var lname=document.getElementById("last-name").value;
     if(lname=="")
@@ -57,11 +71,74 @@ document.getElementById('myButton').addEventListener('click', function(event) {
         errMsg[0].style.display="flex";
         input[2].style.border="3px solid red";
         flag=1;
+        let text=document.getElementsByClassName("danger-msg")[2];
+        text.innerText="This field is required";
     }
     else{
-        errMsg[0].style.display="none";
-        input[2].style.border="1px solid black";
+        var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
+        if(!regName.test(lname))
+        {
+            let text=document.getElementsByClassName("danger-msg")[2];
+            text.innerText="Use only alphabets";
+            errMsg[0].style.display="flex";
+            input[2].style.border="3px solid red";
+            flag=1;
+        }
+        else{
+            flag=0;
+            if(k==0)
+            {
+                errMsg[0].style.display="none";
+                input[2].style.border="3px solid #5FA5FF";
+                input[2].style.outline="none";
+                
+            }
+            else{
+                errMsg[0].style.display="none";
+                input[2].style.border="1px solid black";
+            }
+        }
     }
+}
+function checkEmpNo(k)
+{
+    var errMsg=document.getElementsByClassName("text-danger-empno");
+    var empid=document.getElementById("employee-no").value;
+    if(empid=="")
+    {
+        errMsg[0].style.display="flex";
+        input[0].style.border="3px solid red";
+        flag=1;
+        let text=document.getElementsByClassName("danger-msg")[0];
+        text.innerText="This field is required";
+    }
+    else{
+        if(!/^[A-Za-z0-9]*$/.test(empid))
+        {
+            let text=document.getElementsByClassName("danger-msg")[0];
+            text.innerText="Use only alphabets and numbers";
+            errMsg[0].style.display="flex";
+            input[0].style.border="3px solid red";
+            flag=1;
+        }
+        else{
+        flag=0;
+        if(k==0)
+        {
+            errMsg[0].style.display="none";
+            input[0].style.border="3px solid #5FA5FF";
+            input[0].style.outline="none";
+            
+        }
+        else{
+            errMsg[0].style.display="none";
+            input[0].style.border="1px solid black";
+        }
+        }
+    }
+}
+function checkEmail(k)
+{
     var errMsg=document.getElementsByClassName("text-danger-email");
     var email=document.getElementById("email").value;
     if(email=="")
@@ -69,15 +146,73 @@ document.getElementById('myButton').addEventListener('click', function(event) {
         errMsg[0].style.display="flex";
         input[4].style.border="3px solid red";
         flag=1;
+        let text=document.getElementsByClassName("danger-msg")[3];
+        text.innerText="This field is required";
+    }
+    else{
+        var regName = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!regName.test(email)) {
+            let text=document.getElementsByClassName("danger-msg")[3];
+            text.innerText="Fill the email correctly";
+            errMsg[0].style.display="flex";
+            input[4].style.border="3px solid red";
+            flag=1;
+        }
+        else{
+        flag=0;
+            if(k==0)
+            {
+                errMsg[0].style.display="none";
+                input[4].style.border="3px solid #5FA5FF";
+                input[4].style.outline="none";
+                
+            }
+            else{
+                errMsg[0].style.display="none";
+                input[4].style.border="1px solid black";
+            }
+        }
+    }
+}
+function checkMobNo()
+{
+    var errMsg=document.getElementsByClassName("text-danger-mobno");
+    var mobno=document.getElementById("mob-no").value;
+    if(mobno && !/^\d{10}$/.test(mobno))
+    {
+        let text=document.getElementsByClassName("danger-msg")[4];
+        text.innerText="use only numbers and length should be 10";
+        errMsg[0].style.display="flex";
+        input[5].style.border="3px solid red";
     }
     else{
         errMsg[0].style.display="none";
-        input[4].style.border="1px solid black";
+        input[5].style.border="1px solid black";
     }
+}
+class emp{
+    constructor(employeeName,employeeEmail,location,department,role,empNo,status,joinDt)
+    {
+        this.employeeName=employeeName;
+        this.employeeEmail=employeeEmail;
+        this.location=location;
+        this.department=department;
+        this.role=role;
+        this.empNo=empNo;
+        this.status=status;
+        this.joinDt=joinDt;
+    }
+}
+document.getElementById('myButton').addEventListener('click', function(event) { 
+    event.preventDefault(); 
+    checkFname(0);
+    checkLname(0);
+    checkEmpNo(0);
+    checkEmail(0);
     var input1=document.getElementsByClassName("form-input-large");
     var errMsgJnDate=document.getElementsByClassName("text-danger-jndate");
     var joinDt=document.getElementById("joining-date").value;
-    if(lname=="")
+    if(joinDt=="")
     {
         errMsgJnDate[0].style.display="flex";
         input1[0].style.border="3px solid red";
@@ -87,7 +222,6 @@ document.getElementById('myButton').addEventListener('click', function(event) {
         errMsgJnDate[0].style.display="none";
         input1[0].style.border="1px solid black";
     }
-
     var edit=document.getElementsByClassName("edit-button");
     var container=document.getElementsByClassName("emp-container");
     var errMsg=document.getElementsByClassName("text-danger-img");
@@ -96,22 +230,18 @@ document.getElementById('myButton').addEventListener('click', function(event) {
     var allowedExtensions = new Array("jpg","png","gif");
     var formButtons=document.getElementsByClassName("form-buttons");
     var newVersion=document.getElementsByClassName("new-versions");
-    console.log(fileName);
-    console.log("swaroop");
     if(fileName===undefined)
-    {   console.log("Anand");
+    {   
         container[0].style.flexDirection="column";
         errMsg[0].style.display="flex";
         empInf[0].style.marginTop="4%";
         edit[0].style.display="none";
         formButtons[0].style.position="relative";
         formButtons[0].style.left="50%";
-        console.log("swa");
         flag=1;
     }
     else{
         var file_extension = fileName.split('.').pop(); 
-        console.log(file_extension);
         var temp=0;
         for(var i = 0; i < allowedExtensions.length; i++)
         {
@@ -123,7 +253,6 @@ document.getElementById('myButton').addEventListener('click', function(event) {
                 edit[0].style.display="";
                 temp=1;
                 formButtons[0].style.marginLeft="53%";
-                newVersion[0].style.margin="120% 5% 0% 0%";
                 break;
             }
         }
@@ -134,7 +263,6 @@ document.getElementById('myButton').addEventListener('click', function(event) {
             empInf[0].style.marginTop="4%";
             edit[0].style.display="none";
             formButtons[0].style.marginLeft="90%";
-            newVersion[0].style.margin="160% 5% 0% 0%"
             flag=1;
         }
     }
@@ -142,8 +270,23 @@ document.getElementById('myButton').addEventListener('click', function(event) {
     {
         var x = document.getElementById("snackbar");
         x.className = "show";
+        var email=document.getElementById("email").value;
+        var empid=document.getElementById("employee-no").value;
+        var lname=document.getElementById("last-name").value;
+        var fname=document.getElementById("first-name").value;
+        var role=document.getElementById("job-title").value;
+        var location=document.getElementById("location").value;
+        var dept=document.getElementById("department").value;
+        var fileName = document.getElementById("profileImg");
+        var jdt=joinDt.substring(8,10)+"/"+joinDt.substring(5,7)+"/"+joinDt.substring(0,4);
+        var newEmp=new emp(fname+" "+lname,email,location,dept,role,empid,"Active",jdt);
+        var data=localStorage.getItem("data");
+        data=JSON.parse(data);
+        
+        data.push(newEmp);
+        localStorage.setItem("data",JSON.stringify(data));
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-        setTimeout(function(){ window.location.reload();}, 1000);
+        setTimeout(function(){ window.location.href="employee.html";}, 1000);
     }
     else{
         console.log("Unsuccesfull attempt");
@@ -151,32 +294,26 @@ document.getElementById('myButton').addEventListener('click', function(event) {
     
   });
 
-  //To check the image when user fills it and display it to user.
-  function checkImage(){
+//To check the image when user fills it and display it to user.
+function checkImage(){
     var profileImg=document.getElementsByClassName('profile-pic');
     var fileName = document.getElementById("profileImg").value;
     var fileCrctName = "../Assets/"+fileName.split('\\').pop(); 
-    console.log("Anand");
-    console.log(fileCrctName);
     if(fileCrctName)
     {
         profileImg[0].src=fileCrctName;
-        console.log(profileImg[0].src);
     }
-  }
-  var input=document.getElementsByClassName("form-input");
-  var input1=document.getElementsByClassName("form-input-large");
-  document.getElementById("email").onfocus= function(){
+}
+var input=document.getElementsByClassName("form-input");
+var input1=document.getElementsByClassName("form-input-large");
+document.getElementById("email").onfocus= function(){
     var errMsg=document.getElementsByClassName("text-danger-email");
     input[4].style.border="3px solid #5FA5FF";
     input[4].style.outline="none";
     errMsg[0].style.display="none";
 };
 document.getElementById("email").onblur= function(){
-    var errMsg=document.getElementsByClassName("text-danger-email");
-    input[4].style.border="1px solid black";
-    input[4].style.outline="none";
-    errMsg[0].style.display="none";
+    checkEmail(1);
 };
   document.getElementById("first-name").onfocus= function(){
     var errMsg=document.getElementsByClassName("text-danger-fname");
@@ -185,10 +322,7 @@ document.getElementById("email").onblur= function(){
     errMsg[0].style.display="none";
 };
 document.getElementById("first-name").onblur= function(){
-    var errMsg=document.getElementsByClassName("text-danger-fname");
-    input[1].style.border="1px solid black";
-    input[1].style.outline="none";
-    errMsg[0].style.display="none";
+    checkFname(1);
 };
 document.getElementById("last-name").onfocus= function(){
     var errMsg=document.getElementsByClassName("text-danger-lname");
@@ -197,10 +331,7 @@ document.getElementById("last-name").onfocus= function(){
     errMsg[0].style.display="none";
 };
 document.getElementById("last-name").onblur= function(){
-    var errMsg=document.getElementsByClassName("text-danger-lname");
-    input[2].style.border="1px solid black";
-    input[2].style.outline="none";
-    errMsg[0].style.display="none";
+    checkLname(1);
 };
 document.getElementById("employee-no").onfocus= function(){
     var errMsg=document.getElementsByClassName("text-danger-empno");
@@ -209,10 +340,7 @@ document.getElementById("employee-no").onfocus= function(){
     errMsg[0].style.display="none";
 };
 document.getElementById("employee-no").onblur= function(){
-    var errMsg=document.getElementsByClassName("text-danger-empno");
-    input[0].style.border="1px solid black";
-    input[0].style.outline="none";
-    errMsg[0].style.display="none";
+    checkEmpNo(1);
 };
 document.getElementById("joining-date").onfocus= function(){
     var errMsgJnDate=document.getElementsByClassName("text-danger-jndate");
@@ -222,7 +350,15 @@ document.getElementById("joining-date").onfocus= function(){
 };
 document.getElementById("joining-date").onblur= function(){
     var errMsgJnDate=document.getElementsByClassName("text-danger-jndate");
-    errMsgJnDate[0].style.display="none";
-    input1[0].style.border="1px solid black";
-    input1[0].style.outline="none";
+    var joinDt=document.getElementById("joining-date").value;
+    if(joinDt=="")
+    {
+        errMsgJnDate[0].style.display="flex";
+        input1[0].style.border="3px solid red";
+        flag=1;
+    }
+    else{
+        errMsgJnDate[0].style.display="none";
+        input1[0].style.border="1px solid black";
+    }
 };

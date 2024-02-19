@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Add Employee</title>
+        
         <link rel="stylesheet" href="../css\verticalNav.css">
         <link rel="stylesheet" href="../css\horizontalNav.css">
         <link rel="stylesheet" href="../css\addemployee.css">
@@ -9,7 +10,6 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     </head>
     <body>
-        <div class="hamburger"><a><i class="fa fa-bars"></i></a></div>
         <div class="body-sec">
             <div class="vertical-shview">
                     <div class="nav-handlersh">
@@ -43,14 +43,14 @@
                     <a href="#" class="nav-item">Dashboard</a>
                 </div>
                 <div class="nav-item-emp">
-                    <div class="nav-employee">
+                    <div class="nav-employee" onclick="window.location.href = 'employee.html';">
                         <a href="employee.html" class="emp-nav-item">Employees</a>
                     </div>
                     <div class="emp-decorator"></div>
                 </div>
                 <div>
                     <pre class="nav-head">ROLE/USER MANAGEMENT</pre>
-                    <div class="nav-roles">
+                    <div class="nav-roles" onclick="window.location.href = 'roles.html';">
                         <a href="roles.html" class="nav-item">Roles</a>
                         <i class="fa fa-angle-right" style="font-size:  20px;padding-right: 22%;padding-top: 7%;"></i>
                     </div>
@@ -112,7 +112,7 @@
                                 <div class="sub-sec">
                                     <div class="inner-sub-sec">
                                         <label for="employee-no">Emp No</label>
-                                        <input type="text" name="employee-no" id="employee-no"  class="form-input input-required" placeholder="Text" >
+                                        <input type="text" name="employee-no" id="employee-no"  class="form-input input-required" placeholder="Text(TZ002030)" onkeyup="checkEmpNo(0)">
                                         <div class="text-danger-empno">
                                             <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
@@ -122,7 +122,7 @@
                                 <div class="sub-sec">
                                     <div class="inner-sub-sec">
                                         <label for="first-name">First Name</label>
-                                        <input type="text" name="first-name" id="first-name" class="form-input input-required" placeholder="Text" >
+                                        <input type="text" name="first-name" id="first-name" class="form-input input-required" placeholder="Text" onkeyup="checkFname(0)">
                                         <div class="text-danger-fname">
                                             <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
@@ -130,7 +130,7 @@
                                     </div>
                                     <div class="inner-sub-sec">
                                         <label for="last-name">Last Name</label>
-                                        <input type="text" name="last-name" id="last-name" class="form-input input-required" placeholder="Text" >
+                                        <input type="text" name="last-name" id="last-name" class="form-input input-required" placeholder="Text" onkeyup="checkLname(0)" >
                                         <div class="text-danger-lname">
                                             <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
@@ -144,7 +144,7 @@
                                 <div class="sub-sec1">
                                     <div class="inner-sub-sec1">
                                         <label for="email">Email Id</label>
-                                        <input type="email" name="email" id="email" class="form-input input-required" placeholder="Joe.i@technovert.com" >
+                                        <input type="email" name="email" id="email" class="form-input input-required" placeholder="Joe.i@technovert.com" onkeyup="checkEmail(0)">
                                         <div class="text-danger-email">
                                             <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="inner-sub-sec">
                                         <label for="mob-no">Mobile Number</label>
-                                        <input type="tel" name="mob-no" id="mob-no" class="form-input" placeholder="0000000000">
+                                        <input type="tel" name="mob-no" id="mob-no" class="form-input" maxlength="10" placeholder="0000000000" onkeyup="checkMobNo()">
                                         <div class="text-danger-mobno">
                                             <img src="../Assets/invalid.png" class="inavalid">
                                             <p class="danger-msg">This field is required</p>
@@ -165,7 +165,7 @@
                                 <div class="sub-sec">
                                     <div class="inner-sub-sec1">
                                         <label for="joining-date">Joining Date</label>
-                                        <input type="text" name="joining-date" id="joining-date" class="form-input-large input-required" placeholder="12/08/2023" >
+                                        <input type="text" onclick="(this.type='date')" name="joining-date" id="joining-date" class="form-input-large input-required" placeholder="12/08/2023" >
                                         <div class="text-danger-jndate">
                                             <img src="../Assets/invalid.png" class="inavalid1">
                                             <p class="danger-msg">This field is required</p>
@@ -177,6 +177,7 @@
                                             <option value="Hyderabad">Hyderabad</option>
                                             <option value="Bangalore">Bangalore</option>
                                             <option value="Chennai">Chennai</option>
+                                            <option value="Guntur">Guntur</option>
                                         </select>
                                     </div>
                                 </div>
@@ -184,15 +185,16 @@
                                     <div class="inner-sub-sec">
                                         <label for="job-title">Job Title</label>
                                         <select name="job-title" id="job-title" class="selection">
-                                            <option value="UX Designer">UX Designer</option>
+                                            <option value="Architect">Architect</option>
                                             <option value="Full Stack Developer">Full Stack Developer</option>
-                                            <option value="Quality Analyst">Quality Analyst</option>
+                                            <option value="Sales specialist">Sales specialist</option>
+                                            <option value="Project Manager">Project Manager</option>
                                         </select>
                                     </div>
                                     <div class="inner-sub-sec">
                                         <label for="department">Department</label>
                                         <select name="department" id="department" class="selection">
-                                            <option value="UI/UX">UI/UX</option>
+                                            <option value="	Sales">	Sales</option>
                                             <option value="Prod Engg">Prod Engg</option>
                                             <option value="HR">HR</option>
                                         </select>
@@ -232,5 +234,6 @@
             </div>
         </div>
         <script src="../JS\addemployee.js"></script>
+        <script src="https://umd.cdn.pika.dev/objectmodel/v4"></script>
     </body>
 </html>

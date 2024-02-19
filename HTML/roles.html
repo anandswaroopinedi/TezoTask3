@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Roles</title>
+        
         <link rel="stylesheet" href="../css\verticalNav.css">
         <link rel="stylesheet" href="../css\horizontalNav.css">
         <link rel="stylesheet" href="../css\roles.css">
@@ -9,7 +10,6 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     </head>
     <body>
-        <div class="hamburger"><a><i class="fa fa-bars"></i></a></div>
         <div class="body-sec">
             <div class="vertical-shview">
                     <div class="nav-handlersh">
@@ -20,10 +20,10 @@
                         <img  src="../Assets/Dashboard.svg">
                     </div>
                     <div class="employee-img">
-                        <img src="../Assets/Employees.svg" onclick="window.location.href = 'employee.html';">
+                        <img src="../Assets/EmployeesIcon.svg" onclick="window.location.href = 'employee.html';">
                     </div>
                     <div class="roles-img">
-                        <img src="../Assets/Roles.svg" onclick="window.location.href = 'roles.html';">
+                        <img src="../Assets/RolesIcon.svg" onclick="window.location.href = 'roles.html';">
                     </div>
                     <div class="access-rtsimg">
                         <img src="../Assets/assignUser.svg">
@@ -42,13 +42,13 @@
                 <div class="nav">
                     <a href="#" class="nav-item">Dashboard</a>
                 </div>
-                <div class="nav-employee">
+                <div class="nav-employee" onclick="window.location.href = 'employee.html';">
                     <a href="employee.html" class="nav-item">Employees</a>
                 </div>
                 <div>
                     <pre class="nav-head">ROLE/USER MANAGEMENT</pre>
                     <div class="nav-item-roles">
-                        <div class="nav-roles">
+                        <div class="nav-roles" onclick="window.location.href = 'roles.html';">
                             <a href="#" class="role-nav-item">Roles</a>
                             <i class="fa fa-angle-right" style="font-size:  20px;padding-left: 220%;padding-top: 29%;"></i>
                         </div>
@@ -97,7 +97,7 @@
                         <p class="page-heading-desc">All the roles are configured here.</p>
                     </div>
                     <div class="accessing-buttons">
-                        <span>&#10010;</span>
+                        <span onclick="window.location.href = 'addrole.html';">&#10010;</span>
                         <button class="add-button" onclick="window.location.href = 'addrole.html';">ADD ROLE</button>
                     </div>
                 </div>
@@ -105,8 +105,20 @@
                     <div class="operations-left-bts">
                         <pre>Filter</pre>
                         <img src="../Assets/filter.svg">
-                        <select><option>Department</option></select>
-                        <select><option>Location</option></select>                       
+                        <select>
+                            <option value="" selected disabled hidden>Department</option>
+                            <option value="Product Engg">Product Engg</option>
+                            <option value="HR">HR</option>
+                            <option value="sales">Sales</option>
+                            <option value="Programming">Programming</option>
+                        </select>
+                        <select>
+                            <option value="" selected disabled hidden>Location</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="guntur">Guntur</option>
+                            <option value="vijayawada">Vijayawada</option>
+                        </select>                       
                     </div>
                     <div class="operations-right-bts">
                         <button class="reset">Reset</button>
@@ -143,7 +155,7 @@
                         </div>
                         <div class="role-particular-subsec">
                             <div></div>
-                            <a href="role_details.html" class="view-emp">View all Employees</a>
+                            <a href="roleDetails.html" class="view-emp">View all Employees</a>
                         </div>
                     </div>
                     <div class="role-particular">
@@ -175,7 +187,7 @@
                         </div>
                         <div class="role-particular-subsec">
                             <div></div>
-                            <a href="role_details.html" class="view-emp">View all Employees</a>
+                            <a href="roleDetails.html" class="view-emp">View all Employees</a>
                         </div>
                     </div>
                     <div class="role-particular">
@@ -207,7 +219,7 @@
                         </div>
                         <div class="role-particular-subsec">
                             <div></div>
-                            <a href="role_details.html" class="view-emp">View all Employees</a>
+                            <a href="roleDetails.html" class="view-emp">View all Employees</a>
                         </div>
                     </div>
                     <div class="role-particular">
@@ -239,7 +251,7 @@
                         </div>
                         <div class="role-particular-subsec">
                             <div></div>
-                            <a href="role_details.html" class="view-emp">View all Employees</a>
+                            <a href="roleDetails.html" class="view-emp">View all Employees</a>
                         </div>
                     </div>
                     <div class="role-particular">
@@ -271,7 +283,7 @@
                         </div>
                         <div class="role-particular-subsec">
                             <div></div>
-                            <a href="role_details.html" class="view-emp">View all Employees</a>
+                            <a href="roleDetails.html" class="view-emp">View all Employees</a>
                         </div>
                     </div>
                     <div class="role-particular">
@@ -303,7 +315,7 @@
                         </div>
                         <div class="role-particular-subsec">
                             <div></div>
-                            <a href="role_details.html" class="view-emp">View all Employees</a>
+                            <a href="roleDetails.html" class="view-emp">View all Employees</a>
                         </div>
                     </div>
                 </div>

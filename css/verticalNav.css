@@ -1,9 +1,15 @@
 *{
     box-sizing: border-box ;
 }
-
+.tezo-shortimg{
+    cursor: pointer;
+}
 .left-bodysec{
     width: 17%;
+    position: sticky;
+    top: 0;
+    height: 420px;
+    /* overflow: ; */
 }
 @media only screen and (max-width: 1100px) {
     .left-bodysec{
@@ -12,9 +18,17 @@
 }
 .vertical-shview{
     display: none;
-    margin:1% 2% 2% 1%;
+    margin:1% 1% 1% 1%;
     width: 5%;
     flex-direction: column;
+}
+@media only screen and (max-width: 1100px) {
+    .vertical-shview{
+        display: block;
+        margin:1% 2% 2% 1%;
+        width: 5%;
+        flex-direction: column;
+    }
 }
 .tezo-shortimg{
     width: 40px;
@@ -32,6 +46,11 @@
     height: 30px;
     margin-left: 30%;
     margin-top: 7%;
+}
+@media only screen and (max-width: 1100px) {
+    .nav-handlersh-img{
+        display: none;
+    }
 }
 .dashboard-img{
     margin: 3vh 0vh 0vh 1vh;
@@ -51,17 +70,6 @@
  .employee-img{
     margin: 3vh 0vh 0vh 1vh;
     cursor: pointer;
-}
-.hamburger{
-    display: none;
-}
-@media only screen and (max-width: 1100px) {
-    .hamburger{
-        display: block;
-        width: 45px;
-        height:20px;
-        margin: 3%;
-    }
 }
 .nav-top{
     display: flex;

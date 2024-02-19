@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Roles-Details</title>
+        
         <link rel="stylesheet" href="../css\verticalNav.css">
         <link rel="stylesheet" href="../css\horizontalNav.css">
         <link rel="stylesheet" href="../css\roleDetails.css">
@@ -9,15 +10,32 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     </head>
     <body>
-        <div class="hamburger"><a><i class="fa fa-bars"></i></a></div>
         <div class="body-sec">
+            <div class="vertical-shview">
+                <div class="nav-handlersh">
+                    <img class="tezo-shortimg" src="../Assets/logoShort.png" onclick="window.location.href = 'employee.html';">
+                    <img class="nav-handlersh-img" src="../Assets/handle.png" onclick="expandNav()">
+                </div>
+                <div class="dashboard-img">
+                    <img  src="../Assets/Dashboard.svg">
+                </div>
+                <div class="employee-img">
+                    <img src="../Assets/EmployeesIcon.svg" onclick="window.location.href = 'employee.html';" >
+                </div>
+                <div class="roles-img">
+                    <img src="../Assets/Roles.svg" onclick="window.location.href = 'roles.html';">
+                </div>
+                <div class="access-rtsimg">
+                    <img src="../Assets/assignUser.svg">
+                </div>
+            </div>
             <div class="left-bodysec">
                 <div class="nav-top">
                     <div class="logo">
                         <img src="../Assets\TezoLogo.png">
                     </div>
                     <div class="nav-handler">
-                        <img src="../Assets\handle.png">
+                        <img src="../Assets\handle.png" onclick="dispShortNav()">
                     </div>
                 </div>
                 <h3 class="nav-head">ALL</h3>

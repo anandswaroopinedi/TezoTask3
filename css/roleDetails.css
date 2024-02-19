@@ -18,14 +18,14 @@
         width: 100%;
         background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
-        background-position-y: 32px;
+        background-position-y: 22px;
         background-position-x: 1%;
         box-shadow: 1px 2px 5px rgb(219, 217, 217),-1px -1px 1px rgb(219, 217, 217);
         border-radius: 8px;
         align-items: center;
         justify-content: space-between;
         padding-right: 1%;
-        height: 8%;
+        height: 60px;
     }
 }
 .new-versions{
@@ -113,7 +113,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         font-family: 'Poppins';
-        margin: 0% 6% 0% 6%;
+        margin: 0% 0% 0% 0%;
     }
 }
 .right-bodysec-header{

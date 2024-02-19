@@ -1,4 +1,20 @@
+
 //When user selects header checkbox all the child checkboxes in the table should be selected
+let empDetails=document.getElementsByClassName("emp-details");
+if(!localStorage.getItem('data'))
+{
+  fetch('../JSON/employees.json')
+  .then(response => response.json())
+  .then(data => {
+      localStorage.clear();
+      localStorage.setItem("data",JSON.stringify(data));
+  })
+  .catch(error => {
+      console.error('Error fetching JSON file:', error);
+  });
+  location.reload(true);
+//   window.location.href="employee.html";
+}
 function selectAll()
 {
     let headBox=document.getElementsByClassName("head-check-box");
@@ -64,31 +80,41 @@ function selectOne()
 }
 //To delete the employee information in the table
 function deleteRows(){
+    var data=localStorage.getItem("data");
+    data=JSON.parse(data);
     let headBox=document.getElementsByClassName("head-check-box");
+    var rows=document.getElementsByClassName("emp-details");
     let childBoxes=document.getElementsByClassName("check-box");
     let childclass=document.getElementsByClassName("emp-details");
     let dltBtn=document.getElementsByClassName("delete");
-    if(headBox[0].checked==1){
-        for(var i=0;i<childclass.length;i++)
-        {
-            childclass[i].style.display="none";
-        }
-        headBox[0].checked =0;
-    }
-    else{
-        for(var i=0;i<childclass.length;i++)
+    let empNO=document.getElementsByClassName("emp-no");
+    var temp=0;
+    for(var i=0;i<childclass.length;i++)
         {
             if(childBoxes[i].checked==1)
-                childclass[i].style.display="none";
+            {
+                temp=0;
+                data.forEach((emp) => 
+                {
+                    if(empNO[i].innerText===emp.empNo)
+                    {
+                        data.splice(temp,1);
+                    }
+                    temp+=1;
+                });       
+            }
         }
-
+    localStorage.setItem("data",JSON.stringify(data));
+    if(headBox[0].checked==1){
+        headBox[0].checked =0;
     }
     dltBtn[0].style.background="#F89191";
     dltBtn[0].style.cursor="default";
+    location.reload();
 }
 //Filtering the employee data through starting alphabets
 function filterDataByAlphabet(char){
-    localStorage.setItem("key", char);
+    // localStorage.setItem("key", char);
     var check_char=document.getElementsByClassName("emp-name");
     let childclass=document.getElementsByClassName("emp-details");
     let button=document.getElementsByClassName("vector-element");
@@ -158,16 +184,8 @@ function exportData() {
     link.click();
   }
 
-fetch('../JSON/employees.json')
-.then(response => response.json())
-.then(data => {
-    createTableData(data); 
-})
-.catch(error => {
-    console.error('Error fetching JSON file:', error);
-});
 var cnt=0;
-var arr=[0,0,0];
+var arr=[0,0,0];    
 var count=document.getElementsByClassName("count")[0];
 var filterName=document.getElementsByClassName("filter-name")[0];
 
@@ -191,6 +209,11 @@ function dispButtons(index)
         filterName.innerHTML="Filters";
     }
 }
+document.addEventListener("DOMContentLoaded", (event) => {
+    var data=localStorage.getItem("data");
+data=JSON.parse(data);
+createTableData(data);
+  });
 //Creating table through json
 function createTableData(data)
 {
@@ -249,6 +272,7 @@ function createTableData(data)
 
         let tdata5=document.createElement("td");
         tdata5.innerText=emp.empNo;
+        tdata5.classList.add("emp-no");
         row.appendChild(tdata5);
 
         let tdata6=document.createElement("td");
@@ -392,34 +416,35 @@ document.addEventListener('click', function(event) {
     var department=document.getElementsByClassName("emp-department");
     let empRow=document.getElementsByClassName("emp-details");
     for (i = 0; i < status.length ; i++) 
-    {
-        var flag=0;
-        if(inpStatus.value)
         {
-            if(status[i].innerText.toLowerCase()!=inpStatus.value.toLowerCase())
+            var flag=0;
+            if(inpStatus.value)
             {
-                flag=1;
+                if(status[i].innerText.toLowerCase()!=inpStatus.value.toLowerCase())
+                {
+                    flag=1;
+                }
             }
-        }
-        if(inpLocation.value)
-        {
-            if(location[i].innerHTML.toLowerCase()!=inpLocation.value.toLowerCase())
+            if(inpLocation.value)
             {
-                flag=1;
+                if(location[i].innerHTML.toLowerCase()!=inpLocation.value.toLowerCase())
+                {
+                    flag=1;
+                }
+            }
+            if(inpDepartment.value)
+            {
+                if(department[i].innerHTML.toLowerCase()!=inpDepartment.value.toLowerCase()){
+                    flag=1;
+                }
+            }
+            if(flag==1)
+            {
+                empRow[i].style.display="none";
+            }
+            else if(empRow[i].style.display!="none"){
+                empRow[i].style.display="";
             }
         }
-        if(inpDepartment.value)
-        {
-            if(department[i].innerHTML.toLowerCase()!=inpDepartment.value.toLowerCase()){
-                flag=1;
-            }
-        }
-        if(flag==1)
-        {
-            empRow[i].style.display="none";
-        }
-        else{
-            empRow[i].style.display="";
-        }
-    }
+
 }

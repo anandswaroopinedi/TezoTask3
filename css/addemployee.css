@@ -2,6 +2,12 @@
     width: 83%;
     background-color: rgb(251,251,251);
 }
+@media only screen and (max-width: 991px) {
+    .right-bodysec{
+        width: 92%;
+        background-color: rgb(251,251,251);
+    }
+}
 .right-header{
     display: flex;
     width: 100%;
@@ -22,7 +28,7 @@
         width: 100%;
         background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
-        background-position-y: 22px;
+        background-position-y: 10px;
         background-position-x: 1%;
         box-shadow: 1px 2px 5px rgb(219, 217, 217),-1px -1px 1px rgb(219, 217, 217);
         border-radius: 8px;
@@ -45,13 +51,14 @@
     border-radius: 2%;
     color: #fa5a5a;
     padding: 0% 30% 0% 18%;
+    cursor: pointer;
 }
 
 .new-versions{
     background-color: #FEF6F6;
     padding: 2%;
     border-radius: 5%;
-    margin:70% 5% 0% 0%;
+    margin:65% 5% 0% 0%;
 }
 @media only screen and (min-width: 1700px) {
     .new-versions{
@@ -88,7 +95,7 @@
     background-position-y:15px ;
     border-style: none;
     align-items: center;
-
+    cursor: pointer;
 }
 
 .details{
@@ -109,7 +116,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         font-family: 'Poppins';
-        margin: 0% 6% 0% 6%;
+        margin: 0% 0% 0% 0%;
     }
 }
 .emp-container{
@@ -254,7 +261,7 @@
 }
 .selection{
     width: 20vw;
-    height: 5vh;
+    height: 40px;
     background-color: #F4F5F7;
     border: none;
     outline: none;
@@ -262,7 +269,7 @@
 }
 .selection1{
     width: 20vw;
-    height: 5vh;
+    height: 40px;
     background-color: #F4F5F7;
     border: none;
     outline: none;
@@ -273,13 +280,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: 53%;
+    margin-left: 54%;
 }
 .cancel{
-    padding:opx 15px 0px 15px;
+    padding:0px 15px 0px 15px;
     color:#fa5a5a;
     background-color: #FBEBEB;
-    width:6vw;
+    width:80px;
     padding: 5px;
     border: none;
     margin-right: 3%;
@@ -288,19 +295,19 @@
 }
 #dob{
     background-image: url(../Assets/date.png);
-    background-size: 25px;
+    background-size: 12%;
     background-position-y: 40% ;
     background-position-x: 5% ;
     background-repeat: no-repeat;
     padding-left: 20%;
 }
 .add-Employee-button{
-    width:8vw;
+    width:120px;
     background-color: #fa5a5a;
     color: white;
     border: none;
     border-radius: 10%;
-    padding: 4% 2% 4% 2%;
+    padding: 9px 9px 9px 9px;
     cursor: pointer;
 }
 .form-input-large:focus{

@@ -2,6 +2,12 @@
     background-color: rgb(251,251,251);
     width: 83%;
 }
+@media only screen and (max-width: 991px) {
+    .right-bodysec{
+        background-color: rgb(251,251,251);
+        width: 92%;
+    }
+}
 .right-header{
     display: flex;
     width: 100%;
@@ -22,7 +28,7 @@
         width: 100%;
         background-image: url(../Assets/bxSearch.png);
         background-repeat: no-repeat;
-        background-position-y: 22px;
+        background-position-y: 15px;
         background-position-x: 1%;
         box-shadow: 1px 2px 5px rgb(219, 217, 217),-1px -1px 1px rgb(219, 217, 217);
         border-radius: 8px;
@@ -39,7 +45,7 @@
     flex-direction: row;
     justify-content: space-between;
     color: #111112;
-    background-image: url(../Assets/Employees.svg);
+    background-image: url(../Assets/EmployeesIcon.svg);
     padding-left: 20px;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -48,13 +54,14 @@
     background-position-y:18px ;
     border-style: none;
     align-items: center;
+    cursor: pointer;
 }
 
 .new-versions{
     background-color: #FEF6F6;
     padding: 2%;
     border-radius: 5%;
-    margin:170% 5% 0% 0%;
+    margin:65% 5% 0% 0%;
 }
 @media only screen and (min-width: 1700px) {
     .new-versions{
@@ -79,7 +86,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
-    background-image: url(../Assets/Roles.svg);
+    background-image: url(../Assets/RolesIcon.svg);
     background-repeat: no-repeat;
     background-size: 18px;
     margin-left: 1px;
@@ -91,6 +98,7 @@
     border-radius: 2%;
     color: #fa5a5a;
     padding: 0% 50% 5% 19%;
+    cursor: pointer;
 }
 
 .details{
@@ -107,10 +115,11 @@
 @media all and (max-width: 1100px) {
     .body-sec{
         display: flex;
+        width: 100%;
         flex-direction: row;
         flex-wrap: wrap;
         font-family: 'Poppins';
-        margin: 0% 6% 0% 6%;
+        margin: 0% 0% 0% 0%;
     }
 }
 .nav-item-roles{
@@ -156,7 +165,7 @@
 }
 .selection{
     width: 25vw;
-    height: 5vh;
+    height: 40px;
     background-color: #F4F5F7;
     font-size: 15px;
     padding-left: 1%;
@@ -284,7 +293,7 @@ textarea:focus{
   }
   .selection1{
     width: 25vw;
-    height: 5vh;
+    height: 40px;
     font-size: 15px;
     padding-left: 1%;
     color: #050505;

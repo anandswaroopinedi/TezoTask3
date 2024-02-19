@@ -6,7 +6,7 @@ function dispShortNav(){
     let bodySec=document.getElementsByClassName("body-sec");
     navBar[0].style.display="none";
     shortNavBar[0].style.display="flex";
-    rightBodySec[0].style.width="92%";
+    rightBodySec[0].style.width="93%";
     bodySec[0].style.marginRight="0%";
 
 }
