@@ -183,6 +183,23 @@ function exportData() {
     link.download="data.csv";
     link.click();
   }
+function dltbymenu(n)
+{
+    // var buttons=document.getElementsByClassName('mo-dlt');
+    // for(i=0;i<buttons.length;i++)
+    // {
+    //     buttons[i].addEventListener("click", function(event) {  
+    //     const parentElement = event.target.parentElement.parentElement.parentElement.parentElement;
+    //     console.log(parentElement);  
+    //     // Perform actions on the parent element  
+    //     });  
+    // }
+    console.log(n)
+    let childBoxes=document.getElementsByClassName("check-box");
+    childBoxes[n].checked=1;
+    deleteRows();
+}
+
 
 var cnt=0;
 var arr=[0,0,0];    
@@ -209,6 +226,7 @@ function dispButtons(index)
         filterName.innerHTML="Filters";
     }
 }
+// document.getElementsByClassName("mo-dlt")
 document.addEventListener("DOMContentLoaded", (event) => {
     var data=localStorage.getItem("data");
 data=JSON.parse(data);
@@ -306,10 +324,12 @@ function createTableData(data)
         option1.innerText="View Details";
         let option2=document.createElement("div");
         option2.classList.add("menu-option");
+        option2.classList.add("edit-inf");
         option2.innerText="Edit";
         let td8=document.createElement("td");
         let option3=document.createElement("div");
         option3.classList.add("menu-option");
+        option3.classList.add("mo-dlt");
         option3.innerText="Delete";
         innerdiv8.appendChild(option1);
         innerdiv8.appendChild(option2);
@@ -398,12 +418,40 @@ function sortTable(n,k)
 document.addEventListener('click', function(event) {
     const ellipsisMenu = document.getElementsByClassName('ellipsis-menu');
     const menuOptions=document.querySelectorAll('.menu-options');
+    var buttons=document.getElementsByClassName('mo-dlt');
+    let childBoxes=document.getElementsByClassName("check-box");
+    let editInfo=document.getElementsByClassName("edit-inf");
+    var data=localStorage.getItem("data");
+    let empNO=document.getElementsByClassName("emp-no");
+    data=JSON.parse(data);
     for(var i=0;i<ellipsisMenu.length;i++)
     if (!ellipsisMenu[i].contains(event.target)) {
       menuOptions[i].style.display = 'none';
     }
     else{
         menuOptions[i].style.display = 'block';
+    }
+    for(var i=0;i<buttons.length;i++)
+    {
+        if(buttons[i].contains(event.target))
+        {
+            childBoxes[i].checked=1;
+            deleteRows();
+        }
+    }
+    for(var i=0;i<editInfo.length;i++)
+    {
+        if(editInfo[i].contains(event.target))
+        {
+            data.forEach((emp) => 
+                {
+                    if(empNO[i].innerText===emp.empNo)
+                    {
+                        localStorage.setItem("data1",JSON.stringify(emp));
+                        window.location.href="addemployee.html";
+                    }
+                });   
+        }
     }
   });
   //Filtering the employee table based on the user inputs like department,location,status.

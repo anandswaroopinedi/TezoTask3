@@ -266,6 +266,40 @@ document.getElementById('myButton').addEventListener('click', function(event) {
             flag=1;
         }
     }
+    data=localStorage.getItem("data");
+    var empid=document.getElementById("employee-no").value;
+    data=JSON.parse(data);
+    ind=0
+    var temp=0;
+    var flag1=0
+    data.forEach((emp) => 
+        {
+            if(empid===emp.empNo)
+            {
+                flag1=1;
+                ind=temp;
+                console.log(empid);
+            }
+            temp+=1
+        }); 
+    data1=localStorage.getItem("data1");
+    data1=JSON.parse(data1);
+    if(data1 && flag1==1)
+    {
+        console.log(ind);
+        console.log(data);
+        data.splice(ind,1);
+        localStorage.setItem("data",JSON.stringify(data));
+        localStorage.removeItem("data1"); 
+    }
+    else if(flag1==1){
+        var errMsg=document.getElementsByClassName("text-danger-empno");
+        let text=document.getElementsByClassName("danger-msg")[0];
+            text.innerText="Duplicated Employee no found";
+            errMsg[0].style.display="flex";
+            input[0].style.border="3px solid red";
+            flag=1;
+    }
     if(flag==0)
     {
         var x = document.getElementById("snackbar");
@@ -278,11 +312,11 @@ document.getElementById('myButton').addEventListener('click', function(event) {
         var location=document.getElementById("location").value;
         var dept=document.getElementById("department").value;
         var fileName = document.getElementById("profileImg");
+        console.log(joinDt);
         var jdt=joinDt.substring(8,10)+"/"+joinDt.substring(5,7)+"/"+joinDt.substring(0,4);
         var newEmp=new emp(fname+" "+lname,email,location,dept,role,empid,"Active",jdt);
         var data=localStorage.getItem("data");
         data=JSON.parse(data);
-        
         data.push(newEmp);
         localStorage.setItem("data",JSON.stringify(data));
         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
@@ -362,3 +396,37 @@ document.getElementById("joining-date").onblur= function(){
         input1[0].style.border="1px solid black";
     }
 };
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    var data1=localStorage.getItem("data1");
+    if(data1!=null)
+    {
+        var email=document.getElementById("email");
+        var empid=document.getElementById("employee-no");
+        var lname=document.getElementById("last-name");
+        var fname=document.getElementById("first-name");
+        var role=document.getElementById("job-title");
+        var location=document.getElementById("location");
+        var dept=document.getElementById("department");
+        var joinDt=document.getElementById("joining-date");
+        data1=JSON.parse(data1);
+        // email.placeholder=data1.employeeEmail;
+        email.value=data1.employeeEmail;
+        // empid.placeholder=data1.empNo;
+        empid.value=data1.empNo;
+        fullName=data1.employeeName.split(" ");
+        console.log(fullName)
+        // lname.placeholder=fullName[fullName.length-1];
+        lname.value=fullName[fullName.length-1];
+        // fname.placeholder=fullName.slice(0,fullName.length-1).join(" ");
+        fname.value=fullName.slice(0,fullName.length-1).join(" ");
+        role.value=data1.role;
+        console
+        location.value=data1.location;
+        dept.value=data1.department;
+        // joinDt.value=data1.joinDt;
+        joinDt.value=data1.joinDt;
+        console.log(fname);
+    }
+});
