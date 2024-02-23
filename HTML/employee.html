@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Employee Task3</title>
-        
+        <title>Employee Task3</title>  
         <link rel="stylesheet" href="../css/verticalNav.css">
         <link rel="stylesheet" href="../css/horizontalNav.css">
         <link rel="stylesheet" href="../css/employee.css">
@@ -188,31 +187,68 @@
                 <div class="filter-div">
                     <div class="filter">
                         <pre class="filter-name">Filter</pre>
-                        <p class="count">0</p>
                         <div class="filter-status-div">
-                            <select class="filter-status filter-select" onclick="dispButtons(0)">
-                                <option value="" selected disabled hidden>Status</option>
-                                <option value="active">Active</option>
-                                <option value="in active">In Active</option>
-                            </select>
-                        </div>
+                            <div class="dropdown">
+                                <button onclick="selectDropDown(0)" class="dropbtn">Status
+                                </button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="active" class="status-check" name="status-check" value="active">
+                                        <label for="active">Active</label>
+                                    </div>
+                                   <div class="dropdown-entry">
+                                        <input type="checkbox" id="inActive" class="status-check" name="status-check" value="In active">
+                                        <label for="inActive">InActive</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                         <div class="filter-location-div">
-                            <select class="filter-location filter-select" onclick="dispButtons(1)">
-                                <option value="" selected disabled hidden>Location</option>
-                                <option value="hyderabad">Hyderabad</option>
-                                <option value="chennai">Chennai</option>
-                                <option value="guntur">Guntur</option>
-                                <option value="vijayawada">Vijayawada</option>
-                            </select>
+                            <div class="dropdown">
+                                <button onclick="selectDropDown(1)" class="dropbtn">Location
+                                </button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="loc-hyderabad" class="status-check" name="status-check" value="hyderabad">
+                                        <label for="loc-hyderabad">Hyderabad</label>
+                                    </div>
+                                   <div class="dropdown-entry">
+                                        <input type="checkbox" id="loc-chennai" class="status-check" name="status-check" value="chennai">
+                                        <label for="loc-chennai">Chennai</label>
+                                    </div>
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="loc-guntur" class="status-check" name="status-check" value="guntur">
+                                        <label for="loc-guntur">Guntur</label>
+                                    </div>
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="loc-vijayawada" class="status-check" name="status-check" value="vijayawada">
+                                        <label for="loc-vijayawada">Vijayawada</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="filter-department-div">
-                            <select class="filter-department filter-select" onclick="dispButtons(2)">
-                                <option value="" selected disabled hidden>Department</option>
-                                <option value="Product Engg">Product Engg</option>
-                                <option value="HR">HR</option>
-                                <option value="sales">Sales</option>
-                                <option value="Programming">Programming</option>
-                            </select>
+                            <div class="dropdown">
+                                <button onclick="selectDropDown(2)" class="dropbtn">Department</button>                                </button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="productEngg" class="status-check" name="status-check" value="Prod Engg">
+                                        <label for="productEngg">Prod Engg</label>
+                                    </div>
+                                   <div class="dropdown-entry">
+                                        <input type="checkbox" id="hr" class="status-check" name="status-check" value="HR">
+                                        <label for="hr">HR</label>
+                                    </div>
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="sales" class="status-check" name="status-check" value="Sales">
+                                        <label for="sales">Sales</label>
+                                    </div>
+                                    <div class="dropdown-entry">
+                                        <input type="checkbox" id="programming" class="status-check" name="status-check" value="Programming">
+                                        <label for="programming">Programming</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="filter-reset-apply">
                             <div>
@@ -310,8 +346,8 @@
                 </div>
             </div>
         </div> 
-        <script src="../JS/employeels.js"></script>
-        <script src="../JS\navhandler.js"></script>
+        <script src="../dist/employee.js"></script>
+        <script src="../dist/navhandler.js"></script>
     </body>
 </html>
 

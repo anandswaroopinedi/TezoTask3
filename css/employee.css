@@ -241,28 +241,80 @@ span {
     border: 1px solid #FBC0C0;
     border-radius: 6px;
     color: #7A859B;
+    display: inline-block;
+    position: relative;
+}
+.dropbtn {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    background-image: url("../Assets/downArrow.jpg");
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position-x: 95%;
+    background-position-y: 46%;
+    color: #7A859B;
+    padding: 9px 19px;
+    font-size: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+  }
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #FBC0C0;
+    border-radius: 10px;
+    width: 118px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: #7A859B;
+    border: 1px solid #FBC0C0;
+    min-width: 100%;
+    overflow: auto;
+    margin-top: 1%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    padding: 5%;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 7px;
+    /* padding: 12px 10px; */
+    text-decoration: none;
+  }
+  
+  
+  .show 
+  {display: block;}
+
+  .dropdown-entry{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    cursor: pointer;
+}
+#status-check{
+    cursor: pointer;
+    width: 15px;
 }
 
 .filter-location-div{
     margin-left: 3%;
-}
-.filter-location{
-    padding: 11%;
-    border: 1px solid #FBC0C0;
-    border-radius: 6px;
-    color: #7A859B;
 }
 
 .filter-department-div{
     margin-left: 3%;
 }
 
-.filter-department{
-    padding: 10%;
-    border: 1px solid #FBC0C0;
-    border-radius: 6px;
-    color: #7A859B;
-}
 
 .filter-div{
     display: flex;
@@ -273,7 +325,7 @@ span {
 .filter-reset-apply{
     display: none;
     flex-direction: row;
-    margin-left: 50%;
+    margin-left: 48%;
 }
 @media only screen and (max-width: 1430px) {
     .filter-reset-apply{
@@ -473,4 +525,17 @@ tbody{
     top:78%;
     left:92%;
 }
+.filter-options{
+    display: block;
+    position: absolute;
+    z-index: 100;
 
+}
+.option-element{
+    display: block;
+    border: 1px solid black;
+    color:#818DA1;
+}
+.option-element span{
+    color:#818DA1;
+}

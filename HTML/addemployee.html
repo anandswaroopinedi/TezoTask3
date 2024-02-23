@@ -2,19 +2,19 @@
 <html>
     <head>
         <title>Add Employee</title>
-        
         <link rel="stylesheet" href="../css\verticalNav.css">
         <link rel="stylesheet" href="../css\horizontalNav.css">
         <link rel="stylesheet" href="../css\addemployee.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <!-- <script>var exports = {};</script> -->
     </head>
     <body>
         <div class="body-sec">
             <div class="vertical-shview">
                     <div class="nav-handlersh">
                         <img class="tezo-shortimg" src="../Assets/logoShort.png" onclick="window.location.href = 'employee.html';">
-                        <img class="nav-handlersh-img" src="../Assets\handle.png" onclick="expandNav()">
+                        <img class="nav-handlersh-img" src="../Assets\handle.png" onclick="expandNavBar()">
                     </div>
                     <div class="dashboard-img">
                         <img  src="../Assets/Dashboard.svg">
@@ -35,7 +35,7 @@
                         <img src="../Assets\TezoLogo.png">
                     </div>
                     <div class="nav-handler">
-                        <img class="nav-handler-img" src="../Assets\handle.png" onclick="dispShortNav()">
+                        <img class="nav-handler-img" src="../Assets\handle.png" onclick="disperseShortNav()">
                     </div>
                 </div>
                 <h3 class="nav-head">ALL</h3>
@@ -223,7 +223,7 @@
                                 </div>
                                 <div class="sub-sec">
                                     <div class="form-buttons">
-                                        <button class="cancel" onclick="window.location.href = 'employee.html';" >Cancel</button>
+                                        <button class="cancel" onclick="cancel()" >Cancel</button>
                                         <button id="myButton" class="add-Employee-button">Add Employee</button>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                 <div id="snackbar">Data Submitted successfully..</div>
             </div>
         </div>
-        <script src="../JS\addemployee.js"></script>
-        <script src="https://umd.cdn.pika.dev/objectmodel/v4"></script>
+        <script  src="../dist/addemployee.js"></script>
+        <script  src="https://umd.cdn.pika.dev/objectmodel/v4"></script>
     </body>
 </html>

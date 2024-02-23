@@ -190,6 +190,7 @@ function checkMobNo()
         input[5].style.border="1px solid black";
     }
 }
+
 class emp{
     constructor(employeeName,employeeEmail,location,department,role,empNo,status,joinDt)
     {

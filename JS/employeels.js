@@ -185,16 +185,6 @@ function exportData() {
   }
 function dltbymenu(n)
 {
-    // var buttons=document.getElementsByClassName('mo-dlt');
-    // for(i=0;i<buttons.length;i++)
-    // {
-    //     buttons[i].addEventListener("click", function(event) {  
-    //     const parentElement = event.target.parentElement.parentElement.parentElement.parentElement;
-    //     console.log(parentElement);  
-    //     // Perform actions on the parent element  
-    //     });  
-    // }
-    console.log(n)
     let childBoxes=document.getElementsByClassName("check-box");
     childBoxes[n].checked=1;
     deleteRows();
@@ -230,6 +220,7 @@ function dispButtons(index)
 document.addEventListener("DOMContentLoaded", (event) => {
     var data=localStorage.getItem("data");
 data=JSON.parse(data);
+console.log(typeof data);
 createTableData(data);
   });
 //Creating table through json
@@ -455,7 +446,7 @@ document.addEventListener('click', function(event) {
     }
   });
   //Filtering the employee table based on the user inputs like department,location,status.
-  function filterByUserInputs(){
+function filterByUserInputs(){
     var inpStatus=document.getElementsByClassName("filter-status")[0];
     var inpLocation=document.getElementsByClassName("filter-location")[0];
     var inpDepartment=document.getElementsByClassName("filter-department")[0];
@@ -495,4 +486,4 @@ document.addEventListener('click', function(event) {
             }
         }
 
-}
+    }
