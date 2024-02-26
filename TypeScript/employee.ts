@@ -197,8 +197,7 @@ function exportData(): void {
     "emp-mail"
   ) as HTMLCollectionOf<HTMLInputElement>;
   const csvData: string[] = [];
-  const row: string[] = [],
-    cols = rows[0].querySelectorAll("td,th") as NodeListOf<HTMLInputElement>;
+  const row: string[] = [];
   for (let j = 0; j < empHead.length; j++) {
     row.push(empHead[j].innerText);
     if (j == 0) {
@@ -222,23 +221,14 @@ function exportData(): void {
   link.download = "data.csv";
   link.click();
 }
-//Deleting the employee records using the ellipsismenu option
-function dltbymenu(n: number): void {
-  const childBoxes = document.getElementsByClassName(
-    "check-box"
-  ) as HTMLCollectionOf<HTMLInputElement>;
-  childBoxes[n].checked = true;
-  deleteRows();
-}
 //Displaying operation buttons like reset and apply when user selects any 1 of the filter option.
-function dispButtons(): void {
+function displayButtons(): void {
   const buttons = document.getElementsByClassName(
     "filter-reset-apply"
   ) as HTMLCollectionOf<HTMLInputElement>;
 
   let flag = checkOptionsClicked() || checkFiterPerformed();
   if (flag === false) {
-    console.log("false");
     buttons[0].style.display = "none";
   } else {
     buttons[0].style.display = "flex";
@@ -381,35 +371,30 @@ function createTableData(data: Employee[]): void {
 }
 
 //Sorting the Employee Table
-function sortTable(n: number, k: number): void {
+function sortTable(colIndex: number, ord:string): void {
   let table,
     rows: HTMLCollectionOf<HTMLTableRowElement>,
     switching: boolean,
     i: number,
     shouldSwitch: boolean = false,
-    dir: string,
     switchcount: number = 0,
     d1,
     d2;
   table = document.getElementById("employeeDataTable") as HTMLTableElement;
   switching = true;
-  if (k == 0) dir = "asc";
-  else {
-    dir = "desc";
-  }
   while (switching) {
     switching = false;
     rows = table.rows;
     for (i = 1; i < rows.length - 1; i++) {
       shouldSwitch = false;
-      let x = rows[i].getElementsByTagName("TD")[n] as HTMLTableCellElement;
-      let y = rows[i + 1].getElementsByTagName("TD")[n] as HTMLTableCellElement;
-      if (n == 6) {
+      let x = rows[i].getElementsByTagName("TD")[colIndex] as HTMLTableCellElement;
+      let y = rows[i + 1].getElementsByTagName("TD")[colIndex] as HTMLTableCellElement;
+      if (colIndex == 6) {
         d1 = new Date(x.innerHTML.split("/").reverse().join(", ")) as Date;
         d2 = new Date(y.innerHTML.split("/").reverse().join(", ")) as Date;
       }
-      if (dir == "asc") {
-        if (n == 6 && d1 && d2) {
+      if (ord == "asc") {
+        if (colIndex == 6 && d1 && d2) {
           if (d1 > d2) {
             shouldSwitch = true;
             break;
@@ -420,8 +405,8 @@ function sortTable(n: number, k: number): void {
             break;
           }
         }
-      } else if (dir == "desc") {
-        if (n == 6 && d1 && d2) {
+      } else if (ord == "desc") {
+        if (colIndex == 6 && d1 && d2) {
           if (d1 < d2) {
             shouldSwitch = true;
             break;
@@ -439,8 +424,8 @@ function sortTable(n: number, k: number): void {
       switching = true;
       switchcount++;
     } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
+      if (switchcount == 0 && ord == "asc") {
+        ord = "desc";
         switching = true;
       }
     }
@@ -464,7 +449,7 @@ function clickOptionsSelect(event: MouseEvent): void {
     if (dropDown[i].contains(event.target as Node)) {
       flag = true;
       countSelectedOptions(i);
-      cntDisplay(i);
+      countDisplay(i);
     } else {
       if (dropdownContent[i].classList.contains("show")) {
         dropdownContent[i].classList.remove("show");
@@ -544,7 +529,6 @@ function countSelectedOptions(n: number): number {
   ) as HTMLCollectionOf<HTMLInputElement>;
   const cntOptions = [2, 4, 4];
   const temp: number = cntOptions.slice(0, n).reduce((a, b) => a + b, 0);
-  console.log(temp);
   let cnt = 0;
   for (let i: number = 0; i < cntOptions[n]; i++) {
     if (checkBoxes[temp + i].checked === true) {
@@ -552,10 +536,11 @@ function countSelectedOptions(n: number): number {
     }
   }
   cntArr[n] = cnt;
-  dispButtons();
+  displayButtons();
   return cnt;
 }
-function cntDisplay(n: number): void {
+//To display the count in the select menu
+function countDisplay(n: number): void {
   const button = document.getElementsByClassName(
     "dropbtn"
   ) as HTMLCollectionOf<HTMLInputElement>;
@@ -588,23 +573,23 @@ function filterByUserInputs(): void {
   loc = getEntriesSelected(1);
   dept = getEntriesSelected(2);
   for (let i: number = 0; i < statusCls.length; i++) {
-    let flag: number = 0;
+    let flag: boolean = false;
     if (status.length) {
       if (status.indexOf(statusCls[i].innerText.toLowerCase()) == -1) {
-        flag = 1;
+        flag = true;
       }
     }
     if (loc.length) {
       if (loc.indexOf(location[i].innerHTML.toLowerCase()) == -1) {
-        flag = 1;
+        flag = true;
       }
     }
     if (dept.length) {
       if (dept.indexOf(department[i].innerHTML.toLowerCase()) == -1) {
-        flag = 1;
+        flag = true;
       }
     }
-    if (flag == 1) {
+    if (flag == true) {
       empRow[i].style.display = "none";
     } else {
       empRow[i].style.display = "";
@@ -618,7 +603,6 @@ function getEntriesSelected(n: number): string[] {
   ) as HTMLCollectionOf<HTMLInputElement>;
   let cntOptions: number[] = [2, 4, 4];
   let temp: number = cntOptions.slice(0, n).reduce((a, b) => a + b, 0);
-  console.log(temp);
   for (let i: number = 0; i < cntOptions[n]; i++) {
     if (checkBoxes[temp + i].checked === true) {
       arr.push(checkBoxes[temp + i].value.toLowerCase());

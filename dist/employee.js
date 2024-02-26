@@ -1,14 +1,14 @@
 "use strict";
 //Checking wheather the localstorage data is accidentally deleted
-if (!localStorage.getItem('data')) {
-    fetch('../JSON/employees.json')
+if (!localStorage.getItem("data")) {
+    fetch("../JSON/employees.json")
         .then(function (response) { return response.json(); })
         .then(function (data) {
         localStorage.clear();
         localStorage.setItem("data", JSON.stringify(data));
     })
         .catch(function (error) {
-        console.error('Error fetching JSON file:', error);
+        console.error("Error fetching JSON file:", error);
     });
     location.reload();
 }
@@ -151,7 +151,7 @@ function exportData() {
     var empName = document.getElementsByClassName("emp-name");
     var empEmail = document.getElementsByClassName("emp-mail");
     var csvData = [];
-    var row = [], cols = rows[0].querySelectorAll("td,th");
+    var row = [];
     for (var j = 0; j < empHead.length; j++) {
         row.push(empHead[j].innerText);
         if (j == 0) {
@@ -160,11 +160,11 @@ function exportData() {
     }
     csvData.push(row.join(","));
     for (var i = 0; i < rows.length; i++) {
-        var row_1 = [], cols_1 = rows[i].querySelectorAll("td,th");
+        var row_1 = [], cols = rows[i].querySelectorAll("td,th");
         row_1.push(empName[i].innerText);
         row_1.push(empEmail[i].innerText);
-        for (var j = 1; j < cols_1.length; j++) {
-            row_1.push(cols_1[j].innerText);
+        for (var j = 1; j < cols.length; j++) {
+            row_1.push(cols[j].innerText);
         }
         csvData.push(row_1.join(","));
     }
@@ -174,18 +174,11 @@ function exportData() {
     link.download = "data.csv";
     link.click();
 }
-//Deleting the employee records using the ellipsismenu option 
-function dltbymenu(n) {
-    var childBoxes = document.getElementsByClassName("check-box");
-    childBoxes[n].checked = true;
-    deleteRows();
-}
 //Displaying operation buttons like reset and apply when user selects any 1 of the filter option.
-function dispButtons() {
+function displayButtons() {
     var buttons = document.getElementsByClassName("filter-reset-apply");
     var flag = checkOptionsClicked() || checkFiterPerformed();
     if (flag === false) {
-        console.log("false");
         buttons[0].style.display = "none";
     }
     else {
@@ -315,28 +308,23 @@ function createTableData(data) {
     });
 }
 //Sorting the Employee Table
-function sortTable(n, k) {
-    var table, rows, switching, i, shouldSwitch = false, dir, switchcount = 0, d1, d2;
+function sortTable(colIndex, ord) {
+    var table, rows, switching, i, shouldSwitch = false, switchcount = 0, d1, d2;
     table = document.getElementById("employeeDataTable");
     switching = true;
-    if (k == 0)
-        dir = "asc";
-    else {
-        dir = "desc";
-    }
     while (switching) {
         switching = false;
         rows = table.rows;
-        for (i = 1; i < (rows.length - 1); i++) {
+        for (i = 1; i < rows.length - 1; i++) {
             shouldSwitch = false;
-            var x = rows[i].getElementsByTagName("TD")[n];
-            var y = rows[i + 1].getElementsByTagName("TD")[n];
-            if (n == 6) {
-                d1 = new Date(x.innerHTML.split('/').reverse().join(', '));
-                d2 = new Date(y.innerHTML.split('/').reverse().join(', '));
+            var x = rows[i].getElementsByTagName("TD")[colIndex];
+            var y = rows[i + 1].getElementsByTagName("TD")[colIndex];
+            if (colIndex == 6) {
+                d1 = new Date(x.innerHTML.split("/").reverse().join(", "));
+                d2 = new Date(y.innerHTML.split("/").reverse().join(", "));
             }
-            if (dir == "asc") {
-                if (n == 6 && d1 && d2) {
+            if (ord == "asc") {
+                if (colIndex == 6 && d1 && d2) {
                     if (d1 > d2) {
                         shouldSwitch = true;
                         break;
@@ -349,8 +337,8 @@ function sortTable(n, k) {
                     }
                 }
             }
-            else if (dir == "desc") {
-                if (n == 6 && d1 && d2) {
+            else if (ord == "desc") {
+                if (colIndex == 6 && d1 && d2) {
                     if (d1 < d2) {
                         shouldSwitch = true;
                         break;
@@ -370,15 +358,15 @@ function sortTable(n, k) {
             switchcount++;
         }
         else {
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
+            if (switchcount == 0 && ord == "asc") {
+                ord = "desc";
                 switching = true;
             }
         }
     }
 }
 //Click Events
-document.addEventListener('click', function (event) {
+document.addEventListener("click", function (event) {
     dispellipsisMenu(event);
     editInfo(event);
     deleteBtnEllipseMenu(event);
@@ -393,7 +381,7 @@ function clickOptionsSelect(event) {
         if (dropDown[i].contains(event.target)) {
             flag = true;
             countSelectedOptions(i);
-            cntDisplay(i);
+            countDisplay(i);
         }
         else {
             if (dropdownContent[i].classList.contains("show")) {
@@ -407,7 +395,7 @@ function clickOptionsSelect(event) {
 }
 //Implementation of Delete operation in Ellipsemenu
 function deleteBtnEllipseMenu(event) {
-    var buttons = document.getElementsByClassName('mo-dlt');
+    var buttons = document.getElementsByClassName("mo-dlt");
     var childBoxes = document.getElementsByClassName("check-box");
     for (var i = 0; i < buttons.length; i++) {
         if (buttons[i].contains(event.target)) {
@@ -440,14 +428,14 @@ function editInfo(event) {
 }
 //To display ellipsis menu in the employee table
 function dispellipsisMenu(event) {
-    var ellipsisMenu = document.getElementsByClassName('ellipsis-menu');
-    var menuOptions = document.querySelectorAll('.menu-options');
+    var ellipsisMenu = document.getElementsByClassName("ellipsis-menu");
+    var menuOptions = document.querySelectorAll(".menu-options");
     for (var i = 0; i < ellipsisMenu.length; i++)
         if (!ellipsisMenu[i].contains(event.target)) {
-            menuOptions[i].style.display = 'none';
+            menuOptions[i].style.display = "none";
         }
         else {
-            menuOptions[i].style.display = 'block';
+            menuOptions[i].style.display = "block";
         }
 }
 //To close all select dropdowns when we click outside of their scope
@@ -465,7 +453,6 @@ function countSelectedOptions(n) {
     var checkBoxes = document.getElementsByClassName("status-check");
     var cntOptions = [2, 4, 4];
     var temp = cntOptions.slice(0, n).reduce(function (a, b) { return a + b; }, 0);
-    console.log(temp);
     var cnt = 0;
     for (var i = 0; i < cntOptions[n]; i++) {
         if (checkBoxes[temp + i].checked === true) {
@@ -473,10 +460,11 @@ function countSelectedOptions(n) {
         }
     }
     cntArr[n] = cnt;
-    dispButtons();
+    displayButtons();
     return cnt;
 }
-function cntDisplay(n) {
+//To display the count in the select menu
+function countDisplay(n) {
     var button = document.getElementsByClassName("dropbtn");
     var cnt;
     var str = ["Status", "Location", "Department"];
@@ -500,23 +488,23 @@ function filterByUserInputs() {
     loc = getEntriesSelected(1);
     dept = getEntriesSelected(2);
     for (var i = 0; i < statusCls.length; i++) {
-        var flag_2 = 0;
+        var flag_2 = false;
         if (status.length) {
             if (status.indexOf(statusCls[i].innerText.toLowerCase()) == -1) {
-                flag_2 = 1;
+                flag_2 = true;
             }
         }
         if (loc.length) {
             if (loc.indexOf(location[i].innerHTML.toLowerCase()) == -1) {
-                flag_2 = 1;
+                flag_2 = true;
             }
         }
         if (dept.length) {
             if (dept.indexOf(department[i].innerHTML.toLowerCase()) == -1) {
-                flag_2 = 1;
+                flag_2 = true;
             }
         }
-        if (flag_2 == 1) {
+        if (flag_2 == true) {
             empRow[i].style.display = "none";
         }
         else {
@@ -529,7 +517,6 @@ function getEntriesSelected(n) {
     var checkBoxes = document.getElementsByClassName("status-check");
     var cntOptions = [2, 4, 4];
     var temp = cntOptions.slice(0, n).reduce(function (a, b) { return a + b; }, 0);
-    console.log(temp);
     for (var i = 0; i < cntOptions[n]; i++) {
         if (checkBoxes[temp + i].checked === true) {
             arr.push(checkBoxes[temp + i].value.toLowerCase());

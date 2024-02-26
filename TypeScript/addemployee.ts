@@ -12,7 +12,7 @@ interface Employee {
   status: string;
   joinDt: string;
 }
-
+var flag: boolean = false;
 class Emp implements Employee {
   constructor(
     public employeeName: string,
@@ -66,7 +66,6 @@ function expandNavBar(): void {
   formButtons[0].style.marginLeft = "53%";
 }
 
-var flag: number = 0;
 var input = document.getElementsByClassName(
   "form-input"
 ) as HTMLCollectionOf<HTMLInputElement>;
@@ -98,22 +97,22 @@ function displayDangerText(n: number, msg: string): void {
   ] as HTMLInputElement;
   text.innerText = msg;
 }
-function checkFirstname(k: number): void {
+function checkFirstName(k: number): boolean {
   const fname: string = (
     document.getElementById("first-name")! as HTMLInputElement
   ).value;
   if (fname == "") {
     displayErrorMsg(1, "text-danger-fname");
-    flag = 1;
+    flag = true;
     displayDangerText(1, "This field is required");
   } else {
     const regName: RegExp = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
     if (!regName.test(fname)) {
       displayDangerText(1, "Use only alphabets");
       displayErrorMsg(1, "text-danger-fname");
-      flag = 1;
+      flag = true;
     } else {
-      flag = 0;
+      flag = false;
       if (k == 0) {
         displayBorderInput(1, "text-danger-fname");
       } else {
@@ -121,22 +120,23 @@ function checkFirstname(k: number): void {
       }
     }
   }
+  return flag;
 }
-function checkLastname(k: number): void {
+function checkLastName(k: number): boolean {
   const lname = (document.getElementById("last-name")! as HTMLInputElement)
     .value;
   if (lname == "") {
     displayErrorMsg(2, "text-danger-lname");
-    flag = 1;
+    flag = true;
     displayDangerText(2, "This field is required");
   } else {
     const regName: RegExp = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
     if (!regName.test(lname)) {
       displayDangerText(2, "Use only alphabets");
       displayErrorMsg(2, "text-danger-lname");
-      flag = 1;
+      flag = true;
     } else {
-      flag = 0;
+      flag = false;
       if (k == 0) {
         displayBorderInput(2, "text-danger-lname");
       } else {
@@ -144,22 +144,23 @@ function checkLastname(k: number): void {
       }
     }
   }
+  return flag;
 }
-function checkEmployeeNo(k: number): void {
+function checkEmployeeNo(k: number): boolean {
   const empid: string = (
     document.getElementById("employee-no")! as HTMLInputElement
   ).value;
   if (empid == "") {
     displayErrorMsg(0, "text-danger-empno");
-    flag = 1;
+    flag = true;
     displayDangerText(0, "This field is required");
   } else {
     if (!/^[A-Za-z0-9]*$/.test(empid)) {
       displayDangerText(0, "Use only alphabets and numbers");
       displayErrorMsg(0, "text-danger-empno");
-      flag = 1;
+      flag = true;
     } else {
-      flag = 0;
+      flag = false;
       if (k == 0) {
         displayBorderInput(0, "text-danger-empno");
       } else {
@@ -167,13 +168,14 @@ function checkEmployeeNo(k: number): void {
       }
     }
   }
+  return flag;
 }
-function checkEmail(k: number): void {
+function checkEmail(k: number): boolean {
   const email: string = (document.getElementById("email")! as HTMLInputElement)
     .value;
   if (email == "") {
     displayErrorMsg(4, "text-danger-email");
-    flag = 1;
+    flag = true;
     displayDangerText(3, "This field is required");
   } else {
     const regName: RegExp =
@@ -181,9 +183,9 @@ function checkEmail(k: number): void {
     if (!regName.test(email)) {
       displayDangerText(3, "Fill the email correctly");
       displayErrorMsg(4, "text-danger-email");
-      flag = 1;
+      flag = true;
     } else {
-      flag = 0;
+      flag = false;
       if (k == 0) {
         displayBorderInput(4, "text-danger-email");
       } else {
@@ -191,6 +193,7 @@ function checkEmail(k: number): void {
       }
     }
   }
+  return flag;
 }
 function checkMobileNo(): void {
   const mobno: string = (document.getElementById("mob-no")! as HTMLInputElement)
@@ -202,7 +205,7 @@ function checkMobileNo(): void {
     hideErrMsg(5, "text-danger-mobno");
   }
 }
-function checkJoinDate(): void {
+function checkJoinDate(): boolean {
   const input1 = document.getElementsByClassName(
     "form-input-large"
   ) as HTMLCollectionOf<HTMLInputElement>;
@@ -214,13 +217,16 @@ function checkJoinDate(): void {
   if (joinDt == "") {
     errMsgJnDate[0].style.display = "flex";
     input1[0].style.border = "3px solid red";
-    flag = 1;
+    flag = true;
   } else {
     errMsgJnDate[0].style.display = "none";
     input1[0].style.border = "1px solid black";
+    flag=false;
   }
+  return flag;
 }
-function checkProfileImage(): void {
+//To validate Profile Image
+function checkProfileImage(): boolean {
   const fileName: string = (
     document.getElementById("profileImg") as HTMLInputElement
   ).value;
@@ -230,7 +236,7 @@ function checkProfileImage(): void {
   ) as HTMLCollectionOf<HTMLInputElement>;
   if (fileName === undefined) {
     formButtons[0].style.position = "relative";
-    flag = 1;
+    flag = true;
     alignItemsWrtProfile("column", "flex", "4%", "none", "50%");
   } else {
     const file_extension: string = fileName.split(".").pop()!;
@@ -244,10 +250,12 @@ function checkProfileImage(): void {
     }
     if (temp == 0) {
       alignItemsWrtProfile("column", "flex", "4%", "none", "90%");
-      flag = 1;
+      flag = true;
     }
   }
+  return flag;
 }
+//To align the form items with respect to image
 function alignItemsWrtProfile(
   direction: string,
   errDisp: string,
@@ -276,6 +284,7 @@ function alignItemsWrtProfile(
   edit[0].style.display = editDisp;
   formButtons[0].style.marginLeft = marLeft;
 }
+//To check whether Empno is already exisisted
 function checkEmpNoPresent() {
   const dt: string = localStorage.getItem("data")!;
   const empid: string = (
@@ -289,7 +298,6 @@ function checkEmpNoPresent() {
     if (empid === emp.empNo) {
       flag1 = true;
       ind = temp;
-      console.log(empid);
     }
     temp += 1;
   });
@@ -306,12 +314,7 @@ document
   .getElementById("myButton")!
   .addEventListener("click", function (event): void {
     event.preventDefault();
-    checkFirstname(0);
-    checkLastname(0);
-    checkEmployeeNo(0);
-    checkEmail(0);
-    checkJoinDate();
-    checkProfileImage();
+    flag=checkFirstName(0) ||  checkLastName(0) || checkEmployeeNo(0) ||  checkEmail(0) || checkJoinDate() || checkProfileImage();
     let result = checkEmpNoPresent();
     let ind: number = result.ind;
     let flag1: boolean = result.flag1;
@@ -322,9 +325,9 @@ document
     } else if (flag1 == true) {
       displayDangerText(0, "Duplicated Employee no found");
       displayErrorMsg(0, "text-danger-empno");
-      flag = 1;
+      flag = true;
     }
-    if (flag == 0) {
+    if (flag == false) {
       createEmployee();
     } else {
       console.log("Unsuccesfull attempt");
@@ -355,7 +358,6 @@ function createEmployee(): void {
   ).value;
   const joinDt = (document.getElementById("joining-date") as HTMLInputElement)
     .value;
-  console.log(joinDt);
   const jdt: string =
     joinDt.substring(8, 10) +
     "/" +
@@ -376,7 +378,6 @@ function createEmployee(): void {
   const data: Employee[] = JSON.parse(dt);
   data.push(newEmp);
   localStorage.setItem("data", JSON.stringify(data));
-  console.log("anand");
   setTimeout(function () {
     x.className = x.className.replace("show", "");
   }, 3000);
@@ -417,13 +418,13 @@ document.getElementById("first-name")!.onfocus = function (): void {
   displayBorderInput(1, "text-danger-fname");
 };
 document.getElementById("first-name")!.onblur = function (): void {
-  checkFirstname(1);
+  checkFirstName(1);
 };
 document.getElementById("last-name")!.onfocus = function (): void {
   displayBorderInput(2, "text-danger-lname");
 };
 document.getElementById("last-name")!.onblur = function (): void {
-  checkLastname(1);
+  checkLastName(1);
 };
 document.getElementById("employee-no")!.onfocus = function (): void {
   displayBorderInput(0, "text-danger-empno");
@@ -449,7 +450,7 @@ document.getElementById("joining-date")!.onblur = function (): void {
   if (joinDt == "") {
     errMsgJnDate[0].style.display = "flex";
     input1[0].style.border = "3px solid red";
-    flag = 1;
+    flag = true;
   } else {
     errMsgJnDate[0].style.display = "none";
     input1[0].style.border = "1px solid black";
@@ -471,13 +472,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     email.value = data1.employeeEmail;
     empid.value = data1.empNo;
     const fullName: string[] = data1.employeeName.split(" ");
-    console.log(fullName);
     lname.value = fullName[fullName.length - 1];
     fname.value = fullName.slice(0, fullName.length - 1).join(" ");
     role.value = data1.role;
     location.value = data1.location;
     dept.value = data1.department;
     joinDt.value = data1.joinDt;
-    console.log(fname);
   }
 });

@@ -1,5 +1,6 @@
 "use strict";
 // import Emp from "../model/employeeModel" import Employee from "../model/employeeModel";
+var flag = false;
 var Emp = /** @class */ (function () {
     function Emp(employeeName, employeeEmail, location, department, role, empNo, status, joinDt) {
         this.employeeName = employeeName;
@@ -35,9 +36,8 @@ function expandNavBar() {
     rightBodySec[0].style.width = "83%";
     formButtons[0].style.marginLeft = "53%";
 }
-var flag = 0;
 var input = document.getElementsByClassName("form-input");
-function dispErrorMsg(n, className) {
+function displayErrorMsg(n, className) {
     var errMsg = document.getElementsByClassName(className);
     errMsg[0].style.display = "flex";
     input[n].style.border = "3px solid red";
@@ -47,150 +47,161 @@ function hideErrMsg(n, className) {
     errMsg[0].style.display = "none";
     input[n].style.border = "1px solid black";
 }
-function dispBorderInput(n, className) {
+function displayBorderInput(n, className) {
     var errMsg = document.getElementsByClassName(className);
     errMsg[0].style.display = "none";
     input[n].style.border = "3px solid #5FA5FF";
     input[n].style.outline = "none";
 }
-function dispDangerText(n, msg) {
+function displayDangerText(n, msg) {
     var text = document.getElementsByClassName("danger-msg")[n];
     text.innerText = msg;
 }
-function checkFname(k) {
+function checkFirstName(k) {
     var fname = document.getElementById("first-name").value;
     if (fname == "") {
-        dispErrorMsg(1, "text-danger-fname");
-        flag = 1;
-        dispDangerText(1, "This field is required");
+        displayErrorMsg(1, "text-danger-fname");
+        flag = true;
+        displayDangerText(1, "This field is required");
     }
     else {
         var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
         if (!regName.test(fname)) {
-            dispDangerText(1, "Use only alphabets");
-            dispErrorMsg(1, "text-danger-fname");
-            flag = 1;
+            displayDangerText(1, "Use only alphabets");
+            displayErrorMsg(1, "text-danger-fname");
+            flag = true;
         }
         else {
-            flag = 0;
+            flag = false;
             if (k == 0) {
-                dispBorderInput(1, "text-danger-fname");
+                displayBorderInput(1, "text-danger-fname");
             }
             else {
                 hideErrMsg(1, "text-danger-fname");
             }
         }
     }
+    return flag;
 }
-function checkLname(k) {
-    var lname = document.getElementById("last-name").value;
+function checkLastName(k) {
+    var lname = document.getElementById("last-name")
+        .value;
     if (lname == "") {
-        dispErrorMsg(2, "text-danger-lname");
-        flag = 1;
-        dispDangerText(2, "This field is required");
+        displayErrorMsg(2, "text-danger-lname");
+        flag = true;
+        displayDangerText(2, "This field is required");
     }
     else {
         var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
         if (!regName.test(lname)) {
-            dispDangerText(2, "Use only alphabets");
-            dispErrorMsg(2, "text-danger-lname");
-            flag = 1;
+            displayDangerText(2, "Use only alphabets");
+            displayErrorMsg(2, "text-danger-lname");
+            flag = true;
         }
         else {
-            flag = 0;
+            flag = false;
             if (k == 0) {
-                dispBorderInput(2, "text-danger-lname");
+                displayBorderInput(2, "text-danger-lname");
             }
             else {
                 hideErrMsg(2, "text-danger-lname");
             }
         }
     }
+    return flag;
 }
-function checkEmpNo(k) {
+function checkEmployeeNo(k) {
     var empid = document.getElementById("employee-no").value;
     if (empid == "") {
-        dispErrorMsg(0, "text-danger-empno");
-        flag = 1;
-        dispDangerText(0, "This field is required");
+        displayErrorMsg(0, "text-danger-empno");
+        flag = true;
+        displayDangerText(0, "This field is required");
     }
     else {
         if (!/^[A-Za-z0-9]*$/.test(empid)) {
-            dispDangerText(0, "Use only alphabets and numbers");
-            dispErrorMsg(0, "text-danger-empno");
-            flag = 1;
+            displayDangerText(0, "Use only alphabets and numbers");
+            displayErrorMsg(0, "text-danger-empno");
+            flag = true;
         }
         else {
-            flag = 0;
+            flag = false;
             if (k == 0) {
-                dispBorderInput(0, "text-danger-empno");
+                displayBorderInput(0, "text-danger-empno");
             }
             else {
                 hideErrMsg(0, "text-danger-empno");
             }
         }
     }
+    return flag;
 }
 function checkEmail(k) {
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("email")
+        .value;
     if (email == "") {
-        dispErrorMsg(4, "text-danger-email");
-        flag = 1;
-        dispDangerText(3, "This field is required");
+        displayErrorMsg(4, "text-danger-email");
+        flag = true;
+        displayDangerText(3, "This field is required");
     }
     else {
         var regName = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (!regName.test(email)) {
-            dispDangerText(3, "Fill the email correctly");
-            dispErrorMsg(4, "text-danger-email");
-            flag = 1;
+            displayDangerText(3, "Fill the email correctly");
+            displayErrorMsg(4, "text-danger-email");
+            flag = true;
         }
         else {
-            flag = 0;
+            flag = false;
             if (k == 0) {
-                dispBorderInput(4, "text-danger-email");
+                displayBorderInput(4, "text-danger-email");
             }
             else {
                 hideErrMsg(4, "text-danger-email");
             }
         }
     }
+    return flag;
 }
-function checkMobNo() {
-    var mobno = document.getElementById("mob-no").value;
+function checkMobileNo() {
+    var mobno = document.getElementById("mob-no")
+        .value;
     if (mobno && !/^\d{10}$/.test(mobno)) {
-        dispDangerText(4, "use only numbers and length should be 10");
-        dispErrorMsg(5, "text-danger-mobno");
+        displayDangerText(4, "use only numbers and length should be 10");
+        displayErrorMsg(5, "text-danger-mobno");
     }
     else {
         hideErrMsg(5, "text-danger-mobno");
     }
 }
-function checkJoinDt() {
+function checkJoinDate() {
     var input1 = document.getElementsByClassName("form-input-large");
     var errMsgJnDate = document.getElementsByClassName("text-danger-jndate");
-    var joinDt = document.getElementById("joining-date").value;
+    var joinDt = document.getElementById("joining-date")
+        .value;
     if (joinDt == "") {
         errMsgJnDate[0].style.display = "flex";
         input1[0].style.border = "3px solid red";
-        flag = 1;
+        flag = true;
     }
     else {
         errMsgJnDate[0].style.display = "none";
         input1[0].style.border = "1px solid black";
+        flag = false;
     }
+    return flag;
 }
-function checkProfileImg() {
+//To validate Profile Image
+function checkProfileImage() {
     var fileName = document.getElementById("profileImg").value;
     var allowedExtensions = new Array("jpg", "png", "gif");
     var formButtons = document.getElementsByClassName("form-buttons");
     if (fileName === undefined) {
         formButtons[0].style.position = "relative";
-        flag = 1;
+        flag = true;
         alignItemsWrtProfile("column", "flex", "4%", "none", "50%");
     }
     else {
-        var file_extension = fileName.split('.').pop();
+        var file_extension = fileName.split(".").pop();
         var temp = 0;
         for (var i = 0; i < allowedExtensions.length; i++) {
             if (allowedExtensions[i] == file_extension) {
@@ -201,10 +212,12 @@ function checkProfileImg() {
         }
         if (temp == 0) {
             alignItemsWrtProfile("column", "flex", "4%", "none", "90%");
-            flag = 1;
+            flag = true;
         }
     }
+    return flag;
 }
+//To align the form items with respect to image
 function alignItemsWrtProfile(direction, errDisp, marTop, editDisp, marLeft) {
     var edit = document.getElementsByClassName("edit-button");
     var container = document.getElementsByClassName("emp-container");
@@ -217,6 +230,7 @@ function alignItemsWrtProfile(direction, errDisp, marTop, editDisp, marLeft) {
     edit[0].style.display = editDisp;
     formButtons[0].style.marginLeft = marLeft;
 }
+//To check whether Empno is already exisisted
 function checkEmpNoPresent() {
     var dt = localStorage.getItem("data");
     var empid = document.getElementById("employee-no").value;
@@ -228,7 +242,6 @@ function checkEmpNoPresent() {
         if (empid === emp.empNo) {
             flag1 = true;
             ind = temp;
-            console.log(empid);
         }
         temp += 1;
     });
@@ -241,14 +254,11 @@ function deleteEmployee(ind) {
     localStorage.setItem("data", JSON.stringify(data));
     localStorage.removeItem("data1");
 }
-document.getElementById('myButton').addEventListener('click', function (event) {
+document
+    .getElementById("myButton")
+    .addEventListener("click", function (event) {
     event.preventDefault();
-    checkFname(0);
-    checkLname(0);
-    checkEmpNo(0);
-    checkEmail(0);
-    checkJoinDt();
-    checkProfileImg();
+    flag = checkFirstName(0) || checkLastName(0) || checkEmployeeNo(0) || checkEmail(0) || checkJoinDate() || checkProfileImage();
     var result = checkEmpNoPresent();
     var ind = result.ind;
     var flag1 = result.flag1;
@@ -259,11 +269,11 @@ document.getElementById('myButton').addEventListener('click', function (event) {
         deleteEmployee(ind);
     }
     else if (flag1 == true) {
-        dispDangerText(0, "Duplicated Employee no found");
-        dispErrorMsg(0, "text-danger-empno");
-        flag = 1;
+        displayDangerText(0, "Duplicated Employee no found");
+        displayErrorMsg(0, "text-danger-empno");
+        flag = true;
     }
-    if (flag == 0) {
+    if (flag == false) {
         createEmployee();
     }
     else {
@@ -273,35 +283,44 @@ document.getElementById('myButton').addEventListener('click', function (event) {
 function createEmployee() {
     var x = document.getElementById("snackbar");
     x.className = "show";
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("email")
+        .value;
     var empid = document.getElementById("employee-no").value;
     var lname = document.getElementById("last-name").value;
     var fname = document.getElementById("first-name").value;
     var role = document.getElementById("job-title").value;
     var location = document.getElementById("location").value;
     var dept = document.getElementById("department").value;
-    var joinDt = document.getElementById("joining-date").value;
-    console.log(joinDt);
-    var jdt = joinDt.substring(8, 10) + "/" + joinDt.substring(5, 7) + "/" + joinDt.substring(0, 4);
+    var joinDt = document.getElementById("joining-date")
+        .value;
+    var jdt = joinDt.substring(8, 10) +
+        "/" +
+        joinDt.substring(5, 7) +
+        "/" +
+        joinDt.substring(0, 4);
     var newEmp = new Emp(fname + " " + lname, email, location, dept, role, empid, "Active", jdt);
     var dt = localStorage.getItem("data");
     var data = JSON.parse(dt);
     data.push(newEmp);
     localStorage.setItem("data", JSON.stringify(data));
-    console.log("anand");
-    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-    setTimeout(function () { window.location.href = "employee.html"; }, 1000);
+    setTimeout(function () {
+        x.className = x.className.replace("show", "");
+    }, 3000);
+    setTimeout(function () {
+        window.location.href = "employee.html";
+    }, 1000);
 }
 function cancel() {
     var data1 = localStorage.getItem("data1");
     if (data1)
         localStorage.removeItem("data1");
-    window.location.href = 'employee.html';
+    window.location.href = "employee.html";
 }
 function checkImage() {
-    var profileImg = document.getElementsByClassName('profile-pic');
-    var fileName = document.getElementById("profileImg").value;
-    var fileCrctName = "../Assets/" + fileName.split('\\').pop();
+    var profileImg = document.getElementsByClassName("profile-pic");
+    var fileName = document.getElementById("profileImg")
+        .value;
+    var fileCrctName = "../Assets/" + fileName.split("\\").pop();
     if (fileCrctName) {
         profileImg[0].src = fileCrctName;
     }
@@ -309,28 +328,28 @@ function checkImage() {
 var input = document.getElementsByClassName("form-input");
 var input1 = document.getElementsByClassName("form-input-large");
 document.getElementById("email").onfocus = function () {
-    dispBorderInput(4, "text-danger-email");
+    displayBorderInput(4, "text-danger-email");
 };
 document.getElementById("email").onblur = function () {
     checkEmail(1);
 };
 document.getElementById("first-name").onfocus = function () {
-    dispBorderInput(1, "text-danger-fname");
+    displayBorderInput(1, "text-danger-fname");
 };
 document.getElementById("first-name").onblur = function () {
-    checkFname(1);
+    checkFirstName(1);
 };
 document.getElementById("last-name").onfocus = function () {
-    dispBorderInput(2, "text-danger-lname");
+    displayBorderInput(2, "text-danger-lname");
 };
 document.getElementById("last-name").onblur = function () {
-    checkLname(1);
+    checkLastName(1);
 };
 document.getElementById("employee-no").onfocus = function () {
-    dispBorderInput(0, "text-danger-empno");
+    displayBorderInput(0, "text-danger-empno");
 };
 document.getElementById("employee-no").onblur = function () {
-    checkEmpNo(1);
+    checkEmployeeNo(1);
 };
 document.getElementById("joining-date").onfocus = function () {
     var errMsgJnDate = document.getElementsByClassName("text-danger-jndate");
@@ -344,7 +363,7 @@ document.getElementById("joining-date").onblur = function () {
     if (joinDt == "") {
         errMsgJnDate[0].style.display = "flex";
         input1[0].style.border = "3px solid red";
-        flag = 1;
+        flag = true;
     }
     else {
         errMsgJnDate[0].style.display = "none";
@@ -366,13 +385,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         email.value = data1.employeeEmail;
         empid.value = data1.empNo;
         var fullName = data1.employeeName.split(" ");
-        console.log(fullName);
         lname.value = fullName[fullName.length - 1];
         fname.value = fullName.slice(0, fullName.length - 1).join(" ");
         role.value = data1.role;
         location_1.value = data1.location;
         dept.value = data1.department;
         joinDt.value = data1.joinDt;
-        console.log(fname);
     }
 });
