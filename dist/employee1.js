@@ -1,16 +1,32 @@
 "use strict";
 var EmployeePage = /** @class */ (function () {
     function EmployeePage() {
-        var _this = this;
         this.cntArr = [0, 0, 0];
         this.checkDataDeleted();
-        var headCheckBox = document.getElementsByClassName("head-check-box")[0];
-        headCheckBox.addEventListener("click", function (e) { return _this.selectAll(); });
+        this.checkAnyCheckBoxClicked();
+        this.checkDeleteButtonClicked();
+        this.checkAlphabetsClicked();
+        this.checkExportButtonClicked();
+        this.domContentLoad();
+        this.checkHeadCheckBoxClicked();
+        this.checkSortApplied();
+        this.captureDropDownClicks();
+        this.checkApplyButtonClicked();
+        this.captureEllipsisMenuClicks();
+    }
+    EmployeePage.prototype.checkAnyCheckBoxClicked = function () {
+        var _this = this;
         var checkBox = document.getElementsByClassName("check-box");
         for (var i = 0; i < checkBox.length; i++)
             checkBox[i].addEventListener("click", function (e) { return _this.selectOne(); });
+    };
+    EmployeePage.prototype.checkDeleteButtonClicked = function () {
+        var _this = this;
         var deleteBtn = document.getElementsByClassName("delete");
         deleteBtn[0].addEventListener("click", function (e) { return _this.deleteRows(); });
+    };
+    EmployeePage.prototype.checkAlphabetsClicked = function () {
+        var _this = this;
         var buttons = document.querySelectorAll('.vector-element');
         buttons.forEach(function (button) {
             button.addEventListener('click', function (event) {
@@ -18,41 +34,65 @@ var EmployeePage = /** @class */ (function () {
                 _this.filterDataByAlphabet(buttonText);
             });
         });
+    };
+    EmployeePage.prototype.checkExportButtonClicked = function () {
+        var _this = this;
         var exportBtn = document.getElementsByClassName("export-button");
         exportBtn[0].addEventListener("click", function (e) { return _this.exportData(); });
+    };
+    EmployeePage.prototype.domContentLoad = function () {
+        var _this = this;
         document.addEventListener("DOMContentLoaded", function (event) {
             var dat = localStorage.getItem("data");
             var data = JSON.parse(dat);
             _this.createTableData(data);
         });
-        // const checkBox = document.querySelector('.head-check-box') as HTMLInputElement;
-        headCheckBox.addEventListener('click', this.selectAll.bind(this));
-        // Attach click event listeners to the sort icons
+    };
+    EmployeePage.prototype.checkHeadCheckBoxClicked = function () {
+        var _this = this;
+        var headCheckBox = document.getElementsByClassName("head-check-box")[0];
+        headCheckBox.addEventListener("click", function (e) {
+            _this.selectAll();
+            // this.selectAll.bind(this)
+        });
+    };
+    EmployeePage.prototype.checkSortApplied = function () {
         for (var i = 0; i < 7; i++) {
             var lessThanIcon = document.querySelectorAll(".less-than")[i];
             var greaterThanIcon = document.querySelectorAll(".greater-than")[i];
             lessThanIcon.addEventListener('click', this.sortTable.bind(this, i, "asc"));
             greaterThanIcon.addEventListener('click', this.sortTable.bind(this, i, "desc"));
         }
+    };
+    EmployeePage.prototype.checkApplyButtonClicked = function () {
+        var _this = this;
+        // debugger;
+        var filterApply = document.querySelectorAll(".apply");
+        filterApply[0].addEventListener("click", function (e) { return _this.filterByUserInputs(); });
+    };
+    EmployeePage.prototype.captureEllipsisMenuClicks = function () {
+        var _this = this;
         document.addEventListener("click", function (event) {
             _this.dispellipsisMenu(event);
             _this.editInfo(event);
             _this.deleteBtnEllipseMenu(event);
             _this.clickOptionsSelect(event);
         });
+    };
+    EmployeePage.prototype.captureDropDownClicks = function () {
+        var _this = this;
         var dropBtn = document.querySelectorAll(".dropbtn");
-        var cntSelect = 0;
-        dropBtn.forEach(function (button) {
-            button.addEventListener('click', function (event) {
-                console.log(cntSelect);
-                _this.selectDropDown(cntSelect);
-                cntSelect += 1;
+        var _loop_1 = function (i) {
+            dropBtn[i].addEventListener('click', function (e) {
+                _this.selectDropDown(i);
             });
-        });
-        var filterApply = document.querySelectorAll(".apply");
-        filterApply[0].addEventListener("click", function (e) { return _this.filterByUserInputs(); });
-    }
+        };
+        for (var i = 0; i < dropBtn.length; i++) {
+            _loop_1(i);
+        }
+    };
     EmployeePage.prototype.checkDataDeleted = function () {
+        // debugger;
         if (!localStorage.getItem("data")) {
             fetch("../JSON/employees.json")
                 .then(function (response) { return response.json(); })
@@ -67,6 +107,7 @@ var EmployeePage = /** @class */ (function () {
         }
     };
     EmployeePage.prototype.selectAll = function () {
+        // debugger;
         var headBox = document.getElementsByClassName("head-check-box");
         var childBoxes = document.getElementsByClassName("check-box");
         var flag = false;
@@ -133,7 +174,7 @@ var EmployeePage = /** @class */ (function () {
         var childclass = document.getElementsByClassName("emp-details");
         var empNO = document.getElementsByClassName("emp-no");
         var temp = 0;
-        var _loop_1 = function (i) {
+        var _loop_2 = function (i) {
             if (childBoxes[i].checked == true) {
                 temp = 0;
                 if (data) {
@@ -147,7 +188,7 @@ var EmployeePage = /** @class */ (function () {
             }
         };
         for (var i = 0; i < childclass.length; i++) {
-            _loop_1(i);
+            _loop_2(i);
         }
         localStorage.setItem("data", JSON.stringify(data));
         if (headBox[0].checked == true) {
@@ -227,7 +268,6 @@ var EmployeePage = /** @class */ (function () {
         var buttons = document.getElementsByClassName("filter-reset-apply");
         var flag = this.checkOptionsClicked() || this.checkFiterPerformed();
         if (flag === false) {
-            console.log("false");
             buttons[0].style.display = "none";
         }
         else {
@@ -316,7 +356,7 @@ var EmployeePage = /** @class */ (function () {
             tdata6.appendChild(status);
             row.appendChild(tdata6);
             var tdata7 = document.createElement("td");
-            tdata7.innerText = emp.joinDt;
+            tdata7.innerText = emp.joiningDate;
             row.appendChild(tdata7);
             var tdata8 = document.createElement("div");
             tdata8.classList.add("ellipsis-menu");
@@ -444,7 +484,7 @@ var EmployeePage = /** @class */ (function () {
         var dt = localStorage.getItem("data");
         var data = JSON.parse(dt);
         var editInfo = document.getElementsByClassName("edit-inf");
-        var _loop_2 = function (i) {
+        var _loop_3 = function (i) {
             if (editInfo[i].contains(event.target)) {
                 data.forEach(function (emp) {
                     if (empNO[i].innerText === emp.empNo) {
@@ -455,7 +495,7 @@ var EmployeePage = /** @class */ (function () {
             }
         };
         for (var i = 0; i < editInfo.length; i++) {
-            _loop_2(i);
+            _loop_3(i);
         }
     };
     //To display ellipsis menu in the employee table
@@ -483,7 +523,6 @@ var EmployeePage = /** @class */ (function () {
         var checkBoxes = document.getElementsByClassName("status-check");
         var cntOptions = [2, 4, 4];
         var temp = cntOptions.slice(0, n).reduce(function (a, b) { return a + b; }, 0);
-        console.log(temp);
         var cnt = 0;
         for (var i = 0; i < cntOptions[n]; i++) {
             if (checkBoxes[temp + i].checked === true) {
@@ -547,7 +586,6 @@ var EmployeePage = /** @class */ (function () {
         var checkBoxes = document.getElementsByClassName("status-check");
         var cntOptions = [2, 4, 4];
         var temp = cntOptions.slice(0, n).reduce(function (a, b) { return a + b; }, 0);
-        console.log(temp);
         for (var i = 0; i < cntOptions[n]; i++) {
             if (checkBoxes[temp + i].checked === true) {
                 arr.push(checkBoxes[temp + i].value.toLowerCase());

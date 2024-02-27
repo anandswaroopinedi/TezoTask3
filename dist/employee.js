@@ -275,7 +275,7 @@ function createTableData(data) {
         tdata6.appendChild(status);
         row.appendChild(tdata6);
         var tdata7 = document.createElement("td");
-        tdata7.innerText = emp.joinDt;
+        tdata7.innerText = emp.joiningDate;
         row.appendChild(tdata7);
         var tdata8 = document.createElement("div");
         tdata8.classList.add("ellipsis-menu");

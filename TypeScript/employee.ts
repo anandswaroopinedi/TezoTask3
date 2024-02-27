@@ -1,5 +1,6 @@
-// import Employee from "../model/employeeModel";
-//Interface Employee
+// import {Employee} from "../TypeScript/model/employeeModel";
+// import Employee = require ("../TypeScript/model/employeeModel");
+// Interface Employee
 interface Employee {
   employeeName: string;
   employeeEmail: string;
@@ -8,7 +9,7 @@ interface Employee {
   role: string;
   empNo: string;
   status: string;
-  joinDt: string;
+  joiningDate: string;
 }
 //Checking wheather the localstorage data is accidentally deleted
 if (!localStorage.getItem("data")) {
@@ -28,6 +29,7 @@ function selectAll(): void {
   const headBox = document.getElementsByClassName(
     "head-check-box"
   ) as HTMLCollectionOf<HTMLInputElement>;
+
   const childBoxes = document.getElementsByClassName(
     "check-box"
   ) as HTMLCollectionOf<HTMLInputElement>;
@@ -336,7 +338,7 @@ function createTableData(data: Employee[]): void {
     row.appendChild(tdata6);
 
     let tdata7: HTMLTableCellElement = document.createElement("td");
-    tdata7.innerText = emp.joinDt;
+    tdata7.innerText = emp.joiningDate;
     row.appendChild(tdata7);
 
     let tdata8: HTMLDivElement = document.createElement("div");

@@ -6,7 +6,7 @@ interface Employee {
     role: string;
     empNo: string;
     status: string;
-    joinDt: string;
+    joiningDate: string;
 }
 class EmployeePage
 {
@@ -14,67 +14,97 @@ class EmployeePage
     constructor()
     {
         this.checkDataDeleted();
-        
-        const headCheckBox=document.getElementsByClassName("head-check-box")[0];
-        headCheckBox.addEventListener("click",(e:Event) => this.selectAll());
-        
-        const checkBox=document.getElementsByClassName("check-box");
-        for(let i=0;i<checkBox.length;i++)
-            checkBox[i].addEventListener("click",(e:Event) => this.selectOne());
-        
-        const deleteBtn=document.getElementsByClassName("delete");
-        deleteBtn[0].addEventListener("click",(e:Event) => this.deleteRows());
-        
-        const buttons = document.querySelectorAll('.vector-element');
+        this.checkAnyCheckBoxClicked()
+        this.checkDeleteButtonClicked();
+        this.checkAlphabetsClicked();
+        this.checkExportButtonClicked();
+        this.domContentLoad();
+        this.checkHeadCheckBoxClicked();
+        this.checkSortApplied()
+        this.captureDropDownClicks();
+        this.checkApplyButtonClicked();
+        this.captureEllipsisMenuClicks()
+    }
+    checkAnyCheckBoxClicked()
+    {
+      const checkBox=document.getElementsByClassName("check-box");
+      for(let i=0;i<checkBox.length;i++)
+          checkBox[i].addEventListener("click",(e:Event) => this.selectOne());
+    }
+    checkDeleteButtonClicked()
+    {
+      const deleteBtn=document.getElementsByClassName("delete");
+      deleteBtn[0].addEventListener("click",(e:Event) => this.deleteRows());
+    }
+    checkAlphabetsClicked()
+    {
+      const buttons = document.querySelectorAll('.vector-element');
         buttons.forEach(button => {
             button.addEventListener('click', (event) => {
                 const buttonText = (event.target as HTMLButtonElement).innerText;
                 this.filterDataByAlphabet(buttonText);
             });
         });
+    }
+    checkExportButtonClicked()
+    {
+      const exportBtn=document.getElementsByClassName("export-button");
+      exportBtn[0].addEventListener("click",(e:Event) => this.exportData());
+    }
+    domContentLoad()
+    {
+      document.addEventListener("DOMContentLoaded", (event) => {
+        let dat: string = localStorage.getItem("data")!;
+        let data: Employee[] = JSON.parse(dat);
+        this.createTableData(data);
+      });
+    }
+    checkHeadCheckBoxClicked()
+    {
+      const headCheckBox=document.getElementsByClassName("head-check-box")[0];
+      headCheckBox.addEventListener("click",(e:Event) => {
+        this.selectAll();
+        // this.selectAll.bind(this)
+      });
+    }
+    checkSortApplied()
+    {
+      for (let i = 0; i < 7; i++) {
+        const lessThanIcon = document.querySelectorAll(`.less-than`)[i] as HTMLElement;
+        const greaterThanIcon = document.querySelectorAll(`.greater-than`)[i] as HTMLElement;
 
-        const exportBtn=document.getElementsByClassName("export-button");
-        exportBtn[0].addEventListener("click",(e:Event) => this.exportData());
-
-        document.addEventListener("DOMContentLoaded", (event) => {
-            let dat: string = localStorage.getItem("data")!;
-            let data: Employee[] = JSON.parse(dat);
-            this.createTableData(data);
-          });
-
-        // const checkBox = document.querySelector('.head-check-box') as HTMLInputElement;
-        headCheckBox.addEventListener('click', this.selectAll.bind(this));
-  
-          // Attach click event listeners to the sort icons
-          for (let i = 0; i < 7; i++) {
-              const lessThanIcon = document.querySelectorAll(`.less-than`)[i] as HTMLElement;
-              const greaterThanIcon = document.querySelectorAll(`.greater-than`)[i] as HTMLElement;
-  
-              lessThanIcon.addEventListener('click', this.sortTable.bind(this, i, "asc"));
-              greaterThanIcon.addEventListener('click', this.sortTable.bind(this, i, "desc"));
-          }
-        document.addEventListener("click",(event: MouseEvent): void=> {
-            this.dispellipsisMenu(event);
-            this.editInfo(event);
-            this.deleteBtnEllipseMenu(event);
-            this.clickOptionsSelect(event);
-        });
-
-        const dropBtn=document.querySelectorAll(".dropbtn");
-        let cntSelect=0;
-        dropBtn.forEach(button => {
-            button.addEventListener('click', (event) => {
-                console.log(cntSelect);
-                this.selectDropDown(cntSelect);
-                cntSelect+=1;
-            });
-        });
-
+        lessThanIcon.addEventListener('click', this.sortTable.bind(this, i, "asc"));
+        greaterThanIcon.addEventListener('click', this.sortTable.bind(this, i, "desc"));
+    }
+    }
+    checkApplyButtonClicked()
+    {
+      // debugger;
         const filterApply=document.querySelectorAll(".apply");
         filterApply[0].addEventListener("click",(e:Event) =>this.filterByUserInputs());
     }
+    captureEllipsisMenuClicks()
+    {
+      document.addEventListener("click",(event: MouseEvent): void=> {
+        this.dispellipsisMenu(event);
+        this.editInfo(event);
+        this.deleteBtnEllipseMenu(event);
+        this.clickOptionsSelect(event);
+      });
+    }
+    captureDropDownClicks()
+    {
+        const dropBtn=document.querySelectorAll(".dropbtn");
+          for(let i=0;i<dropBtn.length;i++)
+          {
+            dropBtn[i].addEventListener('click', (e:Event) => {
+              this.selectDropDown(i);
+          });
+          }
+    }
     checkDataDeleted()
     {
+      // debugger;
         if (!localStorage.getItem("data")) {
             fetch("../JSON/employees.json")
               .then((response) => response.json())
@@ -90,6 +120,7 @@ class EmployeePage
     }
     selectAll(): void
     {
+      // debugger;
         const headBox = document.getElementsByClassName(
           "head-check-box"
         ) as HTMLCollectionOf<HTMLInputElement>;
@@ -294,7 +325,6 @@ class EmployeePage
       
         let flag = this.checkOptionsClicked() || this.checkFiterPerformed();
         if (flag === false) {
-          console.log("false");
           buttons[0].style.display = "none";
         } else {
           buttons[0].style.display = "flex";
@@ -393,7 +423,7 @@ class EmployeePage
           row.appendChild(tdata6);
       
           let tdata7: HTMLTableCellElement = document.createElement("td");
-          tdata7.innerText = emp.joinDt;
+          tdata7.innerText = emp.joiningDate;
           row.appendChild(tdata7);
       
           let tdata8: HTMLDivElement = document.createElement("div");
@@ -574,7 +604,6 @@ class EmployeePage
         ) as HTMLCollectionOf<HTMLInputElement>;
         const cntOptions = [2, 4, 4];
         const temp: number = cntOptions.slice(0, n).reduce((a, b) => a + b, 0);
-        console.log(temp);
         let cnt = 0;
         for (let i: number = 0; i < cntOptions[n]; i++) {
           if (checkBoxes[temp + i].checked === true) {
@@ -648,7 +677,6 @@ class EmployeePage
         ) as HTMLCollectionOf<HTMLInputElement>;
         let cntOptions: number[] = [2, 4, 4];
         let temp: number = cntOptions.slice(0, n).reduce((a, b) => a + b, 0);
-        console.log(temp);
         for (let i: number = 0; i < cntOptions[n]; i++) {
           if (checkBoxes[temp + i].checked === true) {
             arr.push(checkBoxes[temp + i].value.toLowerCase());

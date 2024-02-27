@@ -1,8 +1,7 @@
 "use strict";
-// import Emp from "../model/employeeModel" import Employee from "../model/employeeModel";
 var flag = false;
 var Emp = /** @class */ (function () {
-    function Emp(employeeName, employeeEmail, location, department, role, empNo, status, joinDt) {
+    function Emp(employeeName, employeeEmail, location, department, role, empNo, status, joiningDate) {
         this.employeeName = employeeName;
         this.employeeEmail = employeeEmail;
         this.location = location;
@@ -10,7 +9,7 @@ var Emp = /** @class */ (function () {
         this.role = role;
         this.empNo = empNo;
         this.status = status;
-        this.joinDt = joinDt;
+        this.joiningDate = joiningDate;
     }
     return Emp;
 }());
@@ -57,6 +56,15 @@ function displayDangerText(n, msg) {
     var text = document.getElementsByClassName("danger-msg")[n];
     text.innerText = msg;
 }
+function checkName(name) {
+    var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
+    if (regName.test(name)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 function checkFirstName(k) {
     var fname = document.getElementById("first-name").value;
     if (fname == "") {
@@ -65,8 +73,7 @@ function checkFirstName(k) {
         displayDangerText(1, "This field is required");
     }
     else {
-        var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
-        if (!regName.test(fname)) {
+        if (!checkName(fname)) {
             displayDangerText(1, "Use only alphabets");
             displayErrorMsg(1, "text-danger-fname");
             flag = true;
@@ -92,8 +99,7 @@ function checkLastName(k) {
         displayDangerText(2, "This field is required");
     }
     else {
-        var regName = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
-        if (!regName.test(lname)) {
+        if (!checkName(lname)) {
             displayDangerText(2, "Use only alphabets");
             displayErrorMsg(2, "text-danger-lname");
             flag = true;
@@ -291,13 +297,13 @@ function createEmployee() {
     var role = document.getElementById("job-title").value;
     var location = document.getElementById("location").value;
     var dept = document.getElementById("department").value;
-    var joinDt = document.getElementById("joining-date")
+    var joiningDate = document.getElementById("joining-date")
         .value;
-    var jdt = joinDt.substring(8, 10) +
+    var jdt = joiningDate.substring(8, 10) +
         "/" +
-        joinDt.substring(5, 7) +
+        joiningDate.substring(5, 7) +
         "/" +
-        joinDt.substring(0, 4);
+        joiningDate.substring(0, 4);
     var newEmp = new Emp(fname + " " + lname, email, location, dept, role, empid, "Active", jdt);
     var dt = localStorage.getItem("data");
     var data = JSON.parse(dt);
@@ -380,7 +386,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         var role = document.getElementById("job-title");
         var location_1 = document.getElementById("location");
         var dept = document.getElementById("department");
-        var joinDt = document.getElementById("joining-date");
+        var joiningDate = document.getElementById("joining-date");
         var data1 = JSON.parse(dt1);
         email.value = data1.employeeEmail;
         empid.value = data1.empNo;
@@ -390,6 +396,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         role.value = data1.role;
         location_1.value = data1.location;
         dept.value = data1.department;
-        joinDt.value = data1.joinDt;
+        joiningDate.value = data1.joiningDate;
     }
 });

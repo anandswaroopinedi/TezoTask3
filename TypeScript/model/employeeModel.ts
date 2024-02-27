@@ -6,7 +6,7 @@ export interface Employee {
     role: string;
     empNo: string;
     status: string;
-    joinDt: string;
+    joiningDate: string;
 }
 export default class Emp implements Employee {
     constructor(
@@ -17,6 +17,6 @@ export default class Emp implements Employee {
       public role: string,
       public empNo: string,
       public status: string,
-      public joinDt: string
+      public joiningDate: string
     ) {}
 }

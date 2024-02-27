@@ -420,7 +420,7 @@ th, td {
     border-bottom: 1px solid #ddd;
     height: 10px;
 }
-tr:hover{
+.emp-details:hover{
     background-color: #FFF4F4;
 }
 .active-status{
@@ -440,11 +440,13 @@ tr:hover{
     width: 20px;
     height: 1.1vw;
     margin:4vh 0vh 0vh 1vw;
+    cursor: pointer;
 }
 .head-check-box{
     width: 20px;
     height: 1.1vw;
     margin:0.6vh 0vh 0vh 1vw;
+    cursor: pointer;
 }
 .emp-head{
     color: #505F7B;

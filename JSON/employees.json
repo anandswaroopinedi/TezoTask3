@@ -6,7 +6,7 @@
     "role":"Full-stack Developer",
     "empNo":"TZ002340",
     "status":"Active",
-    "joinDt":"1/07/2023"
+    "joiningDate":"1/07/2023"
 },
 {
     "employeeName":"Anand Swaroop Inedi",
@@ -16,7 +16,7 @@
     "role":"Full-stack Developer",
     "empNo":"TZ002341",
     "status":"Active",
-    "joinDt":"10/07/2023"
+    "joiningDate":"10/07/2023"
 },
 {
     "employeeName":"Jagadeesh Inedi",
@@ -26,7 +26,7 @@
     "role":"Architect",
     "empNo":"TZ002342",
     "status":"Active",
-    "joinDt":"12/03/2026"
+    "joiningDate":"12/03/2026"
 },
 {
     "employeeName":"Rahul Amaraneni",
@@ -36,7 +36,7 @@
     "role":"Sales specialist",
     "empNo":"TZ002343",
     "status":"In Active",
-    "joinDt":"12/03/2024"
+    "joiningDate":"12/03/2024"
 },
 {
     "employeeName":"Ram Guntupalli",
@@ -46,7 +46,7 @@
     "role":"Sales specialist",
     "empNo":"TZ002344",
     "status":"Active",
-    "joinDt":"10/09/2023"
+    "joiningDate":"10/09/2023"
 },
 {
     "employeeName":"Nithin kumar Devireddy",
@@ -56,7 +56,7 @@
     "role":"Full-stack Developer",
     "empNo":"TZ002346",
     "status":"In Active",
-    "joinDt":"01/12/2023"
+    "joiningDate":"01/12/2023"
 },
 {
     "employeeName":"Sri Lakshmi Arthimalla",
@@ -66,7 +66,7 @@
     "role":"Project Manager",
     "empNo":"TZ002347",
     "status":"Active",
-    "joinDt":"12/05/2023"
+    "joiningDate":"12/05/2023"
 },
 {
     "employeeName":"Bhaskara Rao Inedi",
@@ -76,7 +76,7 @@
     "role":"JavaScript Engineer",
     "empNo":"TZ002348",
     "status":"Active",
-    "joinDt":"11/03/2023"
+    "joiningDate":"11/03/2023"
 },
 {
     "employeeName":"krishna teja Boyapati",
@@ -86,7 +86,7 @@
     "role":"Software Architect",
     "empNo":"TZ002349",
     "status":"Active",
-    "joinDt":"12/03/2023"
+    "joiningDate":"12/03/2023"
 },
 {
     "employeeName":"prem sagar Bombanaboyina",
@@ -96,6 +96,6 @@
     "role":"Web Developer",
     "empNo":"TZ002350",
     "status":"In Active",
-    "joinDt":"12/04/2023"
+    "joiningDate":"12/04/2023"
 }
 ]

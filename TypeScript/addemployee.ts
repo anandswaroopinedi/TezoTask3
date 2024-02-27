@@ -1,7 +1,5 @@
-// import Emp from "../model/employeeModel" import Employee from "../model/employeeModel";
-
-//  import {Employee} from "../model/employeeModel";
-//  import Emp from "../model/employeeModel";
+//  import {Employee} from "../TypeScript/model/employeeModel";
+//  import Emp from "../TypeScript/model/employeeModel";
 interface Employee {
   employeeName: string;
   employeeEmail: string;
@@ -10,9 +8,9 @@ interface Employee {
   role: string;
   empNo: string;
   status: string;
-  joinDt: string;
+  joiningDate: string;
 }
-var flag: boolean = false;
+ var flag: boolean = false;
 class Emp implements Employee {
   constructor(
     public employeeName: string,
@@ -22,7 +20,7 @@ class Emp implements Employee {
     public role: string,
     public empNo: string,
     public status: string,
-    public joinDt: string
+    public joiningDate: string
   ) {}
 }
 
@@ -97,6 +95,17 @@ function displayDangerText(n: number, msg: string): void {
   ] as HTMLInputElement;
   text.innerText = msg;
 }
+function checkName(name:string)
+{
+  const regName: RegExp = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
+  if (regName.test(name))
+  {
+    return true;
+  }
+  else{
+    return false;
+  }
+}
 function checkFirstName(k: number): boolean {
   const fname: string = (
     document.getElementById("first-name")! as HTMLInputElement
@@ -106,18 +115,17 @@ function checkFirstName(k: number): boolean {
     flag = true;
     displayDangerText(1, "This field is required");
   } else {
-    const regName: RegExp = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
-    if (!regName.test(fname)) {
+    if (!checkName(fname)) {
       displayDangerText(1, "Use only alphabets");
       displayErrorMsg(1, "text-danger-fname");
       flag = true;
     } else {
-      flag = false;
-      if (k == 0) {
-        displayBorderInput(1, "text-danger-fname");
-      } else {
-        hideErrMsg(1, "text-danger-fname");
-      }
+        flag = false;
+        if (k == 0) {
+          displayBorderInput(1, "text-danger-fname");
+        } else {
+          hideErrMsg(1, "text-danger-fname");
+        }
     }
   }
   return flag;
@@ -130,8 +138,7 @@ function checkLastName(k: number): boolean {
     flag = true;
     displayDangerText(2, "This field is required");
   } else {
-    const regName: RegExp = /^[a-zA-Z]+([ \-']{0,1}[a-zA-Z]+){0,2}[.]{0,1}$/;
-    if (!regName.test(lname)) {
+    if (!checkName(lname)) {
       displayDangerText(2, "Use only alphabets");
       displayErrorMsg(2, "text-danger-lname");
       flag = true;
@@ -356,14 +363,14 @@ function createEmployee(): void {
   const dept: string = (
     document.getElementById("department")! as HTMLInputElement
   ).value;
-  const joinDt = (document.getElementById("joining-date") as HTMLInputElement)
+  const joiningDate = (document.getElementById("joining-date") as HTMLInputElement)
     .value;
   const jdt: string =
-    joinDt.substring(8, 10) +
+  joiningDate.substring(8, 10) +
     "/" +
-    joinDt.substring(5, 7) +
+    joiningDate.substring(5, 7) +
     "/" +
-    joinDt.substring(0, 4);
+    joiningDate.substring(0, 4);
   const newEmp: Emp = new Emp(
     fname + " " + lname,
     email,
@@ -467,7 +474,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const role = document.getElementById("job-title")! as HTMLInputElement;
     const location = document.getElementById("location")! as HTMLInputElement;
     const dept = document.getElementById("department")! as HTMLInputElement;
-    const joinDt = document.getElementById("joining-date")! as HTMLInputElement;
+    const joiningDate = document.getElementById("joining-date")! as HTMLInputElement;
     const data1: Emp = JSON.parse(dt1);
     email.value = data1.employeeEmail;
     empid.value = data1.empNo;
@@ -477,6 +484,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     role.value = data1.role;
     location.value = data1.location;
     dept.value = data1.department;
-    joinDt.value = data1.joinDt;
+    joiningDate.value = data1.joiningDate;
   }
 });
