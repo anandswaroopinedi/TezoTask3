@@ -212,7 +212,7 @@ function checkMobileNo(): void {
     hideErrMsg(5, "text-danger-mobno");
   }
 }
-function checkJoinDate(): boolean {
+function checkJoiningDate(): boolean {
   const input1 = document.getElementsByClassName(
     "form-input-large"
   ) as HTMLCollectionOf<HTMLInputElement>;
@@ -224,11 +224,23 @@ function checkJoinDate(): boolean {
   if (joinDt == "") {
     errMsgJnDate[0].style.display = "flex";
     input1[0].style.border = "3px solid red";
+    displayDangerText(5,"This field is required");
     flag = true;
   } else {
+    console.log(new Date(joinDt.split("/").reverse().join(", ")));
+    console.log(new Date())
+    if(new Date(joinDt.split("/").reverse().join(", "))>new Date())
+    {
+      errMsgJnDate[0].style.display = "flex";
+      displayDangerText(5,"date should not be more than today's date");
+      input1[0].style.border = "3px solid red";
+      flag = true;
+    }
+    else{
     errMsgJnDate[0].style.display = "none";
     input1[0].style.border = "1px solid black";
     flag=false;
+    }
   }
   return flag;
 }
@@ -292,7 +304,7 @@ function alignItemsWrtProfile(
   formButtons[0].style.marginLeft = marLeft;
 }
 //To check whether Empno is already exisisted
-function checkEmpNoPresent() {
+function checkEmployeeNoPresent() {
   const dt: string = localStorage.getItem("data")!;
   const empid: string = (
     document.getElementById("employee-no")! as HTMLInputElement
@@ -317,12 +329,22 @@ function deleteEmployee(ind: number): void {
   localStorage.setItem("data", JSON.stringify(data));
   localStorage.removeItem("data1");
 }
+function checkAllFields()
+{
+  checkFirstName(0)
+  checkLastName(0)
+  checkEmployeeNo(0)
+  checkEmail(0)
+  checkJoiningDate();
+  checkProfileImage();
+}
 document
   .getElementById("myButton")!
   .addEventListener("click", function (event): void {
     event.preventDefault();
-    flag=checkFirstName(0) ||  checkLastName(0) || checkEmployeeNo(0) ||  checkEmail(0) || checkJoinDate() || checkProfileImage();
-    let result = checkEmpNoPresent();
+    checkAllFields();
+    flag=checkFirstName(0) ||  checkLastName(0) || checkEmployeeNo(0) ||  checkEmail(0) || checkJoiningDate() || checkProfileImage();
+    let result = checkEmployeeNoPresent();
     let ind: number = result.ind;
     let flag1: boolean = result.flag1;
     let data1: string | null = localStorage.getItem("data1");

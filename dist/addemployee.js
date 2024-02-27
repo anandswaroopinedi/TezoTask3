@@ -179,7 +179,7 @@ function checkMobileNo() {
         hideErrMsg(5, "text-danger-mobno");
     }
 }
-function checkJoinDate() {
+function checkJoiningDate() {
     var input1 = document.getElementsByClassName("form-input-large");
     var errMsgJnDate = document.getElementsByClassName("text-danger-jndate");
     var joinDt = document.getElementById("joining-date")
@@ -187,12 +187,23 @@ function checkJoinDate() {
     if (joinDt == "") {
         errMsgJnDate[0].style.display = "flex";
         input1[0].style.border = "3px solid red";
+        displayDangerText(5, "This field is required");
         flag = true;
     }
     else {
-        errMsgJnDate[0].style.display = "none";
-        input1[0].style.border = "1px solid black";
-        flag = false;
+        console.log(new Date(joinDt.split("/").reverse().join(", ")));
+        console.log(new Date());
+        if (new Date(joinDt.split("/").reverse().join(", ")) > new Date()) {
+            errMsgJnDate[0].style.display = "flex";
+            displayDangerText(5, "date should not be more than today's date");
+            input1[0].style.border = "3px solid red";
+            flag = true;
+        }
+        else {
+            errMsgJnDate[0].style.display = "none";
+            input1[0].style.border = "1px solid black";
+            flag = false;
+        }
     }
     return flag;
 }
@@ -237,7 +248,7 @@ function alignItemsWrtProfile(direction, errDisp, marTop, editDisp, marLeft) {
     formButtons[0].style.marginLeft = marLeft;
 }
 //To check whether Empno is already exisisted
-function checkEmpNoPresent() {
+function checkEmployeeNoPresent() {
     var dt = localStorage.getItem("data");
     var empid = document.getElementById("employee-no").value;
     var data = JSON.parse(dt);
@@ -260,12 +271,21 @@ function deleteEmployee(ind) {
     localStorage.setItem("data", JSON.stringify(data));
     localStorage.removeItem("data1");
 }
+function checkAllFields() {
+    checkFirstName(0);
+    checkLastName(0);
+    checkEmployeeNo(0);
+    checkEmail(0);
+    checkJoiningDate();
+    checkProfileImage();
+}
 document
     .getElementById("myButton")
     .addEventListener("click", function (event) {
     event.preventDefault();
-    flag = checkFirstName(0) || checkLastName(0) || checkEmployeeNo(0) || checkEmail(0) || checkJoinDate() || checkProfileImage();
-    var result = checkEmpNoPresent();
+    checkAllFields();
+    flag = checkFirstName(0) || checkLastName(0) || checkEmployeeNo(0) || checkEmail(0) || checkJoiningDate() || checkProfileImage();
+    var result = checkEmployeeNoPresent();
     var ind = result.ind;
     var flag1 = result.flag1;
     var data1 = localStorage.getItem("data1");
