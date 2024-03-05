@@ -29,18 +29,20 @@ function selectAll(): void {
   const headBox = document.getElementsByClassName(
     "head-check-box"
   ) as HTMLCollectionOf<HTMLInputElement>;
-
+  const childclass = document.getElementsByClassName(
+    "emp-details"
+  ) as HTMLCollectionOf<HTMLInputElement>;
   const childBoxes = document.getElementsByClassName(
     "check-box"
   ) as HTMLCollectionOf<HTMLInputElement>;
   let flag: boolean = false;
   for (let i: number = 0; i < childBoxes.length; i++) {
-    if (headBox[0].checked == true) {
+    if (headBox[0].checked == true && childclass[i].style.display!="none") {
+      console.log("1")
       childBoxes[i].checked = true;
       flag = true;
     } else {
       childBoxes[i].checked = false;
-      flag = false;
     }
   }
   if (flag == true) {
@@ -208,14 +210,17 @@ function exportData(): void {
   }
   csvData.push(row.join(","));
   for (let i = 0; i < rows.length; i++) {
-    const row: string[] = [],
-      cols = rows[i].querySelectorAll("td,th") as NodeListOf<HTMLInputElement>;
-    row.push(empName[i].innerText);
-    row.push(empEmail[i].innerText);
-    for (let j = 1; j < cols.length; j++) {
-      row.push(cols[j].innerText);
+    if(rows[i].style.display!='none')
+    {
+      const row: string[] = [],
+        cols = rows[i].querySelectorAll("td,th") as NodeListOf<HTMLInputElement>;
+      row.push(empName[i].innerText);
+      row.push(empEmail[i].innerText);
+      for (let j = 1; j < cols.length; j++) {
+        row.push(cols[j].innerText);
+      }
+      csvData.push(row.join(","));
     }
-    csvData.push(row.join(","));
   }
   const blob: Blob = new Blob([csvData.join("\n")], { type: "text/csv" });
   const link: HTMLAnchorElement = document.createElement("a");

@@ -15,16 +15,17 @@ if (!localStorage.getItem("data")) {
 //Select all the checkboxes when head checkbox is selected
 function selectAll() {
     var headBox = document.getElementsByClassName("head-check-box");
+    var childclass = document.getElementsByClassName("emp-details");
     var childBoxes = document.getElementsByClassName("check-box");
     var flag = false;
     for (var i = 0; i < childBoxes.length; i++) {
-        if (headBox[0].checked == true) {
+        if (headBox[0].checked == true && childclass[i].style.display != "none") {
+            console.log("1");
             childBoxes[i].checked = true;
             flag = true;
         }
         else {
             childBoxes[i].checked = false;
-            flag = false;
         }
     }
     if (flag == true) {
@@ -160,13 +161,15 @@ function exportData() {
     }
     csvData.push(row.join(","));
     for (var i = 0; i < rows.length; i++) {
-        var row_1 = [], cols = rows[i].querySelectorAll("td,th");
-        row_1.push(empName[i].innerText);
-        row_1.push(empEmail[i].innerText);
-        for (var j = 1; j < cols.length; j++) {
-            row_1.push(cols[j].innerText);
+        if (rows[i].style.display != 'none') {
+            var row_1 = [], cols = rows[i].querySelectorAll("td,th");
+            row_1.push(empName[i].innerText);
+            row_1.push(empEmail[i].innerText);
+            for (var j = 1; j < cols.length; j++) {
+                row_1.push(cols[j].innerText);
+            }
+            csvData.push(row_1.join(","));
         }
-        csvData.push(row_1.join(","));
     }
     var blob = new Blob([csvData.join("\n")], { type: "text/csv" });
     var link = document.createElement("a");
